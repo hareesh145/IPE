@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/admin_profile"
+        android:title="Admin Profile" />
+    <item
+        android:id="@+id/manage_profile"
+        android:title="Manage Candidate" />
+
+    <item
+        android:id="@+id/constituency_devs"
+        android:title="Constituency Developments" />
+    <item
+        android:id="@+id/upload_manifest"
+        android:title="Upload Manifest File" />
+    <item
+        android:id="@+id/candidate_av"
+        android:title="Candidate AV" />
+    <item
+        android:id="@+id/candidate_donation"
+        android:title="Candidate Donation" />
+
+    <item
+        android:id="@+id/consti_issues"
+        android:title="Constituency Issues" />
+
+    <item
+        android:id="@+id/leader_rating"
+        android:title="Constituency Leader Rating" />
+    <item
+        android:id="@+id/latest_news"
+        android:title="Latest News" />
+</menu>
