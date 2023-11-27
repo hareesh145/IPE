@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">IndiaPoliticalEdge</string>
+    <string name="change_password">Change Password</string>
+    <string name="forgot_pwd_title">Forgot Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="submit">Submit</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="password">Password</string>
+    <string name="new_user_signup">New User? <u>SignUp</u></string>
+    <string name="forgot_pwd"><u>Forgot Password?</u></string>
+    <string name="add_new_mla">Add New MLA</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="party_name">Party Name</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="subscription_fees">Subscription Fees</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="candidate_profile">Candidate Profile</string>
+    <string name="birth_place">Birth Place</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="voter_id">Voter ID Number</string>
+
+    <string-array name="states">
+        <item>Telangana</item>
+        <item>Andra Pradesh</item>
+    </string-array>
+    <string-array name="mlas_array">
+        <item>Malla Reddy(10-12-2020 - 10-12-2027)</item>
+        <item>Harish Rao(10-12-2020 - 10-12-2027)</item>
+        <item>Ravindra Naik(10-12-2021 - 10-12-2028)</item>
+        <item>Etala Rajendar(10-12-2021 - 10-12-2028)</item>
+    </string-array>
+
+    <string-array name="districts">
+        <item>Ranga Reddy</item>
+        <item>Nalgonda</item>
+        <item>Hyderabad</item>
+        <item>Warangal</item>
+    </string-array>
+    <string-array name="mandals">
+        <item>Amberpet</item>
+        <item>Bandlaguda</item>
+        <item>Himayathnagar</item>
+        <item>Chityala</item>
+        <item>Chandur</item>
+        <item>Narketpalle</item>
+        <item>Balapur</item>
+        <item>Maheshwaram</item>
+        <item>Saroornagar</item>
+
+        <item>Khanapur</item>
+        <item>Nekkonda</item>
+        <item>Saroornagar</item>
+    </string-array>
+
+    <string-array name="constituencies">
+        <item>Amberpet</item>
+        <item>Khairatabad</item>
+        <item>Devarakonda</item>
+        <item>Miryalaguda</item>
+        <item>Nalgonda</item>
+        <item>Warangal West</item>
+        <item>Warangal East</item>
+        <item>Waradhanapet</item>
+    </string-array>
+
+    <string name="opinion">Opinion</string>
+    <string name="opinion_hint">Enter Opinion</string>
+    <string name="mla_name">MLA Name</string>
+    <string name="constituency_details">Constituency Details</string>
+    <string name="update">Update</string>
+    <string name="super_admin">Super Admin</string>
+    <string name="admin">Admin</string>
+    <string name="candidate">Candidate</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="enter_donation">Enter Donation Amount</string>
+</resources>
