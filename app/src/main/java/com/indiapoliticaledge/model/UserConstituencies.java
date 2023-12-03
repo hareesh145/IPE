@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class UserConstituencies {
+import java.io.Serializable;
+
+public class UserConstituencies implements Serializable {
 
     public int userConstituencyId;
     public int userId;

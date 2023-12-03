@@ -141,4 +141,8 @@ public class Utils {
     public static void showSnackBar(View view, String message) {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
     }
+
+    public static void showSnackBarAlert(View view, String message) {
+        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+    }
 }

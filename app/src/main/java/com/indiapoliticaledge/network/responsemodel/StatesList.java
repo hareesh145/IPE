@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class StatesList {
+import java.io.Serializable;
+
+public class StatesList implements Serializable {
 
 
     public int id;

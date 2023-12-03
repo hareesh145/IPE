@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class UpdateCandidate {
+import java.io.Serializable;
+
+public class UpdateCandidate implements Serializable {
     public int candidateId;
     public String firstName;
     public String lastName;

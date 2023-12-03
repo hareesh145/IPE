@@ -14,6 +14,16 @@ public class SignInResponseModel {
 
     public String successCode;
 
+    public String errorMessage;
+
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 
     public UserInfo getUserInfo() {
         return userInfo;

@@ -2,7 +2,9 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.Constituency;
 
-public class CandidatesList {
+import java.io.Serializable;
+
+public class CandidatesList implements Serializable {
 
     public int candidateId;
     public String firstName;

@@ -2,7 +2,9 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.UserInfo;
 
-public class ViewMemberResponse {
+import java.io.Serializable;
+
+public class ViewMemberResponse implements Serializable {
     public UserInfo userInfo;
     public boolean success;
     public String successCode;

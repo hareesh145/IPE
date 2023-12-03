@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class Departments {
+import java.io.Serializable;
+
+public class Departments implements Serializable {
     public int departmentId;
     public String departmentName;
     public String departmentDescription;

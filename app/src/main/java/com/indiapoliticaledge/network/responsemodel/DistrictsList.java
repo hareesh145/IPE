@@ -1,12 +1,13 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class DistrictsList {
+import java.io.Serializable;
+
+public class DistrictsList implements Serializable {
 
 
     public int id;
     public String name;
     public String pincode;
-
 
     public int getId() {
         return id;

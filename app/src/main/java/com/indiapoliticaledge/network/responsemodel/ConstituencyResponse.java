@@ -2,9 +2,10 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.ConstituencyList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ConstituencyResponse {
+public class ConstituencyResponse implements Serializable {
 
     public boolean success;
     public ArrayList<ConstituencyList> constituencyList;

@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class CountriesList {
+import java.io.Serializable;
+
+public class CountriesList implements Serializable {
     public int countryId;
     public String countryName;
     public String deleteDate;

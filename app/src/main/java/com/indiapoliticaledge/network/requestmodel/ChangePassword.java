@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class ChangePassword {
+import java.io.Serializable;
+
+public class ChangePassword implements Serializable {
 
     public String id;
     public String currentPassword;

@@ -1,5 +1,7 @@
 package com.indiapoliticaledge.ui;
 
+import static com.indiapoliticaledge.utils.Constants.USER_INFO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.SignInModel;
@@ -52,11 +55,15 @@ public class LoginScreen extends AppCompatActivity {
                                         signInResponseModel.userInfo.getRoleName().equals(Constants.SUPER_ADMIN)) {
                                     navigateHome();
                                 } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.CANDIDATE)) {
-                                    navigateToCandidate();
+                                    navigateToCandidate(signInResponseModel);
                                 }
                             }
                         } else {
-                            navigateHome();
+                            SignInResponseModel signInResponseModel = response.body();
+                            if (signInResponseModel != null) {
+                                Utils.showSnackBarAlert(submit_btn, signInResponseModel.getErrorMessage());
+                            }
+
                         }
                     }
 
@@ -73,14 +80,14 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
-    private void navigateToCandidate() {
+    private void navigateToCandidate(SignInResponseModel signInResponseModel) {
         Intent intent = new Intent(LoginScreen.this, CandidateHomeScreen.class);
+        intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
         startActivity(intent);
         finish();
     }
 
     private void navigateHome() {
-
         Intent intent = new Intent(LoginScreen.this, ViewMLAListScreen.class);
         startActivity(intent);
         finish();

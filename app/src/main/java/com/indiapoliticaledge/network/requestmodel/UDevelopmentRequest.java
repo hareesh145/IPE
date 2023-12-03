@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class UDevelopmentRequest {
+import java.io.Serializable;
+
+public class UDevelopmentRequest implements Serializable {
 
     public int userId;
     public int constituencyId;

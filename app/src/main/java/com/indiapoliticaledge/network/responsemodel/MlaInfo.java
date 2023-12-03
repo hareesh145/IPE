@@ -2,7 +2,9 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.Constituency;
 
-public class MlaInfo {
+import java.io.Serializable;
+
+public class MlaInfo implements Serializable {
 
     public int userId;
     public String firstName;
@@ -10,12 +12,12 @@ public class MlaInfo {
     public String mobileNumber;
     public String password;
     public String createdDate;
-    public Object modifiedDate;
+    public String modifiedDate;
     public String activeFlag;
-    public Object secretKey;
-    public Object using2fa;
-    public Object profilePhotoUrl;
-    public Object shortDescriptionAbout;
+    public String secretKey;
+    public String using2fa;
+    public String profilePhotoUrl;
+    public String shortDescriptionAbout;
     public int userRoleId;
     public int constituencyId;
     public String deleteFlag;
@@ -74,9 +76,7 @@ public class MlaInfo {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Object modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
+
 
     public String getActiveFlag() {
         return activeFlag;
@@ -90,33 +90,15 @@ public class MlaInfo {
         return secretKey;
     }
 
-    public void setSecretKey(Object secretKey) {
-        this.secretKey = secretKey;
-    }
+
 
     public Object getUsing2fa() {
         return using2fa;
     }
 
-    public void setUsing2fa(Object using2fa) {
-        this.using2fa = using2fa;
-    }
 
-    public Object getProfilePhotoUrl() {
-        return profilePhotoUrl;
-    }
 
-    public void setProfilePhotoUrl(Object profilePhotoUrl) {
-        this.profilePhotoUrl = profilePhotoUrl;
-    }
 
-    public Object getShortDescriptionAbout() {
-        return shortDescriptionAbout;
-    }
-
-    public void setShortDescriptionAbout(Object shortDescriptionAbout) {
-        this.shortDescriptionAbout = shortDescriptionAbout;
-    }
 
     public int getUserRoleId() {
         return userRoleId;

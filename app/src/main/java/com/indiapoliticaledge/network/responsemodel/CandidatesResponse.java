@@ -1,8 +1,9 @@
 package com.indiapoliticaledge.network.responsemodel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CandidatesResponse {
+public class CandidatesResponse implements Serializable {
 
     public boolean success;
     public ArrayList<CandidatesList> candidatesList;

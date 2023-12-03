@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class Donate {
+import java.io.Serializable;
+
+public class Donate implements Serializable {
 
     public String candidatesId;
     public String userId;

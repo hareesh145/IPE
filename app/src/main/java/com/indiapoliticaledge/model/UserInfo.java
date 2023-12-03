@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class UserInfo {
+import java.io.Serializable;
+
+public class UserInfo implements Serializable {
     public int userId;
     public String firstName;
     public String lastName;

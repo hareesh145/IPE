@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class ConstituencyMapResponse {
+import java.io.Serializable;
+
+public class ConstituencyMapResponse implements Serializable {
 
     public String constituencyName;
     public boolean success;

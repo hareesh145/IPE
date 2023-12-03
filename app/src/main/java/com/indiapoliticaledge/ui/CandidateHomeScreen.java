@@ -22,6 +22,7 @@ import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
 import com.indiapoliticaledge.ui.fragment.UploadManifestFragment;
+import com.indiapoliticaledge.utils.Constants;
 
 import java.util.Objects;
 
@@ -34,14 +35,14 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.admin_flow_layout);
+        setContentView(R.layout.candidate_flow_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
-        setTitleText("MLA Information");
+        setTitleText("");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -71,7 +72,9 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         } else {
             fragment = new CandidateProfileFragment();
         }
-
+        Bundle bundle=new Bundle();
+        bundle.putString(Constants.USER_INFO,getIntent().getStringExtra(Constants.USER_INFO));
+        fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

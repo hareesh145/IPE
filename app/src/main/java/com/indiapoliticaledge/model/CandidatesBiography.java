@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class CandidatesBiography {
+import java.io.Serializable;
+
+public class CandidatesBiography implements Serializable {
     public int candidateId;
     public String firstName;
     public String lastName;

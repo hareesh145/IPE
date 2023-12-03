@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class OpinionPollingList {
+import java.io.Serializable;
+
+public class OpinionPollingList implements Serializable {
 
     public int opinionPollingId;
     public int userOpinionId;

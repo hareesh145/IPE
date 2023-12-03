@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class SignInModel {
+import java.io.Serializable;
+
+public class SignInModel implements Serializable {
 
     public String mobileNumber;
 

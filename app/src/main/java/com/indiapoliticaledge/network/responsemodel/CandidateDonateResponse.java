@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class CandidateDonateResponse {
+import java.io.Serializable;
+
+public class CandidateDonateResponse implements Serializable {
 
     public boolean success;
     public CandidatesDonationInfo candidatesDonationInfo;

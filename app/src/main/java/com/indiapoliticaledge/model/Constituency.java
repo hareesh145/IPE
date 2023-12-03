@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class Constituency {
+import java.io.Serializable;
+
+public class Constituency implements Serializable {
     public int constituencyId;
     public int districtId;
     public String constituencyName;

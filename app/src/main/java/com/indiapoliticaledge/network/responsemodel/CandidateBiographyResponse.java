@@ -2,7 +2,9 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.CandidatesBiography;
 
-public class CandidateBiographyResponse {
+import java.io.Serializable;
+
+public class CandidateBiographyResponse implements Serializable {
 
     public String constituencyName;
     public boolean success;

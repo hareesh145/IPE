@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class Candidate {
+import java.io.Serializable;
+
+public class Candidate implements Serializable {
 
     public String firstName;
     public String lastName;

@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.requestmodel;
 
-public class AddOpinionRequest {
+import java.io.Serializable;
+
+public class AddOpinionRequest implements Serializable {
     public String userId;
     public int constituencyId;
     public String opinionMessage;

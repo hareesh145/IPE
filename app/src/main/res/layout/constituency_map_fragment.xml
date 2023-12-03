@@ -88,11 +88,12 @@
 
     <fragment
         android:id="@+id/map_section_map"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         app:layout_constraintTop_toBottomOf="@+id/candidate_profile_section" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

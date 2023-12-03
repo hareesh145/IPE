@@ -3,9 +3,10 @@ package com.indiapoliticaledge.network.responsemodel;
 import com.google.gson.annotations.SerializedName;
 import com.indiapoliticaledge.model.ConstituencyDepartmentsList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FilteredVCDByYearsResponse {
+public class FilteredVCDByYearsResponse implements Serializable {
     @SerializedName("filterConstituencyDepartmentsList")
     public ArrayList<ConstituencyDepartmentsList> filterConstituencyDepartmentsList;
     public boolean success;

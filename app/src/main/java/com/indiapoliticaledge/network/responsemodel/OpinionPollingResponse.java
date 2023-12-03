@@ -2,9 +2,10 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class OpinionPollingResponse {
+public class OpinionPollingResponse implements Serializable {
 
     @SerializedName("OpinionPollingList")
     public ArrayList<OpinionPollingList> opinionPollingList;

@@ -6,4 +6,6 @@ public class Constants {
     public static final String CANDIDATE = "CANDIDATE";
     public static final String INTERNAL = "INTERNAL";
     public static final String SUPER_ADMIN = "SUPER ADMIN";
+
+    public static final String USER_INFO = "user_info";
 }

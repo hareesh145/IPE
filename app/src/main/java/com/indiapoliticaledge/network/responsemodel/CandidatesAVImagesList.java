@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class CandidatesAVImagesList {
+import java.io.Serializable;
+
+public class CandidatesAVImagesList implements Serializable {
 
     public int candidatesAVImagesId;
     public int constituencyId;

@@ -2,7 +2,9 @@ package com.indiapoliticaledge.network.responsemodel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CandidatesDonationInfo {
+import java.io.Serializable;
+
+public class CandidatesDonationInfo implements Serializable {
 
     public int candidatesDonationId;
     public int candidatesId;
