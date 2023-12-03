@@ -51,6 +51,8 @@ public class LoginScreen extends AppCompatActivity {
                                 if (signInResponseModel.userInfo != null &&
                                         signInResponseModel.userInfo.getRoleName().equals(Constants.SUPER_ADMIN)) {
                                     navigateHome();
+                                } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.CANDIDATE)) {
+                                    navigateToCandidate();
                                 }
                             }
                         } else {
@@ -71,7 +73,14 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
+    private void navigateToCandidate() {
+        Intent intent = new Intent(LoginScreen.this, CandidateHomeScreen.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void navigateHome() {
+
         Intent intent = new Intent(LoginScreen.this, ViewMLAListScreen.class);
         startActivity(intent);
         finish();
