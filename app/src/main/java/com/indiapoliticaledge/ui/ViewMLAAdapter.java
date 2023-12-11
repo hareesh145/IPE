@@ -41,8 +41,19 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
             holder.constituency_name_txt.setText(userInfo.getConstituency().constituencyName);
             holder.mla_name.setText(userInfo.firstName + " " + userInfo.lastName);
             if (userInfo.userConstituencies != null) {
-                holder.start_date_value_txt.setText(userInfo.userConstituencies.startDate.split("\\s")[0]);
-                holder.end_date_value_txt.setText(userInfo.userConstituencies.endDate.split("\\s")[0]);
+                if (userInfo.userConstituencies.startDate != null) {
+                    holder.start_date_value_txt.setText(userInfo.userConstituencies.startDate.split("\\s")[0]);
+                }
+                if (userInfo.userConstituencies.endDate != null) {
+                    holder.end_date_value_txt.setText(userInfo.userConstituencies.endDate.split("\\s")[0]);
+                }
+            } else {
+                if (userInfo.startDate != null) {
+                    holder.start_date_value_txt.setText(userInfo.startDate.split("\\s")[0]);
+                }
+                if (userInfo.endDate != null) {
+                    holder.end_date_value_txt.setText(userInfo.endDate.split("\\s")[0]);
+                }
             }
         }
     }
@@ -91,12 +102,12 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
                 intent.putExtra("user_id", userInfo.getUserId());
                 activity.startActivity(intent);
             });
-            itemView.findViewById(R.id.edit_icon).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(activity, UpdateMLAScreen.class);
-                    activity.startActivity(intent);
-                }
+            itemView.findViewById(R.id.edit_icon).setOnClickListener(v -> {
+                Intent intent = new Intent(activity, UpdateMLAScreen.class);
+                UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                Log.d("TAG", "userInfo " + userInfo);
+                intent.putExtra("user_id", userInfo.getUserId());
+                activity.startActivity(intent);
             });
         }
     }

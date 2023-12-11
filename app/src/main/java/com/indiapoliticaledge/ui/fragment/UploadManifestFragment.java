@@ -25,5 +25,7 @@ public class UploadManifestFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Upload Manifest");
+
+
     }
 }

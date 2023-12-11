@@ -43,23 +43,25 @@ public class LoginScreen extends AppCompatActivity {
                 Utils.showProgessBar(this);
                 SignInModel signInModel = new SignInModel();
                 signInModel.setMobileNumber(phone_number.getText().toString());
+                signInModel.setPassword(phone_number.getText().toString());
                 RetrofitClient retrofitClient = RetrofitClient.getInstance(this);
                 retrofitClient.getRetrofitAPI().signIn(signInModel).enqueue(new Callback<SignInResponseModel>() {
                     @Override
                     public void onResponse(Call<SignInResponseModel> call, Response<SignInResponseModel> response) {
                         Utils.hideProgessBar();
+                        SignInResponseModel signInResponseModel = response.body();
                         if (response.isSuccessful()) {
-                            SignInResponseModel signInResponseModel = response.body();
-                            if (signInResponseModel != null && signInResponseModel.successCode.equals("200")) {
+                            if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
                                 if (signInResponseModel.userInfo != null &&
                                         signInResponseModel.userInfo.getRoleName().equals(Constants.SUPER_ADMIN)) {
                                     navigateHome();
                                 } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.CANDIDATE)) {
                                     navigateToCandidate(signInResponseModel);
+                                } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.ADMIN)) {
+                                    navigateToAdmin(signInResponseModel);
                                 }
                             }
                         } else {
-                            SignInResponseModel signInResponseModel = response.body();
                             if (signInResponseModel != null) {
                                 Utils.showSnackBarAlert(submit_btn, signInResponseModel.getErrorMessage());
                             }
@@ -78,6 +80,13 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void navigateToAdmin(SignInResponseModel signInResponseModel) {
+        Intent intent = new Intent(LoginScreen.this, MLAInfoDrawerScreen.class);
+        intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
+        startActivity(intent);
+        finish();
     }
 
     private void navigateToCandidate(SignInResponseModel signInResponseModel) {

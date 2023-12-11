@@ -44,35 +44,32 @@ public class ConstituencyIssuesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         raise_your_issue = view.findViewById(R.id.raise_your_issue);
 
-        view.findViewById(R.id.submit_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        view.findViewById(R.id.submit_btn).setOnClickListener(v -> {
 
-                Bundle bundle = getArguments();
-                String jsonObjectUser = bundle.getString(Constants.USER_INFO);
-                UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("userId", userInfo.getUserId());
-                jsonObject.addProperty("constituencyId", userInfo.getConstituencyId());
-                jsonObject.addProperty("describeIssue", raise_your_issue.getText().toString());
-                jsonObject.addProperty("sarpanchName", userInfo.getUserId());
-                RetrofitClient.getInstance(requireContext()).getRetrofitAPI().addConstituencyIssues(jsonObject).enqueue(new Callback<JsonObject>() {
-                    @Override
-                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                        try {
-                            Utils.hideProgessBar();
-                            Log.d(TAG, "onResponse: " + response.body());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+            Bundle bundle = getArguments();
+            String jsonObjectUser = bundle.getString(Constants.USER_INFO);
+            UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("userId", userInfo.getUserId());
+            jsonObject.addProperty("constituencyId", userInfo.getConstituencyId());
+            jsonObject.addProperty("describeIssue", raise_your_issue.getText().toString());
+            jsonObject.addProperty("sarpanchName", userInfo.getUserId());
+            RetrofitClient.getInstance(requireContext()).getRetrofitAPI().addConstituencyIssues(jsonObject).enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    try {
+                        Utils.hideProgessBar();
+                        Log.d(TAG, "onResponse: " + response.body());
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
 
-                    }
-                });
-            }
+                }
+            });
         });
 
 

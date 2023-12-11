@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,8 +22,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.Member;
@@ -30,6 +33,7 @@ import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyResponse;
 import com.indiapoliticaledge.network.responsemodel.DistrictResponse;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
+import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 import com.skydoves.powerspinner.PowerSpinnerView;
@@ -51,6 +55,7 @@ public class UpdateMLAScreen extends AppCompatActivity {
     RetrofitAPI retrofitAPI;
     private static final int PICK_IMAGE_REQUEST_CODE = 123;
     private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 141;
+    private ImageView img;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +68,30 @@ public class UpdateMLAScreen extends AppCompatActivity {
         TextView title_txt = view.findViewById(R.id.title_txt);
         title_txt.setText("Update MLA");
 
-        bindUserInfo();
+        RetrofitAPI retrofitAPI = RetrofitClient.getInstance(this).getRetrofitAPI();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userId", getIntent().getIntExtra("user_id", -1));
+        retrofitAPI.getMember(jsonObject).enqueue(new Callback<ViewMemberResponse>() {
+            @Override
+            public void onResponse(Call<ViewMemberResponse> call, Response<ViewMemberResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    ViewMemberResponse viewMemberResponse = response.body();
+                    if (viewMemberResponse != null && viewMemberResponse.successCode.equals("200")) {
+                        UserInfo userInfo = viewMemberResponse.getUserInfo();
+                        if (userInfo != null) {
+                            bindUserInfo(viewMemberResponse);
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ViewMemberResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+            }
+        });
 
 
         findViewById(R.id.add_remove_icon).setOnClickListener(new View.OnClickListener() {
@@ -115,7 +143,7 @@ public class UpdateMLAScreen extends AppCompatActivity {
                 public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null && response.body().successCode.equals("200")) {
-
+                            Utils.showSnackBar(submit_btn, "Updated Successfully");
                         }
                     }
                 }
@@ -131,13 +159,16 @@ public class UpdateMLAScreen extends AppCompatActivity {
         getStates();
     }
 
-    private void bindUserInfo() {
-        first_name_et.setText("Malla Reddy");
-        last_name_et.setText("BRS");
-        phone_number.setText("9978452123");
-        start_date.setText("10-12-2020");
-        start_date.setText("10-12-2027");
-        party_edit.setText("BRS");
+    private void bindUserInfo(ViewMemberResponse viewMemberResponse) {
+        UserInfo userInfo = viewMemberResponse.userInfo;
+        first_name_et.setText(userInfo.getFirstName());
+        last_name_et.setText(userInfo.getLastName());
+        phone_number.setText(userInfo.getMobileNumber());
+        start_date.setText(userInfo.getStartDate());
+        start_date.setText(userInfo.getEndDate());
+        party_edit.setText(userInfo.getPartyName());
+
+        Glide.with(this).load(viewMemberResponse.userInfo.getProfilePhotoUrl()).placeholder(R.drawable.ic_user_logo).into(img);
     }
 
     private void initFields() {
@@ -151,6 +182,7 @@ public class UpdateMLAScreen extends AppCompatActivity {
         mandal_drop_down = findViewById(R.id.mandal_drop_down);
         constituency_drop_down = findViewById(R.id.constituency_drop_down);
         party_edit = findViewById(R.id.party_edit);
+        img = findViewById(R.id.img);
 
     }
 

@@ -20,6 +20,7 @@ import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
+import com.indiapoliticaledge.ui.fragment.ConstituencyIssuesFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
 import com.indiapoliticaledge.ui.fragment.UploadManifestFragment;
 import com.indiapoliticaledge.utils.Constants;
@@ -30,6 +31,8 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
 
 
     TextView toolbar_title;
+    Fragment fragment = null;
+    FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,13 +54,13 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        fragment = new CandidateProfileFragment();
+        createFragment();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Fragment fragment = null;
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (id == R.id.constituency_map) {
             fragment = new ConstituencyMapFragment();
@@ -69,18 +72,22 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
             fragment = new CandidateDonationFragment();
         } else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
-        } else if(id == R.id.consti_issues){
-            fragment = new Const
-        }else {
+        } else if (id == R.id.consti_issues) {
+            fragment = new ConstituencyIssuesFragment();
+        } else {
             fragment = new CandidateProfileFragment();
         }
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.USER_INFO,getIntent().getStringExtra(Constants.USER_INFO));
-        fragment.setArguments(bundle);
-        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
+        createFragment();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void createFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.USER_INFO, getIntent().getStringExtra(Constants.USER_INFO));
+        fragment.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
     }
 
     @Override

@@ -19,12 +19,17 @@ import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
+import com.indiapoliticaledge.ui.fragment.ConstituencyIssuesFragment;
+import com.indiapoliticaledge.ui.fragment.MLAInfoFragment;
 import com.indiapoliticaledge.ui.fragment.ManageCandidatesFragment;
 import com.indiapoliticaledge.ui.fragment.UploadManifestFragment;
+import com.indiapoliticaledge.utils.Constants;
 
 public class MLAInfoDrawerScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView toolbar_title;
+    Fragment fragment = null;
+    FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         getSupportActionBar().setHomeButtonEnabled(true);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
-        setTitleText("MLA Information");
+        setTitleText("");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -46,14 +51,20 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        fragment = new MLAInfoFragment();
+        createFragment();
+    }
+
+    private void createFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.USER_INFO, getIntent().getStringExtra(Constants.USER_INFO));
+        fragment.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Fragment fragment = null;
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
         if (id == R.id.manage_profile) {
             fragment = new ManageCandidatesFragment();
         } else if (id == R.id.constituency_devs) {
@@ -64,9 +75,12 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
             fragment = new CandidateDonationFragment();
         } else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
+        } else if (id == R.id.consti_issues) {
+            fragment = new ConstituencyIssuesFragment();
+        } else {
+            fragment = new MLAInfoFragment();
         }
-
-        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
+        createFragment();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

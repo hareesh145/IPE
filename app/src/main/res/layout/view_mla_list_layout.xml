@@ -10,6 +10,7 @@
         android:id="@+id/custom_title_view"
         layout="@layout/custom_title_bar"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="?attr/actionBarSize" />
 
 
