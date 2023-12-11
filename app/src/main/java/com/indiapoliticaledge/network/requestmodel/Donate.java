@@ -4,21 +4,13 @@ import java.io.Serializable;
 
 public class Donate implements Serializable {
 
-    public String candidatesId;
+
     public String userId;
     public String constituencyId;
     public int donationAmount;
     public String donationPurpose;
     public String createdDate;
 
-
-    public String getCandidatesId() {
-        return candidatesId;
-    }
-
-    public void setCandidatesId(String candidatesId) {
-        this.candidatesId = candidatesId;
-    }
 
     public String getUserId() {
         return userId;
@@ -63,7 +55,6 @@ public class Donate implements Serializable {
     @Override
     public String toString() {
         return "Donate{" +
-                "candidatesId='" + candidatesId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", constituencyId='" + constituencyId + '\'' +
                 ", donationAmount=" + donationAmount +

@@ -29,7 +29,7 @@ public class Utils {
     }
 
     public static String convertDateFormat(Date inputDate) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = format.format(inputDate);
         return dateString;
     }

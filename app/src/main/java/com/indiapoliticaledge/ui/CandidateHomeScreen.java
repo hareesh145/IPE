@@ -69,7 +69,9 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
             fragment = new CandidateDonationFragment();
         } else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
-        } else {
+        } else if(id == R.id.consti_issues){
+            fragment = new Const
+        }else {
             fragment = new CandidateProfileFragment();
         }
         Bundle bundle=new Bundle();

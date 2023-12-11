@@ -79,6 +79,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="enter_donation">Enter Donation Amount</string>
+    <string name="enter_purpose">Enter Donation Purpose</string>
     <string name="name">Name</string>
 
     <string name="candidate_manifesto">Candidate Manifesto</string>

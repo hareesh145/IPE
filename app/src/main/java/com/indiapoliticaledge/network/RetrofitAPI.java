@@ -140,5 +140,8 @@ public interface RetrofitAPI {
     @POST("view-candidate-uploaded-photos")
     Call<ViewPhotosResponse> viewPhotos(@Body JsonObject jsonObject);
 
+    @POST("add-constituency-issues")
+    Call<JsonObject> addConstituencyIssues(@Body JsonObject jsonObject);
+
 
 }
