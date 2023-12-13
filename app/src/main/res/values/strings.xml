@@ -83,4 +83,6 @@
     <string name="name">Name</string>
 
     <string name="candidate_manifesto">Candidate Manifesto</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
 </resources>

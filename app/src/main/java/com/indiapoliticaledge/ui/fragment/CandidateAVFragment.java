@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.ui.CandidateHomeScreen;
 import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 
 public class CandidateAVFragment extends Fragment {
@@ -24,6 +25,10 @@ public class CandidateAVFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Candidate Audio/Video");
+        if (requireActivity() instanceof MLAInfoDrawerScreen) {
+            ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Candidate Audio/Video");
+        } else if (requireActivity() instanceof CandidateHomeScreen) {
+            ((CandidateHomeScreen) requireActivity()).setTitleText("Candidate Audio/Video");
+        }
     }
 }

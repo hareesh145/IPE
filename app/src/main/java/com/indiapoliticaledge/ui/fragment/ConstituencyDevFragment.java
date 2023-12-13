@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import retrofit2.Response;
 
 public class ConstituencyDevFragment extends Fragment {
     private static final String TAG = ConstituencyDevFragment.class.getSimpleName();
+    private TextView no_data_found_txt;
 
     @Nullable
     @Override
@@ -37,7 +39,7 @@ public class ConstituencyDevFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        no_data_found_txt = view.findViewById(R.id.no_data_found_txt);
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
@@ -54,6 +56,7 @@ public class ConstituencyDevFragment extends Fragment {
                 try {
                     Utils.hideProgessBar();
                     Log.d(TAG, "onResponse: " + response.body());
+                    no_data_found_txt.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

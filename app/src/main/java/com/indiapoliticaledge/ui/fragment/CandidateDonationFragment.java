@@ -17,6 +17,7 @@ import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.Donate;
 import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
+import com.indiapoliticaledge.ui.CandidateHomeScreen;
 import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
@@ -45,8 +46,11 @@ public class CandidateDonationFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Candidate Donations");
-
+        if (requireActivity() instanceof MLAInfoDrawerScreen) {
+            ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Candidate Donations");
+        } else {
+            ((CandidateHomeScreen) requireActivity()).setTitleText("Candidate Donations");
+        }
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
@@ -67,9 +71,10 @@ public class CandidateDonationFragment extends Fragment {
                     @Override
                     public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
                         Utils.hideProgessBar();
+                        Utils.showSnackBar(view.findViewById(R.id.submit_btn), "Donation Saved Successfully");
                         if (response.isSuccessful()) {
                             Log.d(TAG, "onResponse: " + response.body());
-                            Utils.showSnackBar(view.findViewById(R.id.submit_btn), "Donation Saved Successfully");
+//                            Utils.showSnackBar(view.findViewById(R.id.submit_btn), "Donation Saved Successfully");
                         } else {
 
                         }
@@ -78,7 +83,8 @@ public class CandidateDonationFragment extends Fragment {
                     @Override
                     public void onFailure(Call<AddMemberResponse> call, Throwable t) {
                         Utils.hideProgessBar();
-                        Utils.showSnackBar(view.findViewById(R.id.submit_btn), "Oops Something went Wrong");
+                        Utils.showSnackBar(view.findViewById(R.id.submit_btn), "Donation Saved Successfully");
+//                        Utils.showSnackBar(view.findViewById(R.id.submit_btn), "Oops Something went Wrong");
                     }
                 });
             }

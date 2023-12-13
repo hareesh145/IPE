@@ -40,6 +40,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
         setTitleText("");
