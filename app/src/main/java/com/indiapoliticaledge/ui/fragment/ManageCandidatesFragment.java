@@ -32,6 +32,8 @@ public class ManageCandidatesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         view_mlas_list = view.findViewById(R.id.view_mlas_list);
 
+
+
         view_mlas_list.setAdapter(new ViewCandidatesAdapter(requireActivity(), new ArrayList<>()));
         view.findViewById(R.id.add_mla_button).setOnClickListener(new View.OnClickListener() {
             @Override

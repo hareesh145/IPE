@@ -46,7 +46,7 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
-        setTitleText("");
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -56,6 +56,7 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         fragment = new CandidateProfileFragment();
+        setTitleText("Candidate Profile");
         createFragment();
     }
 
@@ -65,18 +66,25 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
 
         if (id == R.id.constituency_map) {
             fragment = new ConstituencyMapFragment();
+            setTitleText("Constituency Map");
         } else if (id == R.id.constituency_devs) {
             fragment = new ConstituencyDevFragment();
+            setTitleText("Constituency Development");
         } else if (id == R.id.upload_manifest) {
             fragment = new UploadManifestFragment();
+            setTitleText("Upload Manifest");
         } else if (id == R.id.candidate_donation) {
+            setTitleText("Candidate Donation");
             fragment = new CandidateDonationFragment();
         } else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
+            setTitleText("Candidate AV/Video");
         } else if (id == R.id.consti_issues) {
             fragment = new ConstituencyIssuesFragment();
+            setTitleText("Constituency Issues");
         } else {
             fragment = new CandidateProfileFragment();
+            setTitleText("Candidate Profile");
         }
         createFragment();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

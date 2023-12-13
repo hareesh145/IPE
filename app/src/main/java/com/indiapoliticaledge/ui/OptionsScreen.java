@@ -34,7 +34,7 @@ public class OptionsScreen extends AppCompatActivity {
         findViewById(R.id.admin_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OptionsScreen.this, ViewMLAListScreen.class));
+                startActivity(new Intent(OptionsScreen.this, SuperAdminScreen.class));
             }
         });
     }

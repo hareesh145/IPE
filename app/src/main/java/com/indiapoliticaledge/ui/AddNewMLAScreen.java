@@ -1,44 +1,54 @@
 package com.indiapoliticaledge.ui;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
+import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.github.dhaval2404.imagepicker.constant.ImageProvider;
+import com.github.dhaval2404.imagepicker.listener.DismissListener;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.ConstituencyList;
+import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.Member;
 import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyResponse;
 import com.indiapoliticaledge.network.responsemodel.DistrictResponse;
+import com.indiapoliticaledge.network.responsemodel.DistrictsList;
+import com.indiapoliticaledge.network.responsemodel.StatesList;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
+import com.skydoves.powerspinner.OnSpinnerItemSelectedListener;
 import com.skydoves.powerspinner.PowerSpinnerView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,12 +56,22 @@ import retrofit2.Response;
 public class AddNewMLAScreen extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 123;
     private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 141;
+    private static final int PROFILE_IMAGE_REQ_CODE = 123;
     Button submit_btn;
     EditText first_name_et, last_name_et, phone_number, party_edit;
     TextView start_date, end_date;
     PowerSpinnerView state_drop_down, district_drop_down, mandal_drop_down, constituency_drop_down;
     RetrofitAPI retrofitAPI;
+    private UserInfo userInfo;
 
+    StatesResponse statesResponse;
+    DistrictResponse districtResponse;
+
+    ConstituencyResponse constituencyResponse;
+
+    String constituencyName;
+    private Uri mProfileUri;
+    ImageView profileImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,18 +82,21 @@ public class AddNewMLAScreen extends AppCompatActivity {
         View view = findViewById(R.id.custom_title_view);
         TextView titleTxtzview = view.findViewById(R.id.title_txt);
         titleTxtzview.setText("Add MLA");
+        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
+        userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
 
         submit_btn = findViewById(R.id.submit_btn);
+        profileImage = findViewById(R.id.img);
         findViewById(R.id.add_remove_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickImage();
+                pickProfileImage();
             }
         });
         findViewById(R.id.img).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickImage();
+                pickProfileImage();
             }
         });
         submit_btn.setOnClickListener(v -> {
@@ -105,6 +128,7 @@ public class AddNewMLAScreen extends AppCompatActivity {
             member.setRoleName(Constants.INTERNAL);
             member.setPartyName(party_edit.getText().toString());
             member.setStartDate(start_date.getText().toString());
+            member.setConstituencyId(getConstituencyId(constituency_drop_down.getText().toString()));
 
 
             retrofitAPI.addMember(member).enqueue(new Callback<AddMemberResponse>() {
@@ -112,7 +136,7 @@ public class AddNewMLAScreen extends AppCompatActivity {
                 public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null && response.body().successCode.equals("200")) {
-
+                            Toast.makeText(AddNewMLAScreen.this, "Profile Created", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -126,6 +150,66 @@ public class AddNewMLAScreen extends AppCompatActivity {
         });
 
         getStates();
+
+        state_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
+                (oldIndex, oldItem, newIndex, newItem) -> {
+                    if (newIndex > 0) {
+                        int stateId = getStateId(newItem);
+                        if (stateId != -1) {
+                            getDistricts(stateId);
+                        }
+                    }
+                });
+
+        district_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
+                (oldIndex, oldItem, newIndex, newItem) -> {
+                    if (newIndex > 0) {
+                        int stateId = getDistrictId(newItem);
+                        if (stateId != -1) {
+                            getConstituencies(stateId);
+                        }
+                    }
+                });
+
+
+        constituency_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
+                (oldIndex, oldItem, newIndex, newItem) -> {
+                    if (newIndex > 0) {
+                        constituencyName = newItem;
+                    } else {
+                        constituencyName = "";
+                    }
+                });
+    }
+
+    private int getStateId(String newItem) {
+        for (StatesList statesList :
+                statesResponse.getStatesList()) {
+            if (statesList.getName().equals(newItem)) {
+                return statesList.id;
+            }
+        }
+        return -1;
+    }
+
+    private int getDistrictId(String newItem) {
+        for (DistrictsList statesList :
+                districtResponse.getDistrictsList()) {
+            if (statesList.getName().equals(newItem)) {
+                return statesList.id;
+            }
+        }
+        return -1;
+    }
+
+    private int getConstituencyId(String newItem) {
+        for (ConstituencyList statesList :
+                constituencyResponse.getConstituencyList()) {
+            if (statesList.getName().equals(newItem)) {
+                return statesList.id;
+            }
+        }
+        return -1;
     }
 
     private void initFields() {
@@ -150,7 +234,16 @@ public class AddNewMLAScreen extends AppCompatActivity {
             @Override
             public void onResponse(Call<StatesResponse> call, Response<StatesResponse> response) {
                 Utils.hideProgessBar();
-
+                if (response.isSuccessful()) {
+                    statesResponse = response.body();
+                    ArrayList<String> states = new ArrayList<>();
+                    states.add("Select State");
+                    for (StatesList statesList :
+                            statesResponse.statesList) {
+                        states.add(statesList.getName());
+                    }
+                    state_drop_down.setItems(states);
+                }
             }
 
             @Override
@@ -169,6 +262,17 @@ public class AddNewMLAScreen extends AppCompatActivity {
             @Override
             public void onResponse(Call<DistrictResponse> call, Response<DistrictResponse> response) {
                 Utils.hideProgessBar();
+
+                if (response.isSuccessful()) {
+                    districtResponse = response.body();
+                    ArrayList<String> states = new ArrayList<>();
+                    states.add("Select District");
+                    for (DistrictsList statesList :
+                            districtResponse.getDistrictsList()) {
+                        states.add(statesList.getName());
+                    }
+                    district_drop_down.setItems(states);
+                }
             }
 
             @Override
@@ -187,56 +291,66 @@ public class AddNewMLAScreen extends AppCompatActivity {
         retrofitAPI.getConstituencies(jsonObject).enqueue(new Callback<ConstituencyResponse>() {
             @Override
             public void onResponse(Call<ConstituencyResponse> call, Response<ConstituencyResponse> response) {
-
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    constituencyResponse = response.body();
+                    ArrayList<String> states = new ArrayList<>();
+                    states.add("Select Constituency");
+                    for (ConstituencyList statesList :
+                            constituencyResponse.getConstituencyList()) {
+                        states.add(statesList.getName());
+                    }
+                    constituency_drop_down.setItems(states);
+                }
             }
 
             @Override
             public void onFailure(Call<ConstituencyResponse> call, Throwable t) {
-
+                Utils.hideProgessBar();
             }
         });
 
     }
 
-    private void pickImage() {
-        if (ActivityCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            Intent intent = new Intent(Intent.ACTION_PICK,
-                    MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            intent.putExtra("crop", "true");
-            intent.putExtra("scale", true);
-            intent.putExtra("aspectX", 16);
-            intent.putExtra("aspectY", 9);
-            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE);
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(
-                        new String[]{READ_EXTERNAL_STORAGE},
-                        READ_EXTERNAL_STORAGE_REQUEST_CODE
-                );
-            }
-        }
+    public void pickProfileImage() {
+        ImagePicker.with(this)
+                .cropSquare()
+                .setImageProviderInterceptor(new Function1<ImageProvider, Unit>() {
+                    @Override
+                    public Unit invoke(ImageProvider imageProvider) {
+                        Log.d("ImagePicker", "Selected ImageProvider: " + imageProvider.toString());
+                        return null;
+                    }
+                }).setDismissListener(new DismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        Log.d("ImagePicker", "Dialog Dismiss");
+                    }
+                })
+                // Image resolution will be less than 512 x 512
+                .maxResultSize(200, 200)
+                .start(PROFILE_IMAGE_REQ_CODE);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST_CODE) {
-            if (resultCode != Activity.RESULT_OK) {
-                return;
-            }
+        if (resultCode == Activity.RESULT_OK) {
+            // Uri object will not be null for RESULT_OK
             Uri uri = data.getData();
-            if (uri != null) {
-                File fileUri = uriToImageFile(uri);
+
+            switch (requestCode) {
+                case PROFILE_IMAGE_REQ_CODE:
+                    mProfileUri = uri;
+                    Glide.with(this).load(uri).into(profileImage);
+                    break;
+
             }
-            if (uri != null) {
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                // todo do something with bitmap
-            }
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -246,7 +360,7 @@ public class AddNewMLAScreen extends AppCompatActivity {
         switch (requestCode) {
             case READ_EXTERNAL_STORAGE_REQUEST_CODE: {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImage();
+                    pickProfileImage();
                 }
                 break;
             }

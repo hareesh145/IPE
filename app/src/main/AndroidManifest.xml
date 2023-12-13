@@ -32,7 +32,7 @@
 
         <activity android:name=".ui.AddNewMLAScreen" />
         <activity android:name=".ui.SubscriptionFeesScreen" />
-        <activity android:name=".ui.ViewMLAListScreen" />
+        <activity android:name=".ui.SuperAdminScreen" />
         <activity android:name=".ui.ViewMLAInfoScreen" />
         <activity android:name=".ui.CandidateProfile" />
         <activity android:name=".ui.ManageMLASubscription" />

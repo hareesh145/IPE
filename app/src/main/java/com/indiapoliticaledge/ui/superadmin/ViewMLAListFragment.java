@@ -1,5 +1,7 @@
 package com.indiapoliticaledge.ui.superadmin;
 
+import static com.indiapoliticaledge.utils.Constants.USER_INFO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
@@ -20,6 +23,7 @@ import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.MembersResponse;
 import com.indiapoliticaledge.ui.AddNewMLAScreen;
 import com.indiapoliticaledge.ui.ViewMLAAdapter;
+import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public class ViewMLAListFragment extends Fragment {
     RecyclerView view_mlas_list;
     FloatingActionButton add_mla_button;
     private RetrofitAPI retrofitAPI;
+    private UserInfo userInfo;
 
     @Nullable
     @Override
@@ -45,6 +50,10 @@ public class ViewMLAListFragment extends Fragment {
 
         view_mlas_list = view.findViewById(R.id.view_mlas_list);
         add_mla_button = view.findViewById(R.id.add_mla_button);
+
+        Bundle bundle = getArguments();
+        String jsonObjectUser = bundle.getString(Constants.USER_INFO);
+        userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
 
         retrofitAPI = RetrofitClient.getInstance(requireActivity()).getRetrofitAPI();
         Utils.showProgessBar(requireActivity());
@@ -73,7 +82,10 @@ public class ViewMLAListFragment extends Fragment {
         add_mla_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(requireActivity(), AddNewMLAScreen.class));
+                Intent intent = new Intent(requireActivity(), AddNewMLAScreen.class);
+
+                intent.putExtra(USER_INFO, new Gson().toJson(userInfo));
+                startActivity(intent);
             }
         });
     }

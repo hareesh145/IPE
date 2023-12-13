@@ -54,7 +54,7 @@ public class LoginScreen extends AppCompatActivity {
                             if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
                                 if (signInResponseModel.userInfo != null &&
                                         signInResponseModel.userInfo.getRoleName().equals(Constants.SUPER_ADMIN)) {
-                                    navigateHome();
+                                    navigateHome(signInResponseModel);
                                 } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.CANDIDATE)) {
                                     navigateToCandidate(signInResponseModel);
                                 } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.ADMIN)) {
@@ -72,7 +72,7 @@ public class LoginScreen extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<SignInResponseModel> call, Throwable t) {
                         Utils.hideProgessBar();
-                        navigateHome();
+                        navigateHome(null);
                     }
                 });
             } catch (Exception e) {
@@ -96,8 +96,9 @@ public class LoginScreen extends AppCompatActivity {
         finish();
     }
 
-    private void navigateHome() {
-        Intent intent = new Intent(LoginScreen.this, ViewMLAListScreen.class);
+    private void navigateHome(SignInResponseModel signInResponseModel) {
+        Intent intent = new Intent(LoginScreen.this, SuperAdminScreen.class);
+        intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
         startActivity(intent);
         finish();
     }

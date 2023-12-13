@@ -29,4 +29,8 @@
     <item
         android:id="@+id/latest_news"
         android:title="Latest News" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout" />
 </menu>

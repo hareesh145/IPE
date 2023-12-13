@@ -18,7 +18,7 @@ public class SubscriptionFeesScreen extends AppCompatActivity {
 
         submit_btn = findViewById(R.id.submit_btn);
         submit_btn.setOnClickListener(v -> {
-            startActivity(new Intent(SubscriptionFeesScreen.this, ViewMLAListScreen.class));
+            startActivity(new Intent(SubscriptionFeesScreen.this, SuperAdminScreen.class));
         });
     }
 }
