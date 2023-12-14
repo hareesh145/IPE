@@ -1,18 +1,24 @@
 package com.indiapoliticaledge.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
 
 import java.util.ArrayList;
 
@@ -55,6 +61,10 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
                     holder.end_date_value_txt.setText(userInfo.endDate.split("\\s")[0]);
                 }
             }
+            Glide.with(activity).load(userInfo.getProfilePhotoUrl()).placeholder(R.drawable.ic_user_logo).into(holder.profile_image);
+
+            Glide.with(activity).load(userInfo.getPartyLogo()).placeholder(R.mipmap.ic_launcher).into(holder.party_icon);
+
         }
     }
 
@@ -65,6 +75,7 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
 
     class ViewMLAHolder extends RecyclerView.ViewHolder {
         TextView mla_name, constituency_name_txt, start_date_value_txt, end_date_value_txt;
+        ImageView dashboard_icon, profile_image,party_icon;
 
         public ViewMLAHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +84,9 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
             constituency_name_txt = itemView.findViewById(R.id.constituency_name_txt);
             start_date_value_txt = itemView.findViewById(R.id.start_date_value_txt);
             end_date_value_txt = itemView.findViewById(R.id.end_date_value_txt);
+            dashboard_icon = itemView.findViewById(R.id.dashboard_icon);
+            profile_image = itemView.findViewById(R.id.profile_image);
+            party_icon = itemView.findViewById(R.id.party_icon);
 
             itemView.findViewById(R.id.mla_name).setOnClickListener(v -> {
                 Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
@@ -108,6 +122,46 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
                 Log.d("TAG", "userInfo " + userInfo);
                 intent.putExtra("user_id", userInfo.getUserId());
                 activity.startActivity(intent);
+            });
+
+            itemView.findViewById(R.id.delete_icon).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+                    builder1.setMessage("Are you sure you want to delete?");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+            });
+
+            dashboard_icon.setOnClickListener(v -> {
+//                    Intent intent = new Intent(activity, UpdateMLAScreen.class);
+//                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+//                    Log.d("TAG", "userInfo " + userInfo);
+//                    intent.putExtra("user_id", userInfo.getUserId());
+//                    activity.startActivity(intent);
+                UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                ((SuperAdminScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
+
             });
         }
     }

@@ -1,30 +1,29 @@
 package com.indiapoliticaledge.ui;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.github.dhaval2404.imagepicker.constant.ImageProvider;
+import com.github.dhaval2404.imagepicker.listener.DismissListener;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.ConstituencyList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
@@ -32,17 +31,22 @@ import com.indiapoliticaledge.network.requestmodel.Member;
 import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyResponse;
 import com.indiapoliticaledge.network.responsemodel.DistrictResponse;
+import com.indiapoliticaledge.network.responsemodel.DistrictsList;
+import com.indiapoliticaledge.network.responsemodel.StatesList;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
+import com.skydoves.powerspinner.OnSpinnerItemSelectedListener;
 import com.skydoves.powerspinner.PowerSpinnerView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,7 +59,15 @@ public class UpdateMLAScreen extends AppCompatActivity {
     RetrofitAPI retrofitAPI;
     private static final int PICK_IMAGE_REQUEST_CODE = 123;
     private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 141;
-    private ImageView img;
+    private CircleImageView img;
+    private static final int PROFILE_IMAGE_REQ_CODE = 123;
+    private Uri mProfileUri;
+    StatesResponse statesResponse;
+    DistrictResponse districtResponse;
+
+    ConstituencyResponse constituencyResponse;
+
+    String constituencyName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,13 +109,13 @@ public class UpdateMLAScreen extends AppCompatActivity {
         findViewById(R.id.add_remove_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickImage();
+                pickProfileImage();
             }
         });
         findViewById(R.id.img).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickImage();
+                pickProfileImage();
             }
         });
         submit_btn = findViewById(R.id.submit_btn);
@@ -143,6 +155,7 @@ public class UpdateMLAScreen extends AppCompatActivity {
                 public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null && response.body().successCode.equals("200")) {
+
                             Utils.showSnackBar(submit_btn, "Updated Successfully");
                         }
                     }
@@ -156,7 +169,37 @@ public class UpdateMLAScreen extends AppCompatActivity {
             startActivity(new Intent(UpdateMLAScreen.this, SubscriptionFeesScreen.class));
         });
 
-        getStates();
+        state_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
+                (oldIndex, oldItem, newIndex, newItem) -> {
+                    if (newIndex > 0) {
+                        int stateId = getStateId(newItem);
+                        if (stateId != -1) {
+                            getDistricts(stateId);
+                        }
+                    }
+                });
+
+        district_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
+                (oldIndex, oldItem, newIndex, newItem) -> {
+                    if (newIndex > 0) {
+                        int stateId = getDistrictId(newItem);
+                        if (stateId != -1) {
+                            getConstituencies(stateId);
+                        }
+                    }
+                });
+
+
+        constituency_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
+                (oldIndex, oldItem, newIndex, newItem) -> {
+                    if (newIndex > 0) {
+                        constituencyName = newItem;
+                    } else {
+                        constituencyName = "";
+                    }
+                });
+
+
     }
 
     private void bindUserInfo(ViewMemberResponse viewMemberResponse) {
@@ -168,7 +211,9 @@ public class UpdateMLAScreen extends AppCompatActivity {
         start_date.setText(userInfo.getEndDate());
         party_edit.setText(userInfo.getPartyName());
 
-        Glide.with(this).load(viewMemberResponse.userInfo.getProfilePhotoUrl()).placeholder(R.drawable.ic_user_logo).into(img);
+        Glide.with(this).load(viewMemberResponse.userInfo.profilePhotoUrl).placeholder(R.drawable.ic_user_logo).into(img);
+
+        getStates();
     }
 
     private void initFields() {
@@ -186,117 +231,49 @@ public class UpdateMLAScreen extends AppCompatActivity {
 
     }
 
-    private void getStates() {
-        Utils.showProgessBar(this);
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("countryId", 1);
-        retrofitAPI.getStates(jsonObject).enqueue(new Callback<StatesResponse>() {
-            @Override
-            public void onResponse(Call<StatesResponse> call, Response<StatesResponse> response) {
-                Utils.hideProgessBar();
 
-            }
-
-            @Override
-            public void onFailure(Call<StatesResponse> call, Throwable t) {
-                Utils.hideProgessBar();
-
-            }
-        });
+    public void pickProfileImage() {
+        ImagePicker.with(this)
+                .cropSquare()
+                .setImageProviderInterceptor(new Function1<ImageProvider, Unit>() {
+                    @Override
+                    public Unit invoke(ImageProvider imageProvider) {
+                        Log.d("ImagePicker", "Selected ImageProvider: " + imageProvider.toString());
+                        return null;
+                    }
+                }).setDismissListener(new DismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        Log.d("ImagePicker", "Dialog Dismiss");
+                    }
+                })
+                // Image resolution will be less than 512 x 512
+                .maxResultSize(200, 200)
+                .start(PROFILE_IMAGE_REQ_CODE);
     }
 
-    private void getDistricts(int stateID) {
-        Utils.showProgessBar(this);
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("stateId", stateID);
-        retrofitAPI.getDistricts(jsonObject).enqueue(new Callback<DistrictResponse>() {
-            @Override
-            public void onResponse(Call<DistrictResponse> call, Response<DistrictResponse> response) {
-                Utils.hideProgessBar();
-            }
-
-            @Override
-            public void onFailure(Call<DistrictResponse> call, Throwable t) {
-                Utils.hideProgessBar();
-
-            }
-        });
-    }
-
-
-    private void getConstituencies(int districtID) {
-        Utils.showProgessBar(this);
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("districtId", districtID);
-        retrofitAPI.getConstituencies(jsonObject).enqueue(new Callback<ConstituencyResponse>() {
-            @Override
-            public void onResponse(Call<ConstituencyResponse> call, Response<ConstituencyResponse> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<ConstituencyResponse> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-
-    private void pickImage() {
-        if (ActivityCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            Intent intent = new Intent(Intent.ACTION_PICK,
-                    MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-            intent.setType("image/*");
-            intent.putExtra("crop", "true");
-            intent.putExtra("scale", true);
-            intent.putExtra("aspectX", 16);
-            intent.putExtra("aspectY", 9);
-            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE);
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(
-                        new String[]{READ_EXTERNAL_STORAGE},
-                        READ_EXTERNAL_STORAGE_REQUEST_CODE
-                );
-            }
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST_CODE) {
-            if (resultCode != Activity.RESULT_OK) {
-                return;
-            }
+        if (resultCode == Activity.RESULT_OK) {
+            // Uri object will not be null for RESULT_OK
             Uri uri = data.getData();
-            if (uri != null) {
-                File fileUri = uriToImageFile(uri);
+
+            switch (requestCode) {
+                case PROFILE_IMAGE_REQ_CODE:
+                    mProfileUri = uri;
+                    Glide.with(this).load(uri).into(img);
+                    break;
+
             }
-            if (uri != null) {
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                // todo do something with bitmap
-            }
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case READ_EXTERNAL_STORAGE_REQUEST_CODE: {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImage();
-                }
-                break;
-            }
-        }
-    }
 
     private File uriToImageFile(Uri uri) {
         String[] filePathColumn = new String[]{MediaStore.Images.Media.DATA};
@@ -319,5 +296,121 @@ public class UpdateMLAScreen extends AppCompatActivity {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    private int getStateId(String newItem) {
+        for (StatesList statesList :
+                statesResponse.getStatesList()) {
+            if (statesList.getName().equals(newItem)) {
+                return statesList.id;
+            }
+        }
+        return -1;
+    }
+
+    private int getDistrictId(String newItem) {
+        for (DistrictsList statesList :
+                districtResponse.getDistrictsList()) {
+            if (statesList.getName().equals(newItem)) {
+                return statesList.id;
+            }
+        }
+        return -1;
+    }
+
+    private int getConstituencyId(String newItem) {
+        for (ConstituencyList statesList :
+                constituencyResponse.getConstituencyList()) {
+            if (statesList.getName().equals(newItem)) {
+                return statesList.id;
+            }
+        }
+        return -1;
+    }
+
+    private void getStates() {
+        Utils.showProgessBar(this);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("countryId", 1);
+        retrofitAPI.getStates(jsonObject).enqueue(new Callback<StatesResponse>() {
+            @Override
+            public void onResponse(Call<StatesResponse> call, Response<StatesResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    statesResponse = response.body();
+                    ArrayList<String> states = new ArrayList<>();
+                    states.add("Select State");
+                    for (StatesList statesList :
+                            statesResponse.statesList) {
+                        states.add(statesList.getName());
+                    }
+                    state_drop_down.setItems(states);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StatesResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+
+            }
+        });
+    }
+
+    private void getDistricts(int stateID) {
+        Utils.showProgessBar(this);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("stateId", stateID);
+        retrofitAPI.getDistricts(jsonObject).enqueue(new Callback<DistrictResponse>() {
+            @Override
+            public void onResponse(Call<DistrictResponse> call, Response<DistrictResponse> response) {
+                Utils.hideProgessBar();
+
+                if (response.isSuccessful()) {
+                    districtResponse = response.body();
+                    ArrayList<String> states = new ArrayList<>();
+                    states.add("Select District");
+                    for (DistrictsList statesList :
+                            districtResponse.getDistrictsList()) {
+                        states.add(statesList.getName());
+                    }
+                    district_drop_down.setItems(states);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DistrictResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+
+            }
+        });
+    }
+
+
+    private void getConstituencies(int districtID) {
+        Utils.showProgessBar(this);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("districtId", districtID);
+        retrofitAPI.getConstituencies(jsonObject).enqueue(new Callback<ConstituencyResponse>() {
+            @Override
+            public void onResponse(Call<ConstituencyResponse> call, Response<ConstituencyResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    constituencyResponse = response.body();
+                    ArrayList<String> states = new ArrayList<>();
+                    states.add("Select Constituency");
+                    for (ConstituencyList statesList :
+                            constituencyResponse.getConstituencyList()) {
+                        states.add(statesList.getName());
+                    }
+                    constituency_drop_down.setItems(states);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ConstituencyResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+            }
+        });
+
     }
 }

@@ -36,10 +36,8 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.super_admin_flow_layout);
-
-
+        
         menu_icon = findViewById(R.id.menu_icon);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,7 +65,7 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
         toggle.syncState();
 
         fragment = new ViewMLAListFragment();
-        createFragment();
+        createFragment(fragment,getIntent().getStringExtra(Constants.USER_INFO));
         setTitleText("Manage MLA's");
 
 //        menu_icon.setOnClickListener(v -> {
@@ -118,15 +116,15 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
             setTitleText("Manage MLA's");
             fragment = new ViewMLAListFragment();
         }
-        createFragment();
+        createFragment(fragment,getIntent().getStringExtra(Constants.USER_INFO));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private void createFragment() {
+    public void createFragment(Fragment fragment,String userInfo) {
         Bundle bundle = new Bundle();
-        bundle.putString(Constants.USER_INFO, getIntent().getStringExtra(Constants.USER_INFO));
+        bundle.putString(Constants.USER_INFO, userInfo);
         fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
     }

@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +46,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import retrofit2.Call;
@@ -71,7 +71,7 @@ public class AddNewMLAScreen extends AppCompatActivity {
 
     String constituencyName;
     private Uri mProfileUri;
-    ImageView profileImage;
+    CircleImageView profileImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -118,7 +118,6 @@ public class AddNewMLAScreen extends AppCompatActivity {
                 return;
             }
 
-
             Utils.showProgessBar(this);
             Member member = new Member();
             member.setFirstName(first_name_et.getText().toString());
@@ -129,7 +128,6 @@ public class AddNewMLAScreen extends AppCompatActivity {
             member.setPartyName(party_edit.getText().toString());
             member.setStartDate(start_date.getText().toString());
             member.setConstituencyId(getConstituencyId(constituency_drop_down.getText().toString()));
-
 
             retrofitAPI.addMember(member).enqueue(new Callback<AddMemberResponse>() {
                 @Override
