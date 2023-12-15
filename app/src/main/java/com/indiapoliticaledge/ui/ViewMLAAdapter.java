@@ -2,7 +2,6 @@ package com.indiapoliticaledge.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,7 +30,6 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
         this.activity = activity;
         this.usersList = usersList;
     }
-
 
     @NonNull
     @Override
@@ -79,7 +77,6 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
 
         public ViewMLAHolder(@NonNull View itemView) {
             super(itemView);
-
             mla_name = itemView.findViewById(R.id.mla_name);
             constituency_name_txt = itemView.findViewById(R.id.constituency_name_txt);
             start_date_value_txt = itemView.findViewById(R.id.start_date_value_txt);
@@ -124,44 +121,26 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
                 activity.startActivity(intent);
             });
 
-            itemView.findViewById(R.id.delete_icon).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                    builder1.setMessage("Are you sure you want to delete?");
-                    builder1.setCancelable(true);
+            itemView.findViewById(R.id.delete_icon).setOnClickListener(v -> {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+                builder1.setMessage("Are you sure you want to delete?");
+                builder1.setCancelable(true);
 
-                    builder1.setPositiveButton(
-                            "Yes",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
+                builder1.setPositiveButton(
+                        "Yes",
+                        (dialog, id) -> dialog.cancel());
 
-                                }
-                            });
+                builder1.setNegativeButton(
+                        "No",
+                        (dialog, id) -> dialog.cancel());
 
-                    builder1.setNegativeButton(
-                            "No",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             });
 
             dashboard_icon.setOnClickListener(v -> {
-//                    Intent intent = new Intent(activity, UpdateMLAScreen.class);
-//                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
-//                    Log.d("TAG", "userInfo " + userInfo);
-//                    intent.putExtra("user_id", userInfo.getUserId());
-//                    activity.startActivity(intent);
                 UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
                 ((SuperAdminScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
-
             });
         }
     }

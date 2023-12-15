@@ -4,13 +4,13 @@
     <item
         android:id="@+id/manage_mlas"
         android:title="Manage MLA\'s" />
+    <item
+        android:id="@+id/manage_subscription"
+        android:title="MLA Subscription" />
 
     <item
         android:id="@+id/update_pwd"
         android:title="Change Password" />
-    <item
-        android:id="@+id/manage_subscription"
-        android:title="MLA Subscription" />
     <item
         android:id="@+id/logout"
         android:title="Logout" />
