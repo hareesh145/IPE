@@ -113,9 +113,13 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.logout) {
             startActivity(new Intent(this, LoginScreen.class));
             finish();
+            return true;
         } else if (id == R.id.testimonials) {
             setTitleText("Manage Testimonials");
             fragment = new TestimonialsFragment();
+        } else if (id == R.id.forgt_pwd) {
+            setTitleText("Forgot Password");
+            fragment = new ForgotPwdScreen();
         } else {
             setTitleText("Manage MLA's");
             fragment = new ViewMLAListFragment();
