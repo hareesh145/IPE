@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.ui.fragment.AddTestimonialFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
@@ -82,6 +83,9 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.consti_issues) {
             fragment = new ConstituencyIssuesFragment();
             setTitleText("Constituency Issues");
+        } else if (id == R.id.testimonials) {
+            fragment = new AddTestimonialFragment();
+            setTitleText("Testimonials");
         } else {
             fragment = new CandidateProfileFragment();
             setTitleText("Candidate Profile");

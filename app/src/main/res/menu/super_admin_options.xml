@@ -9,8 +9,15 @@
         android:title="MLA Subscription" />
 
     <item
+        android:id="@+id/testimonials"
+        android:title="Manage Testimonials" />
+
+    <item
         android:id="@+id/update_pwd"
         android:title="Change Password" />
+    <item
+        android:id="@+id/forgt_pwd"
+        android:title="Forgot Password" />
     <item
         android:id="@+id/logout"
         android:title="Logout" />

@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/candidate_av"
-        android:title="Candidate AV" />
+        android:title="Upload AV" />
     <item
         android:id="@+id/candidate_donation"
         android:title="Candidate Donation" />
@@ -30,6 +30,29 @@
         android:id="@+id/latest_news"
         android:title="Latest News" />
 
+    <item
+        android:id="@+id/opinion_polling"
+        android:title="Opinion Polling" />
+
+    <item
+        android:id="@+id/upload_images_photos"
+        android:title="Upload Images/Photos" />
+
+
+    <item
+        android:id="@+id/testimonials"
+        android:title="Testimonials" />
+
+    <item
+        android:id="@+id/social_reviews"
+        android:title="Social Media Reviews" />
+
+    <item
+        android:id="@+id/contact_us"
+        android:title="Contact Us" />
+    <item
+        android:id="@+id/change_pwd"
+        android:title="Change Password" />
     <item
         android:id="@+id/logout"
         android:title="Logout" />

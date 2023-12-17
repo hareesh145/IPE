@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/testimonial_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <TextView
+            android:id="@+id/no_data_found_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="No Data Found"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

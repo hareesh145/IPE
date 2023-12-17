@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.ui.fragment.TestimonialsFragment;
 import com.indiapoliticaledge.ui.superadmin.ViewMLAListFragment;
 import com.indiapoliticaledge.utils.Constants;
 
@@ -36,7 +37,7 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.super_admin_flow_layout);
-        
+
         menu_icon = findViewById(R.id.menu_icon);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -65,7 +66,7 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
         toggle.syncState();
 
         fragment = new ViewMLAListFragment();
-        createFragment(fragment,getIntent().getStringExtra(Constants.USER_INFO));
+        createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
         setTitleText("Manage MLA's");
 
 //        menu_icon.setOnClickListener(v -> {
@@ -112,17 +113,20 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.logout) {
             startActivity(new Intent(this, LoginScreen.class));
             finish();
+        } else if (id == R.id.testimonials) {
+            setTitleText("Manage Testimonials");
+            fragment = new TestimonialsFragment();
         } else {
             setTitleText("Manage MLA's");
             fragment = new ViewMLAListFragment();
         }
-        createFragment(fragment,getIntent().getStringExtra(Constants.USER_INFO));
+        createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void createFragment(Fragment fragment,String userInfo) {
+    public void createFragment(Fragment fragment, String userInfo) {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.USER_INFO, userInfo);
         fragment.setArguments(bundle);

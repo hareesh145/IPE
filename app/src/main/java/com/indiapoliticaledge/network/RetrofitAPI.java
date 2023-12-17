@@ -1,6 +1,7 @@
 package com.indiapoliticaledge.network;
 
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.model.Testimonial;
 import com.indiapoliticaledge.network.requestmodel.AddOpinionRequest;
 import com.indiapoliticaledge.network.requestmodel.CDevelopmentRequest;
 import com.indiapoliticaledge.network.requestmodel.Candidate;
@@ -26,6 +27,7 @@ import com.indiapoliticaledge.network.responsemodel.OpinionPollingResponse;
 import com.indiapoliticaledge.network.responsemodel.Response;
 import com.indiapoliticaledge.network.responsemodel.SignInResponseModel;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
+import com.indiapoliticaledge.network.responsemodel.TestimonialResponseModel;
 import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewPhotosResponse;
@@ -35,7 +37,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface RetrofitAPI {
-
 
     @POST("signin")
     Call<SignInResponseModel> signIn(@Body SignInModel signInModel);
@@ -96,7 +97,6 @@ public interface RetrofitAPI {
     @POST("constituencies")
     Call<ConstituencyResponse> getConstituencies(@Body JsonObject jsonObject);
 
-
     @POST("all-candidates-list")
     Call<CandidatesResponse> getAllCandidatesList(@Body JsonObject jsonObject);
 
@@ -133,7 +133,6 @@ public interface RetrofitAPI {
     @POST("candidate-upload-photos")
     Call<JsonObject> uploadPhotos(@Body JsonObject jsonObject);
 
-
     @POST("delete-candidate-photos")
     Call<JsonObject> deletePhotos(@Body JsonObject jsonObject);
 
@@ -142,6 +141,12 @@ public interface RetrofitAPI {
 
     @POST("add-constituency-issues")
     Call<JsonObject> addConstituencyIssues(@Body JsonObject jsonObject);
+
+    @POST("add-testimonials")
+    Call<JsonObject> addTestimonial(@Body Testimonial testimonial);
+
+    @POST("all-testimonials")
+    Call<TestimonialResponseModel> getAllTestimonials(@Body JsonObject jsonObject);
 
 
 }

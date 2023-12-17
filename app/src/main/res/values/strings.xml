@@ -85,4 +85,16 @@
     <string name="candidate_manifesto">Candidate Manifesto</string>
     <string name="from_date">From Date</string>
     <string name="to_date">To Date</string>
+    <string-array name="testimonial_array">
+        <item>Select Testimonial</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string name="state_enter">Please enter State</string>
+    <string name="country_enter">Please enter Country</string>
+    <string name="city_enter">Please enter City</string>
+    <string name="testimonial_enter">Please enter Testimonial</string>
 </resources>
