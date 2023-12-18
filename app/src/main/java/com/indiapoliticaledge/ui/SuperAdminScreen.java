@@ -53,10 +53,11 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         TextView user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
         TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);
+        TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
 
         user_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
         user_role.setText(userInfo.getRoleName());
-
+        user_number.setText(userInfo.getMobileNumber());
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -157,9 +158,12 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        if (fragmentManager.getBackStackEntryCount() > 0) {
-            fragmentManager.popBackStackImmediate();
+
+        if (!toolbar_title.getText().toString().equals("Manage MLA's")) {
+            setTitleText("Manage MLA's");
+            createFragment(new ViewMLAListFragment(), getIntent().getStringExtra(Constants.USER_INFO));
+        } else {
+            super.onBackPressed();
         }
     }
 }

@@ -7,7 +7,7 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/_16sdp"
-    android:paddingTop="@dimen/_16sdp"
+    android:paddingTop="@dimen/_10sdp"
     android:paddingRight="@dimen/_16sdp"
     android:paddingBottom="@dimen/_16sdp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -16,15 +16,24 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_15sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:visibility="gone"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_15sdp"
+        android:paddingTop="@dimen/_6sdp"
         android:text="MLA "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/user_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_8sdp"
+        android:text="+91111111111 "
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView

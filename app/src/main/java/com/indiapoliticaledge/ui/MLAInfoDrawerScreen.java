@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
@@ -31,6 +33,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
     TextView toolbar_title;
     Fragment fragment = null;
     FragmentManager fragmentManager = getSupportFragmentManager();
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,12 +45,24 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        toolbar_title = toolbar.findViewById(R.id.toolbar_title);
+        setTitleText("");
+        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
+        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        TextView user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
+        TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);
+        TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
+
+        user_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
+        user_role.setText(userInfo.getRoleName());
+        user_number.setText(userInfo.getMobileNumber());
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -107,6 +122,20 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void setTitleText(String titleText) {

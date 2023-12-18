@@ -15,7 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.ui.fragment.AddTestimonialFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
@@ -51,6 +53,15 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
+        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        TextView user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
+        TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);
+        TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
+
+        user_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
+        user_role.setText(userInfo.getRoleName());
+        user_number.setText(userInfo.getMobileNumber());
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
