@@ -73,7 +73,7 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
 
     class ViewMLAHolder extends RecyclerView.ViewHolder {
         TextView mla_name, constituency_name_txt, start_date_value_txt, end_date_value_txt;
-        ImageView dashboard_icon, profile_image,party_icon;
+        ImageView dashboard_icon, profile_image, party_icon;
 
         public ViewMLAHolder(@NonNull View itemView) {
             super(itemView);
@@ -140,7 +140,11 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
 
             dashboard_icon.setOnClickListener(v -> {
                 UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
-                ((SuperAdminScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
+                if (activity instanceof SuperAdminScreen) {
+                    ((SuperAdminScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
+                } else {
+                    ((MLAInfoDrawerScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
+                }
             });
         }
     }

@@ -70,12 +70,12 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         toggle.syncState();
         fragment = new MLAInfoFragment();
         setTitleText("MLA Information");
-        createFragment();
+        createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
     }
 
-    private void createFragment() {
+    public void createFragment(Fragment fragment, String userInfo) {
         Bundle bundle = new Bundle();
-        bundle.putString(Constants.USER_INFO, getIntent().getStringExtra(Constants.USER_INFO));
+        bundle.putString(Constants.USER_INFO, userInfo);
         fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
     }
@@ -85,7 +85,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         int id = item.getItemId();
         if (id == R.id.manage_profile) {
             fragment = new ManageCandidatesFragment();
-            setTitleText("Manage MLA's");
+            setTitleText("Manage Candidates");
         } else if (id == R.id.constituency_devs) {
             fragment = new ConstituencyDevFragment();
             setTitleText("Constituency Development");
@@ -104,11 +104,11 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.logout) {
             finish();
             startActivity(new Intent(this, LoginScreen.class));
-        }  else {
+        } else {
             fragment = new MLAInfoFragment();
             setTitleText("Constituency Issues");
         }
-        createFragment();
+        createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

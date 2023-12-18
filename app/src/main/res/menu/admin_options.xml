@@ -6,7 +6,7 @@
         android:title="Admin Profile" />
     <item
         android:id="@+id/manage_profile"
-        android:title="Manage Candidate" />
+        android:title="Manage Candidates" />
 
     <item
         android:id="@+id/constituency_devs"
