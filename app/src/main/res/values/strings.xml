@@ -97,4 +97,5 @@
     <string name="country_enter">Please enter Country</string>
     <string name="city_enter">Please enter City</string>
     <string name="testimonial_enter">Please enter Testimonial</string>
+    <string name="update_subscription">Update Subscription</string>
 </resources>

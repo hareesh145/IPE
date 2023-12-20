@@ -12,6 +12,29 @@
         android:layout_height="?attr/actionBarSize"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/logo_img"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/change_pwd_title"/>
+
+    <TextView
+        android:id="@+id/change_pwd_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="@string/update_subscription"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/add_new_mla_card" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/add_new_mla_card"
