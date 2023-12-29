@@ -8,7 +8,18 @@
     <View
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo_img"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/empty_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,20 +30,21 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/_15sdp"
-        android:text="Upload All Candidates Data file(.xlsx)"
+        android:layout_margin="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_85sdp"
+        android:text="Upload Manifesto file(.pdf or .docx)"
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty_view" />
+        app:layout_constraintTop_toBottomOf="@+id/logo_img" />
 
     <RelativeLayout
         android:id="@+id/upload_party_logo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         android:layout_margin="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_80sdp"
         android:background="@drawable/bg_semi_curved_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

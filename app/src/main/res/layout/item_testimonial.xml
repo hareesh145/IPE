@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/mla_info_card"
@@ -58,11 +59,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="BRS"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/party_icon"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
-                app:layout_constraintTop_toBottomOf="@+id/constituency_name_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/constituency_name_txt"
+                tools:text="BRS" />
 
             <TextView
                 android:id="@+id/mobile_number_txt"
@@ -74,6 +75,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/party_icon"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
                 app:layout_constraintTop_toBottomOf="@+id/party_name_txt" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="@android:style/Widget.Holo.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/mobile_number_txt" />
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -95,7 +105,7 @@
                 android:src="@drawable/ic_dashboard"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constituency_name_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
 
 
             <ImageView
@@ -107,7 +117,7 @@
                 android:visibility="visible"
                 app:layout_constraintEnd_toStartOf="@+id/dashboard_icon"
                 app:layout_constraintStart_toEndOf="@+id/edit_icon"
-                app:layout_constraintTop_toBottomOf="@+id/mobile_number_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
 
             <ImageView
                 android:id="@+id/edit_icon"
@@ -117,7 +127,7 @@
                 android:src="@drawable/ic_edit"
                 android:visibility="visible"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
-                app:layout_constraintTop_toBottomOf="@+id/mobile_number_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

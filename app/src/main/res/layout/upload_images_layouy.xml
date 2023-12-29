@@ -19,10 +19,11 @@
         android:layout_height="@dimen/_80sdp"
         android:layout_marginTop="@dimen/_150sdp"
         android:src="@drawable/ic_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/empty_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/empty_view"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/title"
@@ -31,7 +32,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_85sdp"
-        android:text="Upload Audio/Video file(.mp4)"
+        android:text="Upload Image/Photo files(.png or .jpg)"
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintEnd_toEndOf="parent"

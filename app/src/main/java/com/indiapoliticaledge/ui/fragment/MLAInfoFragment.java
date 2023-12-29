@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +33,7 @@ import retrofit2.Response;
 public class MLAInfoFragment extends Fragment {
     private TextView mla_name, constituency_txt, start_date_value_txt, end_date_value_txt;
     ImageView profile_image,party_icon;
+    WebView  map_section_map ;
 
     @Nullable
     @Override
@@ -77,6 +82,7 @@ public class MLAInfoFragment extends Fragment {
         end_date_value_txt = view.findViewById(R.id.end_date_value_txt);
         profile_image = view.findViewById(R.id.profile_image);
         party_icon = view.findViewById(R.id.party_icon);
+        map_section_map = view.findViewById(R.id.map_section_map);
     }
 
     private void bindUserInfo(ViewMemberResponse viewMemberResponse) {
@@ -102,5 +108,21 @@ public class MLAInfoFragment extends Fragment {
         Glide.with(this).load(viewMemberResponse.userInfo.getPartyLogo()).placeholder(R.drawable.ic_logo).into(party_icon);
 //        start_date_value_txt.setText(viewMemberResponse.userConstituencies.startDate.split("\\s")[0]);
 //        end_date_value_txt.setText(viewMemberResponse.userInfo.userConstituencies.endDate.split("\\s")[0]);
+
+        if (viewMemberResponse != null) {
+            String html = "<iframe src=\"https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=" + viewMemberResponse.constituencyMap + ","
+                    + viewMemberResponse.constituencyDistrict + "," + viewMemberResponse.constituencyState
+                    + "&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>";
+            map_section_map.setInitialScale(1);
+            map_section_map.setWebChromeClient(new WebChromeClient());
+            map_section_map.getSettings().setAllowFileAccess(true);
+            map_section_map.getSettings().setPluginState(WebSettings.PluginState.ON);
+            map_section_map.getSettings().setPluginState(WebSettings.PluginState.ON_DEMAND);
+            map_section_map.setWebViewClient(new WebViewClient());
+            map_section_map.getSettings().setJavaScriptEnabled(true);
+            map_section_map.getSettings().setLoadWithOverviewMode(true);
+            map_section_map.getSettings().setUseWideViewPort(true);
+            map_section_map.loadData(html, "text/html", null);
+        }
     }
 }

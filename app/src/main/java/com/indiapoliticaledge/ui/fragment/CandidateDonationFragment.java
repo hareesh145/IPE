@@ -11,8 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.databinding.CandidateDonationLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.Donate;
@@ -31,6 +33,7 @@ import retrofit2.Response;
 public class CandidateDonationFragment extends Fragment {
     private static final String TAG = CandidateDonationFragment.class.getSimpleName();
     EditText donate_amount, donatePurpose;
+    CandidateDonationLayoutBinding binding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +43,8 @@ public class CandidateDonationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.candidate_donation_layout, container, false);
+        binding = CandidateDonationLayoutBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -54,6 +58,14 @@ public class CandidateDonationFragment extends Fragment {
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        binding.mlaName.setText(userInfo.firstName + " " + userInfo.lastName);
+        binding.constituencyNameTxt.setText(userInfo.constituency.constituencyName);
+        binding.mobileNumberTxt.setText(userInfo.getMobileNumber());
+        binding.partyNameTxt.setText(userInfo.getPartyName());
+        Glide.with(this).load(userInfo.getProfilePhotoUrl()).placeholder(R.drawable.ic_logo).into(binding.profileImage);
+        Glide.with(this).load(userInfo.getPartyLogo()).placeholder(R.drawable.ic_logo).into(binding.partyIcon);
+
+
         donate_amount = view.findViewById(R.id.donate_amount);
         donatePurpose = view.findViewById(R.id.donate_purpose);
         view.findViewById(R.id.submit_btn).setOnClickListener(new View.OnClickListener() {

@@ -5,6 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +35,7 @@ import retrofit2.Response;
 
 public class ConstituencyMapFragment extends Fragment {
 
+    WebView map_section_map;
 
     @Nullable
     @Override
@@ -42,6 +47,7 @@ public class ConstituencyMapFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        map_section_map = view.findViewById(R.id.map_section_map);
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
 
         TextView mla_name = view.findViewById(R.id.mla_name);
@@ -53,7 +59,7 @@ public class ConstituencyMapFragment extends Fragment {
 
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
-        Log.d("TAG", "onViewCreated: "+jsonObjectUser);
+        Log.d("TAG", "onViewCreated: " + jsonObjectUser);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         mla_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
         constituency_name_txt.setText(userInfo.constituency.constituencyName);
@@ -79,7 +85,24 @@ public class ConstituencyMapFragment extends Fragment {
             public void onResponse(Call<ConstituencyMapResponse> call, Response<ConstituencyMapResponse> response) {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
-                    Log.d("TAG", " response.body() :::: " + response.body());
+                    ConstituencyMapResponse constituencyMapResponse = response.body();
+                    Log.d("TAG", " response.body() :::: " + constituencyMapResponse);
+                    if (constituencyMapResponse != null) {
+                        String html = "<iframe src=\"https://maps.google.com/maps?width=100%25&amp;height=100%&amp;hl=en&amp;q=" + constituencyMapResponse.constituencyName + ","
+                                + constituencyMapResponse.constituencyDistrict + "," + constituencyMapResponse.constituencyState
+                                + "&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>";
+                        map_section_map.setInitialScale(1);
+                        map_section_map.setWebChromeClient(new WebChromeClient());
+                        map_section_map.getSettings().setAllowFileAccess(true);
+                        map_section_map.getSettings().setPluginState(WebSettings.PluginState.ON);
+                        map_section_map.getSettings().setPluginState(WebSettings.PluginState.ON_DEMAND);
+                        map_section_map.setWebViewClient(new WebViewClient());
+                        map_section_map.getSettings().setJavaScriptEnabled(true);
+                        map_section_map.getSettings().setLoadWithOverviewMode(true);
+                        map_section_map.getSettings().setUseWideViewPort(true);
+                        map_section_map.loadData(html, "text/html", null);
+                    }
+
                 }
 
             }

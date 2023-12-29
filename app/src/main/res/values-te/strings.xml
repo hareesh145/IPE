@@ -1,0 +1,138 @@
+<resources>
+    <string name="app_name">ఇండియా పొలిటికల్ ఎడ్జ్</string>
+    <string name="change_password">పాస్‌వర్డ్ మార్చండి</string>
+    <string name="forgot_pwd_title">పాస్‌వర్డ్ మర్చిపోయాను</string>
+    <string name="confirm_password">పాస్‌వర్డ్‌ని నిర్ధారించండి</string>
+    <string name="current_password">ప్రస్తుత పాస్వర్డ్</string>
+    <string name="new_password">కొత్త పాస్వర్డ్</string>
+    <string name="submit">సమర్పించండి</string>
+    <string name="enter_phone_number">ఫోన్ నంబర్‌ని నమోదు చేయండి</string>
+    <string name="password">పాస్వర్డ్</string>
+    <string name="new_user_signup">కొత్త యూజర్? <u>చేరడం</u></string>
+    <string name="forgot_pwd"><u>పాస్‌వర్డ్ మర్చిపోయారా?</u></string>
+    <string name="add_new_mla">కొత్త ఎమ్మెల్యేని చేర్చుకోండి</string>
+    <string name="first_name">మొదటి పేరు</string>
+    <string name="last_name">చివరి పేరు</string>
+    <string name="party_name">పార్టీ పేరు</string>
+    <string name="start_date">ప్రారంబపు తేది</string>
+    <string name="end_date">ఆఖరి తేది</string>
+    <string name="subscription_fees">సబ్‌స్క్రిప్షన్ ఫీజు</string>
+    <string name="update_subscription">ఎమ్మెల్యేల సభ్యత్వాన్ని అప్‌డేట్ చేయండి</string>
+    <string name="enter_amount">మొత్తాన్ని నమోదు చేయండి</string>
+    <string name="candidate_profile">అభ్యర్థి ప్రొఫైల్</string>
+    <string name="birth_place">పుట్టిన ప్రదేశం</string>
+    <string name="date_of_birth">పుట్టిన తేది</string>
+    <string name="voter_id">ఓటరు గుర్తింపు సంఖ్య</string>
+
+    <string-array name="states">
+        <item>తెలంగాణ</item>
+        <item>ఆంధ్ర ప్రదేశ్</item>
+    </string-array>
+    <string-array name="mlas_array">
+        <item>టెస్ట్ ఎమ్మెల్యే 1(10-12-2023 - 10-12-2027)</item>
+        <item>టెస్ట్ ఎమ్మెల్యే 2(10-12-2023 - 10-12-2027)</item>
+        <item>టెస్ట్ ఎమ్మెల్యే 3(10-12-2023 - 10-12-2028)</item>
+        <item>టెస్ట్ ఎమ్మెల్యే 4(10-12-2023 - 10-12-2028)</item>
+    </string-array>
+
+    <string-array name="districts">
+        <item>రంగారెడ్డి</item>
+        <item>నల్గొండ</item>
+        <item>హైదరాబాద్</item>
+        <item>వరంగల్</item>
+    </string-array>
+
+    <string-array name="mandals">
+        <item>అంబర్‌పేట</item>
+        <item>బండ్లగూడ</item>
+        <item>హిమాయత్‌నగర్</item>
+        <item>చిట్యాల</item>
+        <item>చందూర్</item>
+        <item>నార్కెట్‌పల్లె</item>
+        <item>బాలాపూర్</item>
+        <item>మహేశ్వరం</item>
+        <item>సరూర్‌నగర్</item>
+        <item>ఖానాపూర్</item>
+        <item>నెక్కొండ</item>
+        <item>సరూర్‌నగర్</item>
+    </string-array>
+
+    <string-array name="constituencies">
+        <item>దేవరకొండ</item>
+        <item>మిర్యాలగూడ</item>
+        <item>నల్గొండ</item>
+        <item>వరంగల్ వెస్ట్</item>
+        <item>వరంగల్ తూర్పు</item>
+        <item>వారధనపేట</item>
+    </string-array>
+
+    <string name="opinion">అభిప్రాయం</string>
+    <string name="opinion_hint">అభిప్రాయాన్ని నమోదు చేయండి</string>
+    <string name="mla_name">ఎమ్మెల్యే పేరు</string>
+    <string name="constituency_details">నియోజకవర్గం వివరాలు</string>
+    <string name="update">నవీకరించు</string>
+    <string name="super_admin">సూపర్ అడ్మిన్</string>
+    <string name="admin">అడ్మిన్</string>
+    <string name="candidate">అభ్యర్థి</string>
+
+    <string name="navigation_drawer_open">నావిగేషన్ డ్రాయర్‌ని తెరవండి</string>
+    <string name="navigation_drawer_close">నావిగేషన్ డ్రాయర్‌ని మూసివేయండి</string>
+    <string name="enter_donation">విరాళం మొత్తాన్ని నమోదు చేయండి</string>
+    <string name="enter_purpose">విరాళం ప్రయోజనం నమోదు చేయండి</string>
+    <string name="name">పేరు</string>
+
+    <string name="candidate_manifesto">అభ్యర్థి మేనిఫెస్టో</string>
+    <string name="from_date">తేదీ నుంచి</string>
+    <string name="to_date">ఇప్పటి వరకు</string>
+    <string-array name="testimonial_array">
+        <item>టెస్టిమోనియల్‌ని ఎంచుకోండి</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string name="state_enter">దయచేసి రాష్ట్రం నమోదు చేయండి</string>
+    <string name="country_enter">దయచేసి దేశాన్ని నమోదు చేయండి</string>
+    <string name="city_enter">దయచేసి నగరాన్ని నమోదు చేయండి</string>
+    <string name="testimonial_enter">దయచేసి టెస్టిమోనియల్‌ని నమోదు చేయండి</string>
+
+    <!--    Admin/MLA menu options    -->
+    <string name="admin_profile">అడ్మిన్ ప్రొఫైల్</string>
+    <string name="notice_board_messages">నోటీసు బోర్డు సందేశాలు</string>
+    <string name="manage_candidates">అభ్యర్థులను నిర్వహించండి</string>
+    <string name="constituency_map">నియోజకవర్గ మ్యాప్</string>
+    <string name="constituency_development">నియోజకవర్గ అభివృద్ధి</string>
+    <string name="manage_development">అభివృద్ధిని నిర్వహించండి</string>
+    <string name="upload_manifesto">మానిఫెస్ట్ ఫైల్‌ను అప్‌లోడ్ చేయండి</string>
+    <string name="upload_av">AVని అప్‌లోడ్ చేయండి</string>
+    <string name="view_candidate_donates">అభ్యర్థి విరాళాలను వీక్షించండి</string>
+    <string name="constituency_issues">నియోజకవర్గ సమస్యలు</string>
+    <string name="view_candiates_rating">అభ్యర్థుల రేటింగ్‌ని వీక్షించండి</string>
+    <string name="latest_news">తాజా వార్తలు</string>
+    <string name="opinion_polling">అభిప్రాయ సేకరణ</string>
+    <string name="upload_images">చిత్రాలు/ఫోటోలను అప్‌లోడ్ చేయండి</string>
+    <string name="testimonials">టెస్టిమోనియల్స్</string>
+    <string name="social_media_reviews">సోషల్ మీడియా రివ్యూలు</string>
+    <string name="contact_us">మమ్మల్ని సంప్రదించండి</string>
+    <string name="change_password_info">పాస్‌వర్డ్ మార్చండి</string>
+    <string name="logout">లాగ్ అవుట్</string>
+
+    <!--    Candidates menu options    -->
+    <string name="candidate_profile_info">అభ్యర్థి ప్రొఫైల్</string>
+    <string name="candidate_constituency_map">నియోజకవర్గ మ్యాప్</string>
+    <string name="candidate_constituency_development">నియోజకవర్గ అభివృద్ధి</string>
+    <string name="candidate_upload_av">AVని అప్‌లోడ్ చేయండి</string>
+    <string name="candidate_donates">అభ్యర్థి విరాళాలు</string>
+    <string name="candidate_constituency_issues">నియోజకవర్గ సమస్యలు</string>
+    <string name="constituency_leader_rating">నియోజకవర్గ లీడర్ రేటింగ్</string>
+    <string name="candidate_latest_news">తాజా వార్తలు</string>
+    <string name="candidate_opinion_polling">అభిప్రాయ సేకరణ</string>
+    <string name="candidate_upload_images">చిత్రాలు/ఫోటోలను అప్‌లోడ్ చేయండి</string>
+    <string name="candidate_testimonials">టెస్టిమోనియల్స్</string>
+    <string name="candidate_social_media_reviews">సోషల్ మీడియా రివ్యూలు</string>
+    <string name="candidate_contact_us">మమ్మల్ని సంప్రదించండి</string>
+    <string name="candidate_change_password">పాస్‌వర్డ్ మార్చండి</string>
+    <string name="candidate_logout">లాగ్ అవుట్</string>
+
+</resources>

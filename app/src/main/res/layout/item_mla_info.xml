@@ -2,6 +2,7 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mla_info_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -68,10 +69,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Start Date"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/start_date_txt"
-            app:layout_constraintTop_toBottomOf="@+id/constituency_name_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/constituency_name_txt"
+            tools:text="Start Date" />
 
 
         <TextView
@@ -90,10 +91,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Start Date"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/start_date_txt"
-            app:layout_constraintTop_toBottomOf="@+id/start_date_value_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/start_date_value_txt"
+            tools:text="Start Date" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/party_icon"
