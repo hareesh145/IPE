@@ -25,6 +25,15 @@ public class CandidatesList implements Serializable {
     public Constituency constituency;
 
 
+    public int userId;
+    public String birthPlace;
+    public String education;
+    public String voterIdNumber;
+    public String mandalName;
+    public String villageName;
+    public Object roleName;
+
+
     public int getCandidateId() {
         return candidateId;
     }

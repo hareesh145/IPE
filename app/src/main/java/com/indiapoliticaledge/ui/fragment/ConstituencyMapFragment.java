@@ -102,9 +102,7 @@ public class ConstituencyMapFragment extends Fragment {
                         map_section_map.getSettings().setUseWideViewPort(true);
                         map_section_map.loadData(html, "text/html", null);
                     }
-
                 }
-
             }
 
             @Override

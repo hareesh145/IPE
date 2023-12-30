@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.ui.admin.NoticeBoardMessagesFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
@@ -83,30 +84,33 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.manage_profile) {
+        if (id == R.id.manage_candidates) {
             fragment = new ManageCandidatesFragment();
-            setTitleText("Manage Candidates");
+            setTitleText(getString(R.string.manage_candidates));
+        }else if(id == R.id.notice_board_messages){
+            fragment =new NoticeBoardMessagesFragment();
+            setTitleText(getString(R.string.notice_board_messages));
         } else if (id == R.id.constituency_devs) {
             fragment = new ConstituencyDevFragment();
-            setTitleText("Constituency Development");
+            setTitleText(getString(R.string.constituency_development));
         } else if (id == R.id.upload_manifest) {
             fragment = new UploadManifestFragment();
-            setTitleText("Upload Manifest");
+            setTitleText(getString(R.string.upload_manifesto));
         } else if (id == R.id.candidate_donation) {
             fragment = new CandidateDonationFragment();
-            setTitleText("Candidate Donation");
+            setTitleText(getString(R.string.view_candidate_donates));
         } else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
-            setTitleText("Candidate AV/Video");
+            setTitleText(getString(R.string.upload_av));
         } else if (id == R.id.consti_issues) {
             fragment = new ConstituencyIssuesFragment();
-            setTitleText("Constituency Issues");
+            setTitleText(getString(R.string.constituency_issues));
         } else if (id == R.id.logout) {
             finish();
             startActivity(new Intent(this, LoginScreen.class));
         } else {
             fragment = new MLAInfoFragment();
-            setTitleText("Constituency Issues");
+            setTitleText(getString(R.string.admin_profile));
         }
         createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

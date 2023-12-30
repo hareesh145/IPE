@@ -98,4 +98,43 @@
     <string name="city_enter">Please enter City</string>
     <string name="testimonial_enter">Please enter Testimonial</string>
     <string name="update_subscription">Update Subscription</string>
+
+
+    <!--    Admin/MLA menu options    -->
+    <string name="admin_profile">Admin Profile</string>
+    <string name="notice_board_messages">Notice Board Messages</string>
+    <string name="manage_candidates">Manage Candidates</string>
+    <string name="constituency_map">Constituency Map</string>
+    <string name="constituency_development">Constituency Developments</string>
+    <string name="manage_development">Manage Developments</string>
+    <string name="upload_manifesto">Upload Manifest File</string>
+    <string name="upload_av">Upload AV</string>
+    <string name="view_candidate_donates">View Candidate Donates</string>
+    <string name="constituency_issues">Constituency Issues</string>
+    <string name="view_candiates_rating">View Candidates Rating</string>
+    <string name="latest_news">Latest News</string>
+    <string name="opinion_polling">Opinion Polling</string>
+    <string name="upload_images">Upload Images/Photos</string>
+    <string name="testimonials">Testimonials</string>
+    <string name="social_media_reviews">Social Media Reviews</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="change_password_info">Change Password</string>
+    <string name="logout">Logout</string>
+
+    <!--    Candidates menu options    -->
+    <string name="candidate_profile_info">Candidate Profile</string>
+    <string name="candidate_constituency_map">Constituency Map</string>
+    <string name="candidate_constituency_development">Constituency Developments</string>
+    <string name="candidate_upload_av">Upload AV</string>
+    <string name="candidate_donates">Candidate Donates</string>
+    <string name="candidate_constituency_issues">Constituency Issues</string>
+    <string name="constituency_leader_rating">Constituency Leader Rating</string>
+    <string name="candidate_latest_news">Latest News</string>
+    <string name="candidate_opinion_polling">Opinion Polling</string>
+    <string name="candidate_upload_images">Upload Images/Photos</string>
+    <string name="candidate_testimonials">Testimonials</string>
+    <string name="candidate_social_media_reviews">Social Media Reviews</string>
+    <string name="candidate_contact_us">Contact Us</string>
+    <string name="candidate_change_password">Change Password</string>
+    <string name="candidate_logout">Logout</string>
 </resources>

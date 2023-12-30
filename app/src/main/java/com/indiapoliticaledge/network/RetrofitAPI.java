@@ -1,6 +1,7 @@
 package com.indiapoliticaledge.network;
 
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.Testimonial;
 import com.indiapoliticaledge.network.requestmodel.AddOpinionRequest;
 import com.indiapoliticaledge.network.requestmodel.CDevelopmentRequest;
@@ -78,6 +79,7 @@ public interface RetrofitAPI {
     @POST("manage-members")
     Call<MembersResponse> manageMembers(@Body JsonObject jsonObject);
 
+
     @POST("view-member")
     Call<ViewMemberResponse> getMember(@Body JsonObject jsonObject);
 
@@ -147,6 +149,10 @@ public interface RetrofitAPI {
 
     @POST("all-testimonials")
     Call<TestimonialResponseModel> getAllTestimonials(@Body JsonObject jsonObject);
+
+
+    @POST("all-noticeBoard-messages")
+    Call<NoticeBoardResponse> getAllNoticeBoardMessages(@Body JsonObject jsonObject);
 
 
 }

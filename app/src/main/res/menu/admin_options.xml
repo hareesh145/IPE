@@ -1,38 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/admin_profile"
-        android:title="Admin Profile" />
-    <item
-        android:id="@+id/manage_profile"
-        android:title="Manage Candidates" />
 
     <item
+        android:id="@+id/admin_profile"
+        android:title="@string/admin_profile" />
+
+    <item
+        android:id="@+id/notice_board_messages"
+        android:title="@string/notice_board_messages" />
+    <item
+        android:id="@+id/manage_candidates"
+        android:title="@string/manage_candidates" />
+    <item
+        android:id="@+id/constituency_map"
+        android:title="@string/constituency_map" />
+    <item
         android:id="@+id/constituency_devs"
-        android:title="Constituency Developments" />
+        android:title="@string/constituency_development" />
+
+    <item
+        android:id="@+id/manage_development"
+        android:title="@string/manage_development" />
     <item
         android:id="@+id/upload_manifest"
-        android:title="Upload Manifest File" />
+        android:title="@string/upload_manifesto" />
     <item
         android:id="@+id/candidate_av"
-        android:title="Candidate AV" />
+        android:title="@string/upload_av" />
+
     <item
-        android:id="@+id/candidate_donation"
-        android:title="Candidate Donation" />
+        android:id="@+id/view_candidate_donations"
+        android:title="@string/view_candidate_donates" />
 
     <item
         android:id="@+id/consti_issues"
-        android:title="Constituency Issues" />
+        android:title="@string/constituency_issues" />
 
     <item
         android:id="@+id/leader_rating"
-        android:title="Constituency Leader Rating" />
+        android:title="@string/view_candiates_rating" />
     <item
         android:id="@+id/latest_news"
-        android:title="Latest News" />
+        android:title="@string/latest_news" />
+
+    <item
+        android:id="@+id/opinion_polling"
+        android:title="@string/opinion_polling" />
+    <item
+        android:id="@+id/upload_images"
+        android:title="@string/upload_images" />
+
+    <item
+        android:id="@+id/testimonials"
+        android:title="@string/testimonials" />
+
+    <item
+        android:id="@+id/social_media_reviews"
+        android:title="@string/social_media_reviews" />
+
+    <item
+        android:id="@+id/contact_us"
+        android:title="@string/contact_us" />
+
+    <item
+        android:id="@+id/change_password_info"
+        android:title="@string/change_password_info" />
 
     <item
         android:id="@+id/logout"
-        android:title="Logout" />
+        android:title="@string/logout" />
 </menu>
