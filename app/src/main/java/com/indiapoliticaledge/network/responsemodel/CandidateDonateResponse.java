@@ -1,12 +1,22 @@
 package com.indiapoliticaledge.network.responsemodel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class CandidateDonateResponse implements Serializable {
 
+    public ArrayList<CandidatesDonationsList> candidatesDonationsList;
     public boolean success;
-    public CandidatesDonationInfo candidatesDonationInfo;
     public String successCode;
+    public double totalDonationAmount;
+
+    public ArrayList<CandidatesDonationsList> getCandidatesDonationsList() {
+        return candidatesDonationsList;
+    }
+
+    public void setCandidatesDonationsList(ArrayList<CandidatesDonationsList> candidatesDonationsList) {
+        this.candidatesDonationsList = candidatesDonationsList;
+    }
 
     public boolean isSuccess() {
         return success;
@@ -14,14 +24,6 @@ public class CandidateDonateResponse implements Serializable {
 
     public void setSuccess(boolean success) {
         this.success = success;
-    }
-
-    public CandidatesDonationInfo getCandidatesDonationInfo() {
-        return candidatesDonationInfo;
-    }
-
-    public void setCandidatesDonationInfo(CandidatesDonationInfo candidatesDonationInfo) {
-        this.candidatesDonationInfo = candidatesDonationInfo;
     }
 
     public String getSuccessCode() {
@@ -32,12 +34,11 @@ public class CandidateDonateResponse implements Serializable {
         this.successCode = successCode;
     }
 
-    @Override
-    public String toString() {
-        return "CandidateDonateResponse{" +
-                "success=" + success +
-                ", candidatesDonationInfo=" + candidatesDonationInfo +
-                ", successCode='" + successCode + '\'' +
-                '}';
+    public double getTotalDonationAmount() {
+        return totalDonationAmount;
+    }
+
+    public void setTotalDonationAmount(double totalDonationAmount) {
+        this.totalDonationAmount = totalDonationAmount;
     }
 }

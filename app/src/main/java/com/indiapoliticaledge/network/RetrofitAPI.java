@@ -23,13 +23,17 @@ import com.indiapoliticaledge.network.responsemodel.ConstituencyResponse;
 import com.indiapoliticaledge.network.responsemodel.DepartmentResponse;
 import com.indiapoliticaledge.network.responsemodel.DistrictResponse;
 import com.indiapoliticaledge.network.responsemodel.FilteredVCDByYearsResponse;
+import com.indiapoliticaledge.network.responsemodel.LatestNewsResponse;
+import com.indiapoliticaledge.network.responsemodel.LeaderRatingResponse;
 import com.indiapoliticaledge.network.responsemodel.MembersResponse;
 import com.indiapoliticaledge.network.responsemodel.OpinionPollingResponse;
+import com.indiapoliticaledge.network.responsemodel.OpinionResponse;
 import com.indiapoliticaledge.network.responsemodel.Response;
 import com.indiapoliticaledge.network.responsemodel.SignInResponseModel;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
 import com.indiapoliticaledge.network.responsemodel.TestimonialResponseModel;
 import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
+import com.indiapoliticaledge.network.responsemodel.ViewConstituencyIssuesResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewPhotosResponse;
 
@@ -64,7 +68,7 @@ public interface RetrofitAPI {
     @POST("candidate-donate")
     Call<AddMemberResponse> candidateDonate(@Body Donate donate);
 
-    @POST("view-candidate-donate")
+    @POST("view-candidates-donates")
     Call<CandidateDonateResponse> viewCandidateDonate(@Body JsonObject jsonObject);
 
     @POST("candidate-opinion-polling")
@@ -154,5 +158,16 @@ public interface RetrofitAPI {
     @POST("all-noticeBoard-messages")
     Call<NoticeBoardResponse> getAllNoticeBoardMessages(@Body JsonObject jsonObject);
 
+    @POST("all-constituency-issues")
+    Call<ViewConstituencyIssuesResponse> getAllConstituencyIssues(@Body JsonObject jsonObject);
+
+    @POST("leader-rating")
+    Call<LeaderRatingResponse> getLeaderRating(@Body JsonObject jsonObject);
+
+    @POST("all-latest-news")
+    Call<LatestNewsResponse> getAllLatestNews(@Body JsonObject jsonObject);
+
+    @POST("view-opinions")
+    Call<OpinionResponse> manageOpinions(@Body JsonObject jsonObject);
 
 }

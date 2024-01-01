@@ -3,7 +3,10 @@ package com.indiapoliticaledge.ui;
 import static com.indiapoliticaledge.utils.Constants.USER_INFO;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -19,6 +22,8 @@ import com.indiapoliticaledge.network.responsemodel.SignInResponseModel;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +31,7 @@ import retrofit2.Response;
 public class LoginScreen extends AppCompatActivity {
     Button submit_btn;
     EditText phone_number;
+    private Locale myLocale;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,13 +89,29 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     private void navigateToAdmin(SignInResponseModel signInResponseModel) {
-        Intent intent = new Intent(LoginScreen.this, MLAInfoDrawerScreen.class);
-        intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
-        startActivity(intent);
+        if (signInResponseModel.userInfo.language.equalsIgnoreCase("TELUGU")) {
+            myLocale = new Locale("te");
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+        }
+        Intent refresh = new Intent(this, MLAInfoDrawerScreen.class);
+        refresh.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
+        startActivity(refresh);
         finish();
     }
 
     private void navigateToCandidate(SignInResponseModel signInResponseModel) {
+        if (signInResponseModel.userInfo.language.equalsIgnoreCase("TELUGU")) {
+            myLocale = new Locale("te");
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+        }
         Intent intent = new Intent(LoginScreen.this, CandidateHomeScreen.class);
         intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
         startActivity(intent);

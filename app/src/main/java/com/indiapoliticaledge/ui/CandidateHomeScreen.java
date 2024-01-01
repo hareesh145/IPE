@@ -60,7 +60,7 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
 
         user_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
-        user_role.setText(userInfo.getRoleName());
+        user_role.setText(getString(R.string.candidate));
         user_number.setText(userInfo.getMobileNumber());
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,7 +68,7 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         fragment = new CandidateProfileFragment();
-        setTitleText("Candidate Profile");
+        setTitleText(getString(R.string.candidate_profile));
         createFragment();
     }
 

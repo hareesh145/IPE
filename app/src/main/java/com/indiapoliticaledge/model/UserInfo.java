@@ -20,11 +20,20 @@ public class UserInfo implements Serializable {
     public String deleteFlag;
     public Constituency constituency;
 
+
+    public String moreInfo;
+    public String birthPlace;
+    public String education;
+    public String voterIdNumber;
+    public String mandalName;
+    public String villageName;
+    public String language;
+    public String roleName;
+
     public String startDate;
 
     public String endDate;
 
-    private String roleName;
     private String partyName;
     private String partyLogo;
 

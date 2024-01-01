@@ -11,4 +11,5 @@
     <color name="bg_gradient_end">#079db4</color>
     <color name="greyTeal">#dee2e6</color>
     <color name="darkColor">#A9A9A9</color>
+    <color name="orangeTeal">#FFA500</color>
 </resources>

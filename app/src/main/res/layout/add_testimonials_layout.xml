@@ -120,7 +120,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/state_edit" />
 
 
-
                     <EditText
                         android:id="@+id/city_edit"
                         android:layout_width="match_parent"
