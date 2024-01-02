@@ -129,10 +129,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.opinion_polling) {
             fragment = new OpinionPollingFragment();
             setTitleText(getString(R.string.opinion_polling));
-        } else if (id == R.id.opinion_polling) {
-            fragment = new OpinionPollingFragment();
-            setTitleText(getString(R.string.opinion_polling));
-        } else if (id == R.id.testimonials) {
+        }  else if (id == R.id.testimonials) {
             fragment = new AddTestimonialFragment();
             setTitleText(getString(R.string.testimonials));
         } else if (id == R.id.upload_images) {

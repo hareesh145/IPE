@@ -137,6 +137,8 @@
     <string name="candidate_contact_us">Contact Us</string>
     <string name="candidate_change_password">Change Password</string>
     <string name="candidate_logout">Logout</string>
+
+
     <string name="total_donation">Total Candidate Donation Amount</string>
 
     <string name="address_info">Address \n Hyderabad, Telangana, India 500038</string>

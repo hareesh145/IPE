@@ -18,14 +18,18 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.ui.admin.ContactUsFragment;
+import com.indiapoliticaledge.ui.admin.LatestNewsFragment;
+import com.indiapoliticaledge.ui.admin.OpinionPollingFragment;
+import com.indiapoliticaledge.ui.admin.SocialMediaFragment;
+import com.indiapoliticaledge.ui.admin.UploadImagesFragment;
+import com.indiapoliticaledge.ui.admin.ViewConstituencyIssuesFragment;
 import com.indiapoliticaledge.ui.fragment.AddTestimonialFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
-import com.indiapoliticaledge.ui.fragment.ConstituencyIssuesFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
-import com.indiapoliticaledge.ui.fragment.UploadManifestFragment;
 import com.indiapoliticaledge.utils.Constants;
 
 import java.util.Objects;
@@ -78,28 +82,43 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
 
         if (id == R.id.constituency_map) {
             fragment = new ConstituencyMapFragment();
-            setTitleText("Constituency Map");
+            setTitleText(getString(R.string.constituency_map));
         } else if (id == R.id.constituency_devs) {
             fragment = new ConstituencyDevFragment();
-            setTitleText("Constituency Development");
-        } else if (id == R.id.upload_manifest) {
-            fragment = new UploadManifestFragment();
-            setTitleText("Upload Manifest");
+            setTitleText(getString(R.string.candidate_constituency_development));
         } else if (id == R.id.candidate_donation) {
-            setTitleText("Candidate Donation");
+            setTitleText(getString(R.string.candidate_donates));
             fragment = new CandidateDonationFragment();
         } else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
-            setTitleText("Candidate AV/Video");
+            setTitleText(getString(R.string.candidate_upload_av));
         } else if (id == R.id.consti_issues) {
-            fragment = new ConstituencyIssuesFragment();
-            setTitleText("Constituency Issues");
+            fragment = new ViewConstituencyIssuesFragment();
+            setTitleText(getString(R.string.candidate_constituency_issues));
+        } else if (id == R.id.upload_images_photos) {
+            fragment = new UploadImagesFragment();
+            setTitleText(getString(R.string.candidate_upload_images));
+        }else if (id == R.id.latest_news) {
+            fragment = new LatestNewsFragment();
+            setTitleText(getString(R.string.latest_news));
+        } else if (id == R.id.opinion_polling) {
+            fragment = new OpinionPollingFragment();
+            setTitleText(getString(R.string.opinion_polling));
         } else if (id == R.id.testimonials) {
             fragment = new AddTestimonialFragment();
-            setTitleText("Testimonials");
+            setTitleText(getString(R.string.candidate_testimonials));
+        } else if (id == R.id.social_reviews) {
+            fragment = new SocialMediaFragment();
+            setTitleText(getString(R.string.social_media_reviews));
+        } else if (id == R.id.contact_us) {
+            fragment = new ContactUsFragment();
+            setTitleText(getString(R.string.contact_us));
+        } else if (id == R.id.change_pwd) {
+            fragment = new ChangePwdScreen();
+            setTitleText(getString(R.string.change_password));
         } else {
             fragment = new CandidateProfileFragment();
-            setTitleText("Candidate Profile");
+            setTitleText(getString(R.string.candidate_profile_info));
         }
         createFragment();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
