@@ -142,4 +142,16 @@
     <string name="total_donation">Total Candidate Donation Amount</string>
 
     <string name="address_info">Address \n Hyderabad, Telangana, India 500038</string>
+
+    <string name="enter_notice_title">Please Enter Notice Title</string>
+    <string name="enter_notice_message">Please Enter Notice Message</string>
+    <string name="show_date">Show Date (YYYY-MM-DD)</string>
+    <string name="enter_mandal_name">Please Enter Mandal Name</string>
+    <string name="enter_village_name">Please Enter Village Name</string>
+    <string name="enter_candidate_opinion_polling">Please Enter Opinion for Candidate Polling</string>
+    <string name="enter_news_title">Please enter News Title</string>
+    <string name="enter_news_description">Please enter News Description</string>
+
+
+
 </resources>

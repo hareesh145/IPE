@@ -15,6 +15,7 @@ import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.OpinionResponse;
+import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.adapter.ViewOpinionPollingAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
@@ -40,6 +41,17 @@ public class OpinionPollingFragment extends Fragment {
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        binding.addMlaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (requireActivity() instanceof MLAInfoDrawerScreen) {
+                    AddOpinionPollingFragment addOpinionPollingFragment = new AddOpinionPollingFragment();
+                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addOpinionPollingFragment, bundle.getString(Constants.USER_INFO));
+                }
+            }
+        });
+
+
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("userId", userInfo.getUserId());
         jsonObject.addProperty("constituencyId", userInfo.getConstituencyId());

@@ -129,7 +129,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.opinion_polling) {
             fragment = new OpinionPollingFragment();
             setTitleText(getString(R.string.opinion_polling));
-        }  else if (id == R.id.testimonials) {
+        } else if (id == R.id.testimonials) {
             fragment = new AddTestimonialFragment();
             setTitleText(getString(R.string.testimonials));
         } else if (id == R.id.upload_images) {
@@ -152,7 +152,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
             setTitleText(getString(R.string.admin_profile));
         }
         createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -15,6 +15,7 @@ import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
 import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
+import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.adapter.NoticeMessagesAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
@@ -40,6 +41,17 @@ public class NoticeBoardMessagesFragment extends Fragment {
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        binding.addMlaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (requireActivity() instanceof MLAInfoDrawerScreen) {
+                    AddNoticeBoardFragment addNoticeBoardFragment = new AddNoticeBoardFragment();
+                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addNoticeBoardFragment, bundle.getString(Constants.USER_INFO));
+                }
+            }
+        });
+
+
         Utils.showProgessBar(requireActivity());
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("userId", userInfo.getUserId());

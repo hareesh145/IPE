@@ -15,6 +15,7 @@ import com.indiapoliticaledge.databinding.LatestNewsFragmentBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.LatestNewsResponse;
+import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.adapter.LatestNewsAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
@@ -40,6 +41,13 @@ public class LatestNewsFragment extends Fragment {
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+
+        binding.addMlaButton.setOnClickListener(v -> {
+            if (requireActivity() instanceof MLAInfoDrawerScreen) {
+                AddLatestNewsFragment addLatestNewsFragment = new AddLatestNewsFragment();
+                ((MLAInfoDrawerScreen) requireActivity()).createFragment(addLatestNewsFragment, bundle.getString(Constants.USER_INFO));
+            }
+        });
         Utils.showProgessBar(requireActivity());
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("userId", userInfo.getUserId());

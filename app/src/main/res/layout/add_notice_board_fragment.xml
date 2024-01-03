@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_new_mla_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/_8sdp">
+
+                    <EditText
+                        android:id="@+id/notice_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/enter_notice_title"
+                        android:inputType="textPersonName"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/notice_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/enter_notice_message"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/notice_title" />
+
+
+                    <EditText
+                        android:id="@+id/show_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:drawableEnd="@drawable/date_logo"
+                        android:hint="@string/show_date"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/notice_message" />
+
+                    <TextView
+                        android:id="@+id/upload_image"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_85sdp"
+                        android:text="Upload a Photo/Image (formats like .jpg, .png)"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/show_date" />
+
+                    <RelativeLayout
+                        android:id="@+id/upload_notice_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_80sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/upload_image">
+
+
+                        <ImageView
+                            android:id="@+id/party_logo"
+                            android:layout_width="@dimen/_45sdp"
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/upload_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/party_logo"
+                            android:layout_centerHorizontal="true"
+                            android:text="Click here to Upload"
+                            android:textColor="@color/black" />
+
+                    </RelativeLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submit_btn"
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved"
+                        android:text="@string/submit"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/upload_notice_img" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

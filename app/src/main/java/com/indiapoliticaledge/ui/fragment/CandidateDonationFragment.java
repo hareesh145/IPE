@@ -59,7 +59,7 @@ public class CandidateDonationFragment extends Fragment {
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         binding.mlaName.setText(userInfo.firstName + " " + userInfo.lastName);
-        binding.constituencyNameTxt.setText(userInfo.constituency.constituencyName);
+        binding.constituencyNameTxt.setText(userInfo.mandalName);
         binding.mobileNumberTxt.setText(userInfo.getMobileNumber());
         binding.partyNameTxt.setText(userInfo.getPartyName());
         Glide.with(this).load(userInfo.getProfilePhotoUrl()).placeholder(R.drawable.ic_logo).into(binding.profileImage);
