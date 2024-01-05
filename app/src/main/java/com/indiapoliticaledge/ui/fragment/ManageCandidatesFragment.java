@@ -1,6 +1,5 @@
 package com.indiapoliticaledge.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.CandidatesList;
 import com.indiapoliticaledge.network.responsemodel.CandidatesResponse;
 import com.indiapoliticaledge.ui.CandidateProfile;
+import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.ViewCandidatesAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
@@ -34,11 +35,14 @@ public class ManageCandidatesFragment extends Fragment {
     RecyclerView view_mlas_list;
     private RetrofitAPI retrofitAPI;
 
+    ManageCandidatesLayoutBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.manage_candidates_layout, container, false);
+        binding = ManageCandidatesLayoutBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -60,7 +64,16 @@ public class ManageCandidatesFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().successCode.equals("200")) {
                         ArrayList<CandidatesList> usersList = response.body().candidatesList;
-                        view_mlas_list.setAdapter(new ViewCandidatesAdapter(requireActivity(), usersList));
+                        if (usersList.size() > 0) {
+                            view_mlas_list.setAdapter(new ViewCandidatesAdapter(requireActivity(), usersList));
+                            binding.noDataFoundTxt.setVisibility(View.GONE);
+                        } else {
+                            binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                            binding.noDataFoundTxt.setText(getString(R.string.no_candidates_data));
+                        }
+                    } else {
+                        binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                        binding.noDataFoundTxt.setText(getString(R.string.no_candidates_data));
                     }
                 }
             }
@@ -72,11 +85,13 @@ public class ManageCandidatesFragment extends Fragment {
         });
 
 
-
         view.findViewById(R.id.add_mla_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(requireActivity(), CandidateProfile.class));
+                if (requireActivity() instanceof MLAInfoDrawerScreen) {
+                    CandidateProfile addLatestNewsFragment = new CandidateProfile();
+                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addLatestNewsFragment, bundle.getString(Constants.USER_INFO));
+                }
             }
         });
     }

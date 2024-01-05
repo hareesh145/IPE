@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/custom_title_view"
-            layout="@layout/custom_title_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+<!--        <include-->
+<!--            android:id="@+id/custom_title_view"-->
+<!--            layout="@layout/custom_title_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize" />-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/add_new_mla_card"
@@ -24,7 +24,7 @@
             app:cardElevation="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_title_view">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
 import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.UserInfo;
@@ -61,7 +62,13 @@ public class NoticeBoardMessagesFragment extends Fragment {
                     public void onResponse(Call<NoticeBoardResponse> call, Response<NoticeBoardResponse> response) {
                         Utils.hideProgessBar();
                         if (response.isSuccessful()) {
-                            binding.viewMlasList.setAdapter(new NoticeMessagesAdapter(requireActivity(), response.body().noticeMessagesList));
+                            if (response.body().noticeMessagesList != null && response.body().noticeMessagesList.size() > 0) {
+                                binding.viewMlasList.setAdapter(new NoticeMessagesAdapter(requireActivity(), response.body().noticeMessagesList));
+                                binding.noDataFoundTxt.setVisibility(View.GONE);
+                            } else {
+                                binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                                binding.noDataFoundTxt.setText(getString(R.string.no_notice_messages_data));
+                            }
                         }
                     }
 
