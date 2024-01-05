@@ -19,10 +19,10 @@
         android:layout_height="@dimen/_80sdp"
         android:layout_marginTop="@dimen/_150sdp"
         android:src="@drawable/ic_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/empty_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/empty_view"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title"
@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_85sdp"
-        android:text="Upload Audio/Video file(.mp4)"
+        android:text="@string/upload_voter_av_file"
         android:textColor="@color/black"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/party_logo"
             android:layout_centerHorizontal="true"
-            android:text="Click here to Upload"
+            android:text="@string/click_upload"
             android:textColor="@color/black" />
 
     </RelativeLayout>

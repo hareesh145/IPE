@@ -395,5 +395,8 @@
     </string-array>
 
     <string name="select_constituency_developement">Select Constituency Development</string>
+    <string name="no_latest_news">No Latest News</string>
+
+
 
 </resources>

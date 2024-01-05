@@ -379,5 +379,6 @@
     <string name="issue_required">అవసరమైన సమస్యను వివరించండి</string>
     <string name="sarpanch_name_required">సర్పంచ్ పేరు అవసరం</string>
     <string name="issue_reply_required">సమస్య ప్రత్యుత్తరం టెక్స్ట్ అవసరం</string>
+    <string name="no_latest_news">తాజా వార్తలు లేవు</string>
 
 </resources>

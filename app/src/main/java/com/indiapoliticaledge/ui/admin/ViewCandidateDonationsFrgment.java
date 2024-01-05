@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
@@ -60,8 +61,13 @@ public class ViewCandidateDonationsFrgment extends Fragment {
                             binding.totalDonationAmountValue.setVisibility(View.VISIBLE);
 
                             binding.totalDonationAmountValue.setText("" + response.body().getTotalDonationAmount());
-
-                            binding.viewMlasList.setAdapter(new ViewCandidateDonationAdapter(requireActivity(), response.body().getCandidatesDonationsList()));
+                            if (response.body().getCandidatesDonationsList().size() > 0) {
+                                binding.viewMlasList.setAdapter(new ViewCandidateDonationAdapter(requireActivity(), response.body().getCandidatesDonationsList()));
+                                binding.noDataFoundTxt.setVisibility(View.GONE);
+                            } else {
+                                binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                                binding.noDataFoundTxt.setText(getString(R.string.no_donation_data));
+                            }
                         }
 
                     }

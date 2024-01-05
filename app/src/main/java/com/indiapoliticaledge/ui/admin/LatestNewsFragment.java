@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.LatestNewsFragmentBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
@@ -58,7 +59,13 @@ public class LatestNewsFragment extends Fragment {
             public void onResponse(Call<LatestNewsResponse> call, Response<LatestNewsResponse> response) {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
-                    binding.constituencyDevList.setAdapter(new LatestNewsAdapter(requireActivity(), response.body().newsList));
+                    if (response.body().newsList != null && response.body().newsList.size() > 0) {
+                        binding.constituencyDevList.setAdapter(new LatestNewsAdapter(requireActivity(), response.body().newsList));
+                        binding.noDataFoundTxt.setVisibility(View.GONE);
+                    } else {
+                        binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                        binding.noDataFoundTxt.setText(getString(R.string.no_latest_news));
+                    }
                 }
             }
 
