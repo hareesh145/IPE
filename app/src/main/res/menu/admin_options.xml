@@ -11,7 +11,7 @@
         android:title="@string/notice_board_messages" />
     <item
         android:id="@+id/manage_candidates"
-        android:title="@string/manage_candidates" />
+        android:title="@string/manage_voters" />
     <item
         android:id="@+id/constituency_map"
         android:title="@string/constituency_map" />

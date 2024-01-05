@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_new_mla_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/_8sdp">
+
+
+                    <com.skydoves.powerspinner.PowerSpinnerView
+                        android:id="@+id/constituency_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_constituency_developement"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/constituency_array"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
+
+                    <com.skydoves.powerspinner.PowerSpinnerView
+                        android:id="@+id/year_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_year"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@+id/constituency_drop_down"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/constituency_array"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
+
+
+                    <EditText
+                        android:id="@+id/mandal_village_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/mandal_village_name"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/year_drop_down" />
+
+
+                    <EditText
+                        android:id="@+id/donate_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/enter_amount"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mandal_village_et" />
+
+
+                    <EditText
+                        android:id="@+id/past_development_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/past_development"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/donate_amount" />
+
+
+                    <com.skydoves.powerspinner.PowerSpinnerView
+                        android:id="@+id/new_year_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_new_year"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@+id/past_development_edit"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/constituency_array"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
+
+
+                    <EditText
+                        android:id="@+id/new_mandal_village_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/mandal_village_name"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/new_year_drop_down" />
+
+
+                    <EditText
+                        android:id="@+id/new_donate_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/enter_amount"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/new_mandal_village_et" />
+
+
+                    <EditText
+                        android:id="@+id/current_development_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/current_development"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/new_donate_amount" />
+
+
+                    <EditText
+                        android:id="@+id/remarks_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/mandal_village_name"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/current_development_edit" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/submit_btn"
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved"
+                        android:text="@string/submit"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/remarks_et" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

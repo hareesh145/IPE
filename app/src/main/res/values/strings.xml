@@ -5,23 +5,19 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
-    <string name="submit">Submit</string>
-    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="old_password">Old Password</string>
     <string name="password">Password</string>
-    <string name="new_user_signup">New User? <u>SignUp</u></string>
     <string name="forgot_pwd"><u>Forgot Password?</u></string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="new_user_signup">New User? <u>SignUp</u></string>
     <string name="add_new_mla">Add New MLA</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="party_name">Party Name</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
     <string name="subscription_fees">Subscription Fees</string>
+    <string name="update_subscription">Update MLAs Subscription</string>
     <string name="enter_amount">Enter Amount</string>
-    <string name="candidate_profile">Candidate Profile</string>
-    <string name="birth_place">Birth Place</string>
+    <string name="candidate_profile">Voter Profile</string>
     <string name="date_of_birth">Date Of Birth</string>
-    <string name="voter_id">Voter ID Number</string>
 
     <string-array name="states">
         <item>Telangana</item>
@@ -69,12 +65,11 @@
 
     <string name="opinion">Opinion</string>
     <string name="opinion_hint">Enter Opinion</string>
-    <string name="mla_name">MLA Name</string>
     <string name="constituency_details">Constituency Details</string>
     <string name="update">Update</string>
     <string name="super_admin">Super Admin</string>
     <string name="admin">Admin</string>
-    <string name="candidate">Candidate</string>
+    <string name="candidate">Voter</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -82,9 +77,6 @@
     <string name="enter_purpose">Enter Donation Purpose</string>
     <string name="name">Name</string>
 
-    <string name="candidate_manifesto">Candidate Manifesto</string>
-    <string name="from_date">From Date</string>
-    <string name="to_date">To Date</string>
     <string-array name="testimonial_array">
         <item>Select Testimonial</item>
         <item>1</item>
@@ -97,8 +89,6 @@
     <string name="country_enter">Please enter Country</string>
     <string name="city_enter">Please enter City</string>
     <string name="testimonial_enter">Please enter Testimonial</string>
-    <string name="update_subscription">Update Subscription</string>
-
 
     <!--    Admin/MLA menu options    -->
     <string name="admin_profile">Admin Profile</string>
@@ -122,11 +112,11 @@
     <string name="logout">Logout</string>
 
     <!--    Candidates menu options    -->
-    <string name="candidate_profile_info">Candidate Profile</string>
+    <string name="candidate_profile_info">Voter Profile</string>
     <string name="candidate_constituency_map">Constituency Map</string>
     <string name="candidate_constituency_development">Constituency Developments</string>
     <string name="candidate_upload_av">Upload AV</string>
-    <string name="candidate_donates">Candidate Donates</string>
+    <string name="candidate_donates">Voter Donates</string>
     <string name="candidate_constituency_issues">Constituency Issues</string>
     <string name="constituency_leader_rating">Constituency Leader Rating</string>
     <string name="candidate_latest_news">Latest News</string>
@@ -138,20 +128,272 @@
     <string name="candidate_change_password">Change Password</string>
     <string name="candidate_logout">Logout</string>
 
+    <!--    add Candidates heading names    -->
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile_number">mobileNumber</string>
+    <string name="select_state">Select State </string>
+    <string name="select_district">Select District</string>
+    <string name="select_constituency">Select Constituency</string>
+    <string name="education">Education</string>
+    <string name="mandal_name">Mandal Name</string>
+    <string name="village_name">Village Name</string>
+    <string name="birth_place">Birth Place</string>
+    <string name="voter_id">Voter ID Number</string>
+    <string name="submit">Submit</string>
 
-    <string name="total_donation">Total Candidate Donation Amount</string>
+    <!--    Candidates Upload AV heading names    -->
+    <string name="candidate_av_upload">Voters Upload a Audio/Video file (formats like .mp4)</string>
+    <string name="click_upload">Click here to Upload</string>
+
+    <!--    Candidates Donations heading names    -->
+    <string name="mla_name">MLA Name</string>
+    <string name="party_name">Party Name</string>
+    <string name="mla_mobile_number">MLA Mobile Number</string>
+    <string name="amount_for_donation">Enter Amount for Donation</string>
+    <string name="donation_purpose">Donation Purpose</string>
+    <string name="donation_amount">Donation Amount</string>
+    <string name="donation_date">Donated Date</string>
+    <string name="no_donation_data">There is no Donations data. Please donate some Amount to Your\'s Leader.</string>
+    <string name="total_donation_amount">Total Candidates Donation Amount</string>
+
+    <!--    Add Candidates Opinions heading names    -->
+    <string name="tell_your_opinions">Tell Your Opinion</string>
+    <string name="agree">Agree</string>
+    <string name="dis_agree">DisAgree</string>
+
+    <!--    Candidates Dashboad Profile    -->
+    <string name="membership_profile">Membership Profile</string>
+    <string name="candidate_manifesto">Voter Manifesto</string>
+    <string name="my_images">My Images</string>
+    <string name="my_videos">My Videos</string>
+    <string name="constituency_images">Constituency Gallery/Images</string>
+    <string name="constituency_videos">Constituency Videos</string>
+
+    <!--    Candidates Rating heading names    -->
+    <string name="no_candidate_rating_data">There is no User Ratings data. Please give some Rating to Your\'s Leader.</string>
+
+    <!--    Candidates Upload Photos names    -->
+    <string name="candidate_photo_upload">Voters Upload a Photo/Image file (formats like .jpg, .png)</string>
+
+    <!--    Raise Issues heading names    -->
+    <string name="raise_your_issue">Raise your Issues</string>
+    <string name="pls_raise_your_issue">Please raise your Issue</string>
+    <string name="enter_mandal_name">Enter Mandal Name</string>
+    <string name="enter_village_name">Enter Village Name</string>
+    <string name="enter_sarpanch_name">Enter Sarpanch Name</string>
+    <string name="enter_sarpanch_mobile">Enter Sarpanch Mobile Number</string>
+    <string name="update_raise_your_issue">Update Raise your Issues</string>
+
+    <!--    Manage Candidates heading names    -->
+    <string name="add_new_candidate">Add a New Candidate</string>
+    <string name="no_candidates_data">There is no Candidates data</string>
+
+    <!--    Upload Candidates data    -->
+    <string name="upload_candidates">Upload All Candidates Data file (formats .xlsx)</string>
+
+    <!--    Add Constituency Development heading names    -->
+    <string name="constituency_department">Select Constituency Department</string>
+    <string name="select_past_year">Select Past Year</string>
+    <string name="mandal_village_name">Mandal name or Village name</string>
+    <string name="pls_enter_amount">Please enter Amount</string>
+    <string name="past_development">Please describe Past development</string>
+    <string name="select_new_year">Select New Year</string>
+    <string name="current_development">Please describe Current development</string>
+    <string name="any_remarks">Please enter any Remarks</string>
+
+    <!--    Constituency Latest News heading names    -->
+    <string name="news_title">Please enter News Title</string>
+    <string name="news_description">Please enter News Description</string>
+    <string name="news_upload_file">Click here to Upload a file (formats like .jpg, .png)</string>
+
+    <!--    Add Opinion heading names    -->
+    <string name="constituency_name">Constituency Name</string>
+    <string name="district">District</string>
+    <string name="state">State</string>
+    <string name="add_your_opinion">Add Your Opinion</string>
+    <string name="pls_mandal_name">Please enter Mandal Name</string>
+    <string name="pls_village_name">Please enter Village Name</string>
+    <string name="opinion_for_candidates">Please enter opinion for Candidates Polling</string>
+
+    <!--    View Constituency Development heading names    -->
+    <string name="select_year">Select Year</string>
+    <string name="select_constituency_department">Select Constituency Development Department</string>
+    <string name="no_constituency_department_data">There is no Constituency Departments Development data</string>
+
+    <!--    View Constituency Development heading names    -->
+    <string name="add_latest_news">Add Latest News</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+
+    <!--    Issues Replies heading names    -->
+    <string name="reply_to_issues">Your replies to Issues</string>
+    <string name="issue_reply">Please enter Issue replys</string>
+    <string name="reply">Replys</string>
+    <string name="created_date">Created Dates</string>
+    <string name="no_issues_replies">There is no Issues Replies datas</string>
+
+    <!--    Manage Development heading names    -->
+    <string name="add_new_constituency_dev">Add a New Constituency Department Development</string>
+    <string name="department_name">Department Name</string>
+    <string name="year">Year</string>
+    <string name="mandal_or_village_name">Mandal/Village Name</string>
+    <string name="description">Description</string>
+    <string name="work_amount">Work Amount</string>
+    <string name="current_year">Current Year</string>
+    <string name="remarks">Remarks</string>
+    <string name="added_date">Added Date</string>
+    <string name="action">Action</string>
+    <string name="no_department_development_data">There is no Constituency Departments Development data</string>
+
+    <!--    Manage Issues heading names    -->
+    <string name="add_new_issue">Add New Issue</string>
+    <string name="issues">Issues</string>
+    <string name="sarpanch_name">Sarpanch Name</string>
+    <string name="no_issues_data">There is no Issues data</string>
+
+    <!--    Manage Opinions heading names    -->
+    <string name="add_new_opinion">Add New Opinion</string>
+    <string name="no_opinions_data">There is no Opinions data</string>
+
+    <!--    Upload Constituency Dev and Manifesto upload file heading names    -->
+    <string name="upload_constituency_dev">Upload Constituency Development file (formats .xlsx)</string>
+    <string name="upload_constituency_manifesto">Upload Constituency Manifest file (formats .pdf)</string>
+    <string name="upload_constituency_manifesto_text">Constituency Manifesto file uploaded.Please download below PDF file for reviewing.</string>
+    <string name="upload_mla_av_text">Upload MLAs Audios/Videos file (formats like .mp4)</string>
+    <string name="upload_mla_images_text">Upload MLAs Photos/Images file (formats like .jpg, .png)</string>
+
+    <!--    Social Media heading names    -->
+    <string name="social_media">Social Media Reviews</string>
+
+    <!--    Testimonials heading names    -->
+    <string name="enter_firstname">Please enter First Name</string>
+    <string name="enter_lastname">Please enter Last Name</string>
+    <string name="select_rating">Select Rating</string>
+    <string name="enter_state">Please enter State</string>
+    <string name="enter_country">Please enter Country</string>
+    <string name="upload_testimonial_file">Upload a file (formats like .jpg, .png, .PDF , .mp4)</string>
+    <string name="enter_city">Please enter City</string>
+    <string name="enter_testimonials_text">Please enter Testimonials text</string>
+    <string name="city">City</string>
+    <string name="rating">Rating</string>
+    <string name="testimonials_text">Testimonials Text</string>
+    <string name="mlacandidateuser">MLA/Candidate User</string>
+    <string name="image">Image</string>
+
+    <!--    Noticeboard Messages heading names    -->
+    <string name="notice_title">Please enter Notice Title</string>
+    <string name="notice_message">Please enter Notice Message</string>
+    <string name="photoimage_file">Upload a Photo/Image (formats like .jpg, .png)</string>
+    <string name="show_date">Show Date (YYYY-MM-DD)</string>
+    <string name="add_notice_message">Add a New Notice Board Message</string>
+    <string name="title">Title</string>
+    <string name="notice_message_text">Notice Messages</string>
+    <string name="search_notice_message">Search Notice Board Message</string>
+    <string name="no_notice_messages_data">There is no Notice Board Messages data</string>
+
+    <!--    Admin Dashboard heading names    -->
+    <string name="constituency_voters_images">Constituency Voters Gallery/Images</string>
+    <string name="constituency_voters_videos">Constituency Voters Videos</string>
+
+    <!--    All heading names    -->
+    <string name="mla_information">MLA Information</string>
+    <string name="add_new_voter">Add a New Voter</string>
+    <string name="manage_voters">Manage Voters</string>
+    <string name="view_voter_donations">View Voter Donations</string>
+    <string name="view_voter_rating">View Voter Rating Reviews</string>
+    <string name="upload_manifesto_info">Upload Manifesto Information</string>
+    <string name="upload_mla_av">Upload MLAs Audio/Video File</string>
+    <string name="upload_mla_image">Upload MLAs Photos/Gallery File</string>
+    <string name="add_notice_board_message">Add a New Notice Board Message</string>
+    <string name="update_notice_board_message">Update Notice Board Message</string>
+    <string name="manage_notice_board_message">Manage Notice Board Messages</string>
+    <string name="voter_profile">Voter Profile</string>
+    <string name="update_voter_info">Update Voter Information</string>
+    <string name="upload_voter_images">Voter Upload Photos/Gallery</string>
+    <string name="voter_ratings">Voter Ratings</string>
+    <string name="voter_donations">Voter Donations</string>
+    <string name="voter_opinions">Voter Opinions</string>
+    <string name="voter_raise_issues">Voter Raise Issue</string>
+    <string name="update_voter_raise_issues">Update Voter Raise Issue</string>
+    <string name="upload_voter_av_file">Upload Voters Audio/Video File</string>
+    <string name="view_constituency_map">Constituency Map</string>
+    <string name="add_constituency_dev">Add Constituency Development</string>
+    <string name="update_constituency_dev">Update Constituency Development</string>
+    <string name="manage_constituency_dev">Manage Constituency Development</string>
+    <string name="constituency_dev">Constituency Development</string>
+    <string name="add_constituency_news">Add a New Constituency Latest News</string>
+    <string name="update_constituency_news">Update Constituency Latest News</string>
+    <string name="constituency_news">Constituency Latest News</string>
+    <string name="add_constituency_opinion">Add a New Constituency Opinion</string>
+    <string name="update_constituency_opinion">Update Constituency Opinion</string>
+    <string name="view_opinions">View Opinions</string>
+    <string name="manage_opinions">Manage Opinions</string>
+    <string name="view_constituency_issues">Constituency Issues Replies</string>
+    <string name="manage_constituency_issues">Manage Constituency Issues</string>
+    <string name="add_testimonials">Add a New Testimonials</string>
+    <string name="contact_us_text">Contact US</string>
+
+    <!--    Success Messages heading names    -->
+    <string name="success_upload_manifesto">Successfully Uploaded Constituency Manifesto file</string>
+    <string name="success_upload_mla_av">Successfully Uploaded a MLAs Audio/Video file</string>
+    <string name="success_upload_mla_images">Successfully Uploaded a MLAs Photos/Galleries file</string>
+    <string name="success_update_voter">Successfully Updated Voters Profile</string>
+    <string name="success_upload_voter_images">Successfully Uploaded Voters Photos/Galleries file</string>
+    <string name="success_upload_voter_av">Successfully Uploaded a Voters Audio/Video file</string>
+    <string name="success_add_testimonial">Successfully added Testimonial message</string>
+    <string name="success_notice_message">Update Notice Board Message</string>
+    <string name="success_password">Successfully New Password has been changed</string>
+
+    <!--    Validation Messages heading names    -->
+    <string name="first_name_required">First Name required</string>
+    <string name="last_name_required">Last Name required</string>
+    <string name="mobile_number_required">Mobile Number required</string>
+    <string name="constituency_name_required">Constituency Name required</string>
+    <string name="birth_place_required">Birth Place required</string>
+    <string name="mandal_name_required">Mandal Name required</string>
+    <string name="village_name_required">Village Name required</string>
+    <string name="voter_id_required">Voter Id Number required</string>
+    <string name="exists_mobile_number_required">This Mobile Number already exists. Please enter another Mobile Number.</string>
+    <string name="current_password_required">Current Password required</string>
+    <string name="new_password_required">New Password required</string>
+    <string name="confirm_password_required">Confirm New Password required</string>
+    <string name="did_not_match_required">New Password and Current Password did not match. Please enter correct Confirm Password</string>
+    <string name="enter_current_password">Please enter correct Current Password</string>
+    <string name="notice_title_required">Notice Title required</string>
+    <string name="notice_message_required">Notice Message required</string>
+    <string name="show_date_required">Show Date required</string>
+    <string name="news_title_required">News Title required</string>
+    <string name="news_message_required">News Message required</string>
+    <string name="opinion_required">OpinionMessage required</string>
+    <string name="city_required">City Name required</string>
+    <string name="state_required">State Name required</string>
+    <string name="country_required">Country Name required</string>
+    <string name="rating_required">Rating required</string>
+    <string name="testimonial_text_required">Testimonials Text required</string>
+    <string name="department_id_required">Department Id required</string>
+    <string name="past_year_required">Past Year required</string>
+    <string name="mandalvillage_required">Mandal or Village name required</string>
+    <string name="work_desc_required">Work Description required</string>
+    <string name="current_year_required">Current Year required</string>
+    <string name="current_work_desc_required">Current Work Description required</string>
+    <string name="donation_amount_required">Donation Amount required</string>
+    <string name="issue_required">Describe Issue required</string>
+    <string name="sarpanch_name_required">Sarpanch Name required</string>
+    <string name="issue_reply_required">Issue Reply Text required</string>
 
     <string name="address_info">Address \n Hyderabad, Telangana, India 500038</string>
-
-    <string name="enter_notice_title">Please Enter Notice Title</string>
-    <string name="enter_notice_message">Please Enter Notice Message</string>
-    <string name="show_date">Show Date (YYYY-MM-DD)</string>
-    <string name="enter_mandal_name">Please Enter Mandal Name</string>
-    <string name="enter_village_name">Please Enter Village Name</string>
     <string name="enter_candidate_opinion_polling">Please Enter Opinion for Candidate Polling</string>
-    <string name="enter_news_title">Please enter News Title</string>
-    <string name="enter_news_description">Please enter News Description</string>
 
 
+    <!--Constituency -->
+
+    <string-array name="constituency_array">
+        <item>Agriculture and Co-operation</item>
+        <item>Animal Husbandry and Fisheries</item>
+        <item>Backward Classes Welfare</item>
+    </string-array>
+
+    <string name="select_constituency_developement">Select Constituency Development</string>
 
 </resources>

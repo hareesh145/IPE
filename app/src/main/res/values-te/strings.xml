@@ -5,24 +5,19 @@
     <string name="confirm_password">పాస్‌వర్డ్‌ని నిర్ధారించండి</string>
     <string name="current_password">ప్రస్తుత పాస్వర్డ్</string>
     <string name="new_password">కొత్త పాస్వర్డ్</string>
-    <string name="submit">సమర్పించండి</string>
-    <string name="enter_phone_number">ఫోన్ నంబర్‌ని నమోదు చేయండి</string>
     <string name="password">పాస్వర్డ్</string>
-    <string name="new_user_signup">కొత్త యూజర్? <u>చేరడం</u></string>
+    <string name="old_password">పాత పాస్‌వర్డ్</string>
     <string name="forgot_pwd"><u>పాస్‌వర్డ్ మర్చిపోయారా?</u></string>
+    <string name="enter_phone_number">ఫోన్ నంబర్‌ని నమోదు చేయండి</string>
+    <string name="new_user_signup">కొత్త యూజర్? <u>చేరడం</u></string>
     <string name="add_new_mla">కొత్త ఎమ్మెల్యేని చేర్చుకోండి</string>
-    <string name="first_name">మొదటి పేరు</string>
-    <string name="last_name">చివరి పేరు</string>
-    <string name="party_name">పార్టీ పేరు</string>
     <string name="start_date">ప్రారంబపు తేది</string>
     <string name="end_date">ఆఖరి తేది</string>
     <string name="subscription_fees">సబ్‌స్క్రిప్షన్ ఫీజు</string>
     <string name="update_subscription">ఎమ్మెల్యేల సభ్యత్వాన్ని అప్‌డేట్ చేయండి</string>
     <string name="enter_amount">మొత్తాన్ని నమోదు చేయండి</string>
-    <string name="candidate_profile">అభ్యర్థి ప్రొఫైల్</string>
-    <string name="birth_place">పుట్టిన ప్రదేశం</string>
+    <string name="candidate_profile">ఓటరు ప్రొఫైల్</string>
     <string name="date_of_birth">పుట్టిన తేది</string>
-    <string name="voter_id">ఓటరు గుర్తింపు సంఖ్య</string>
 
     <string-array name="states">
         <item>తెలంగాణ</item>
@@ -68,12 +63,11 @@
 
     <string name="opinion">అభిప్రాయం</string>
     <string name="opinion_hint">అభిప్రాయాన్ని నమోదు చేయండి</string>
-    <string name="mla_name">ఎమ్మెల్యే పేరు</string>
     <string name="constituency_details">నియోజకవర్గం వివరాలు</string>
     <string name="update">నవీకరించు</string>
     <string name="super_admin">సూపర్ అడ్మిన్</string>
     <string name="admin">అడ్మిన్</string>
-    <string name="candidate">అభ్యర్థి</string>
+    <string name="candidate">ఓటరు</string>
 
     <string name="navigation_drawer_open">నావిగేషన్ డ్రాయర్‌ని తెరవండి</string>
     <string name="navigation_drawer_close">నావిగేషన్ డ్రాయర్‌ని మూసివేయండి</string>
@@ -81,9 +75,6 @@
     <string name="enter_purpose">విరాళం ప్రయోజనం నమోదు చేయండి</string>
     <string name="name">పేరు</string>
 
-    <string name="candidate_manifesto">అభ్యర్థి మేనిఫెస్టో</string>
-    <string name="from_date">తేదీ నుంచి</string>
-    <string name="to_date">ఇప్పటి వరకు</string>
     <string-array name="testimonial_array">
         <item>టెస్టిమోనియల్‌ని ఎంచుకోండి</item>
         <item>1</item>
@@ -106,7 +97,7 @@
     <string name="manage_development">అభివృద్ధిని నిర్వహించండి</string>
     <string name="upload_manifesto">మానిఫెస్ట్ ఫైల్‌ను అప్‌లోడ్ చేయండి</string>
     <string name="upload_av">AVని అప్‌లోడ్ చేయండి</string>
-    <string name="view_candidate_donates">అభ్యర్థి విరాళాలను వీక్షించండి</string>
+    <string name="view_candidate_donates">ఓటరు విరాళాలను వీక్షించండి</string>
     <string name="constituency_issues">నియోజకవర్గ సమస్యలు</string>
     <string name="view_candiates_rating">అభ్యర్థుల రేటింగ్‌ని వీక్షించండి</string>
     <string name="latest_news">తాజా వార్తలు</string>
@@ -119,11 +110,11 @@
     <string name="logout">లాగ్ అవుట్</string>
 
     <!--    Candidates menu options    -->
-    <string name="candidate_profile_info">అభ్యర్థి ప్రొఫైల్</string>
+    <string name="candidate_profile_info">ఓటరు ప్రొఫైల్</string>
     <string name="candidate_constituency_map">నియోజకవర్గ మ్యాప్</string>
     <string name="candidate_constituency_development">నియోజకవర్గ అభివృద్ధి</string>
     <string name="candidate_upload_av">AVని అప్‌లోడ్ చేయండి</string>
-    <string name="candidate_donates">అభ్యర్థి విరాళాలు</string>
+    <string name="candidate_donates">ఓటరు విరాళాలు</string>
     <string name="candidate_constituency_issues">నియోజకవర్గ సమస్యలు</string>
     <string name="constituency_leader_rating">నియోజకవర్గ లీడర్ రేటింగ్</string>
     <string name="candidate_latest_news">తాజా వార్తలు</string>
@@ -134,5 +125,259 @@
     <string name="candidate_contact_us">మమ్మల్ని సంప్రదించండి</string>
     <string name="candidate_change_password">పాస్‌వర్డ్ మార్చండి</string>
     <string name="candidate_logout">లాగ్ అవుట్</string>
+
+    <!--    add Candidates heading names    -->
+    <string name="first_name">మొదటి పేరు</string>
+    <string name="last_name">చివరి పేరు</string>
+    <string name="mobile_number">మొబైల్ నంబర్</string>
+    <string name="select_state">రాష్ట్రంను ఎంచుకోండి</string>
+    <string name="select_district">జిల్లాను ఎంచుకోండి</string>
+    <string name="select_constituency">నియోజకవర్గాన్ని ఎంచుకోండి</string>
+    <string name="education">చదువు</string>
+    <string name="mandal_name">మండలం పేరు</string>
+    <string name="village_name">గ్రామం పేరు</string>
+    <string name="birth_place">పుట్టిన ప్రదేశం</string>
+    <string name="voter_id">ఓటరు గుర్తింపు సంఖ్య</string>
+    <string name="submit">సమర్పించండి</string>
+
+    <!--    Candidates Upload AV heading names    -->
+    <string name="candidate_av_upload">అభ్యర్థులు ఆడియో/వీడియో ఫైల్‌ను అప్‌లోడ్ చేస్తారు (.mp4 వంటి ఫార్మాట్‌లు)</string>
+    <string name="click_upload">అప్‌లోడ్ చేయడానికి ఇక్కడ క్లిక్ చేయండి</string>
+
+    <!--    Candidates Donations heading names    -->
+    <string name="mla_name">ఎమ్మెల్యే పేరు</string>
+    <string name="party_name">పార్టీ పేరు</string>
+    <string name="mla_mobile_number">ఎమ్మెల్యే మొబైల్ నంబర్</string>
+    <string name="amount_for_donation">విరాళం కోసం మొత్తాన్ని నమోదు చేయండి</string>
+    <string name="donation_purpose">విరాళం ప్రయోజనం</string>
+    <string name="donation_amount">విరాళం మొత్తం</string>
+    <string name="donation_date">విరాళం ఇచ్చిన తేదీ</string>
+    <string name="no_donation_data">విరాళాల డేటా లేదు. దయచేసి మీ నాయకుడికి కొంత మొత్తాన్ని విరాళంగా ఇవ్వండి.</string>
+    <string name="total_donation_amount">మొత్తం అభ్యర్థుల విరాళం మొత్తం</string>
+
+    <!--    Add Candidates Opinions heading names    -->
+    <string name="tell_your_opinions">మీ అభిప్రాయం చెప్పండి</string>
+    <string name="agree">అంగీకరిస్తున్నారు</string>
+    <string name="dis_agree">అంగీకరించలేదు</string>
+
+    <!--    Candidates Dashboad Profile    -->
+    <string name="membership_profile">సభ్యత్వ ప్రొఫైల్</string>
+    <string name="candidate_manifesto">ఓటరు మేనిఫెస్టో</string>
+    <string name="my_images">నా చిత్రాలు</string>
+    <string name="my_videos">నా వీడియోలు</string>
+    <string name="constituency_images">నియోజకవర్గ గ్యాలరీ/చిత్రాలు</string>
+    <string name="constituency_videos">నియోజకవర్గ వీడియోలు</string>
+
+    <!--    Candidates Rating heading names    -->
+    <string name="no_candidate_rating_data">వినియోగదారు రేటింగ్‌ల డేటా లేదు. దయచేసి మీ నాయకుడికి కొంత రేటింగ్ ఇవ్వండి.</string>
+
+    <!--    Candidates Upload Photos names    -->
+    <string name="candidate_photo_upload">అభ్యర్థులు ఫోటో/చిత్రం ఫైల్‌ను అప్‌లోడ్ చేస్తారు (.jpg, .png వంటి ఫార్మాట్‌లు)</string>
+
+    <!--    Raise Issues heading names    -->
+    <string name="raise_your_issue">మీ సమస్యలను లేవనెత్తండి</string>
+    <string name="pls_raise_your_issue">దయచేసి మీ సమస్యను లేవనెత్తండి</string>
+    <string name="enter_mandal_name">మండల్ పేరును నమోదు చేయండి</string>
+    <string name="enter_village_name">గ్రామం పేరు నమోదు చేయండి</string>
+    <string name="enter_sarpanch_name">సర్పంచ్ పేరు నమోదు చేయండి</string>
+    <string name="enter_sarpanch_mobile">సర్పంచ్ మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+    <string name="update_raise_your_issue">నవీకరణ మీ సమస్యలను పెంచండి</string>
+
+    <!--    Manage Candidates heading names    -->
+    <string name="add_new_candidate">కొత్త అభ్యర్థిని జోడించండి</string>
+    <string name="no_candidates_data">అభ్యర్థుల డేటా లేదు</string>
+
+    <!--    Upload Candidates data    -->
+    <string name="upload_candidates">అన్ని అభ్యర్థుల డేటా ఫైల్‌ను అప్‌లోడ్ చేయండి (ఫార్మాట్లు .xlsx)</string>
+
+    <!--    Add Constituency Development heading names    -->
+    <string name="constituency_department">నియోజకవర్గ శాఖను ఎంచుకోండి</string>
+    <string name="select_past_year">గత సంవత్సరాన్ని ఎంచుకోండి</string>
+    <string name="mandal_village_name">మండలం పేరు లేదా గ్రామం పేరు</string>
+    <string name="pls_enter_amount">దయచేసి మొత్తాన్ని నమోదు చేయండి</string>
+    <string name="past_development">దయచేసి గత అభివృద్ధిని వివరించండి</string>
+    <string name="select_new_year">నూతన సంవత్సరాన్ని ఎంచుకోండి</string>
+    <string name="current_development">దయచేసి ప్రస్తుత అభివృద్ధిని వివరించండి</string>
+    <string name="any_remarks">దయచేసి ఏవైనా వ్యాఖ్యలను నమోదు చేయండి</string>
+
+    <!--    Constituency Latest News heading names    -->
+    <string name="news_title">దయచేసి వార్తల శీర్షికను నమోదు చేయండి</string>
+    <string name="news_description">దయచేసి వార్తల వివరణను నమోదు చేయండి</string>
+    <string name="news_upload_file">ఫైల్‌ను అప్‌లోడ్ చేయడానికి ఇక్కడ క్లిక్ చేయండి (.jpg, .png వంటి ఫార్మాట్‌లు)</string>
+
+    <!--    Add Opinion heading names    -->
+    <string name="constituency_name">నియోజకవర్గం పేరు</string>
+    <string name="district">జిల్లా</string>
+    <string name="state">రాష్ట్రం</string>
+    <string name="add_your_opinion">మీ అభిప్రాయాన్ని జోడించండి</string>
+    <string name="pls_mandal_name">దయచేసి మండల్ పేరును నమోదు చేయండి</string>
+    <string name="pls_village_name">దయచేసి గ్రామం పేరు నమోదు చేయండి</string>
+    <string name="opinion_for_candidates">దయచేసి అభ్యర్థుల పోలింగ్ కోసం అభిప్రాయాన్ని నమోదు చేయండి</string>
+
+    <!--    View Constituency Development heading names    -->
+    <string name="select_year">సంవత్సరాన్ని ఎంచుకోండి</string>
+    <string name="select_constituency_department">నియోజకవర్గ అభివృద్ధి శాఖను ఎంచుకోండి</string>
+    <string name="no_constituency_department_data">నియోజకవర్గ శాఖల అభివృద్ధి డేటా లేదు</string>
+
+    <!--    View Constituency Development heading names    -->
+    <string name="add_latest_news">తాజా వార్తలను జోడించండి</string>
+    <string name="from_date">తేదీ నుంచి</string>
+    <string name="to_date">ఇప్పటి వరకు</string>
+
+    <!--    Issues Replies heading names    -->
+    <string name="reply_to_issues">సమస్యలకు మీ ప్రత్యుత్తరాలు</string>
+    <string name="issue_reply">దయచేసి సమస్య ప్రత్యుత్తరాన్ని నమోదు చేయండి</string>
+    <string name="reply">ప్రత్యుత్తరం ఇవ్వండి</string>
+    <string name="created_date">సృష్టించిన తేదీ</string>
+    <string name="no_issues_replies">సమస్యల ప్రత్యుత్తరాల డేటా లేదు</string>
+
+    <!--    Manage Development heading names    -->
+    <string name="add_new_constituency_dev">కొత్త నియోజకవర్గ శాఖ అభివృద్ధిని జోడించండి</string>
+    <string name="department_name">శాఖ పేరు</string>
+    <string name="year">సంవత్సరం</string>
+    <string name="mandal_or_village_name">మండలం/గ్రామం పేరు</string>
+    <string name="description">వివరణ</string>
+    <string name="work_amount">పని మొత్తం</string>
+    <string name="current_year">ప్రస్తుత సంవత్సరం</string>
+    <string name="remarks">వ్యాఖ్యలు</string>
+    <string name="added_date">తేదీ జోడించబడింది</string>
+    <string name="action">చర్య</string>
+    <string name="no_department_development_data">నియోజకవర్గ శాఖల అభివృద్ధి డేటా లేదు</string>
+
+    <!--    Manage Issues heading names    -->
+    <string name="add_new_issue">కొత్త సమస్యను జోడించండి</string>
+    <string name="issues">సమస్యలు</string>
+    <string name="sarpanch_name">సర్పంచ్ పేరు</string>
+    <string name="no_issues_data">సమస్యల డేటా లేదు</string>
+
+    <!--    Manage Opinions heading names    -->
+    <string name="add_new_opinion">కొత్త అభిప్రాయాన్ని జోడించండి</string>
+    <string name="no_opinions_data">అభిప్రాయాల డేటా లేదు</string>
+
+    <!--    Upload Constituency Dev and Manifesto and MLA AV file heading names    -->
+    <string name="upload_constituency_dev">నియోజకవర్గ అభివృద్ధి ఫైల్‌ను అప్‌లోడ్ చేయండి (ఫార్మాట్లు .xlsx)</string>
+    <string name="upload_constituency_manifesto">నియోజకవర్గ మానిఫెస్ట్ ఫైల్‌ను అప్‌లోడ్ చేయండి (ఫార్మాట్లు .pdf)</string>
+    <string name="upload_constituency_manifesto_text">నియోజకవర్గ మేనిఫెస్టో ఫైల్ అప్‌లోడ్ చేయబడింది.సమీక్షించడానికి దయచేసి దిగువన ఉన్న PDF ఫైల్‌ని డౌన్‌లోడ్ చేయండి.</string>
+    <string name="upload_mla_av_text">ఎమ్మెల్యేల ఆడియోలు/వీడియోల ఫైల్‌ను అప్‌లోడ్ చేయండి (.mp4 వంటి ఫార్మాట్‌లు)</string>
+    <string name="upload_mla_images_text">ఎమ్మెల్యేల ఫోటోలు/చిత్రాల ఫైల్‌ను అప్‌లోడ్ చేయండి (.jpg, .png వంటి ఫార్మాట్‌లు)</string>
+
+    <!--    Social Media heading names    -->
+    <string name="social_media">సోషల్ మీడియా రివ్యూలు</string>
+
+    <!--    Testimonials heading names    -->
+    <string name="enter_firstname">దయచేసి మొదటి పేరును నమోదు చేయండి</string>
+    <string name="enter_lastname">దయచేసి చివరి పేరును నమోదు చేయండి</string>
+    <string name="select_rating">రేటింగ్‌ని ఎంచుకోండి</string>
+    <string name="enter_state">దయచేసి రాష్ట్రం నమోదు చేయండి</string>
+    <string name="enter_country">దయచేసి దేశాన్ని నమోదు చేయండి</string>
+    <string name="upload_testimonial_file">ఫైల్‌ను అప్‌లోడ్ చేయండి (.jpg, .png, .PDF , .mp4 వంటి ఫార్మాట్‌లు)</string>
+    <string name="enter_city">దయచేసి నగరాన్ని నమోదు చేయండి</string>
+    <string name="enter_testimonials_text">దయచేసి టెస్టిమోనియల్స్ వచనాన్ని నమోదు చేయండి</string>
+    <string name="city">నగరం</string>
+    <string name="rating">రేటింగ్</string>
+    <string name="testimonials_text">టెస్టిమోనియల్స్ టెక్స్ట్</string>
+    <string name="mlacandidateuser">ఎమ్మెల్యే/అభ్యర్థి వినియోగదారు</string>
+    <string name="image">చిత్రం</string>
+
+    <!--    Noticeboard Messages heading names    -->
+    <string name="notice_title">దయచేసి నోటీసు శీర్షికను నమోదు చేయండి</string>
+    <string name="notice_message">దయచేసి నోటీసు సందేశాన్ని నమోదు చేయండి</string>
+    <string name="photoimage_file">ఫోటో/చిత్రాన్ని అప్‌లోడ్ చేయండి (.jpg, .png వంటి ఫార్మాట్‌లు)</string>
+    <string name="show_date">తేదీని చూపు (YYYY-MM-DD)</string>
+    <string name="add_notice_message">కొత్త నోటీసు బోర్డు సందేశాన్ని జోడించండి</string>
+    <string name="title">శీర్షిక</string>
+    <string name="notice_message_text">సందేశాలను గమనించండి</string>
+    <string name="search_notice_message">శోధన నోటీసు బోర్డు సందేశం</string>
+    <string name="no_notice_messages_data">నోటీసు బోర్డు సందేశాల డేటా లేదు</string>
+
+    <!--    Admin Dashboard heading names    -->
+    <string name="constituency_voters_images">నియోజకవర్గ ఓటర్లు గ్యాలరీ/చిత్రాలు</string>
+    <string name="constituency_voters_videos">నియోజకవర్గ ఓటర్లు వీడియోలు</string>
+
+    <!--    All heading names    -->
+    <string name="mla_information">ఎమ్మెల్యే సమాచారం</string>
+    <string name="add_new_voter">కొత్త ఓటరు జోడించండి</string>
+    <string name="manage_voters">ఓటర్లును నిర్వహించండి</string>
+    <string name="view_voter_donations">ఓటరు విరాళాలను వీక్షించండి</string>
+    <string name="view_voter_rating">ఓటరు రేటింగ్ సమీక్షలను వీక్షించండి</string>
+    <string name="upload_manifesto_info">మ్యానిఫెస్టో సమాచారాన్ని అప్‌లోడ్ చేయండి</string>
+    <string name="upload_mla_av">ఎమ్మెల్యేల ఆడియో/వీడియో ఫైల్‌ను అప్‌లోడ్ చేయండి</string>
+    <string name="upload_mla_image">ఎమ్మెల్యేల ఫోటోలు/గ్యాలరీ ఫైల్‌ను అప్‌లోడ్ చేయండి</string>
+    <string name="add_notice_board_message">కొత్త నోటీసు బోర్డు సందేశాన్ని జోడించండి</string>
+    <string name="update_notice_board_message">నోటీసు బోర్డు సందేశాన్ని నవీకరించండి</string>
+    <string name="manage_notice_board_message">నోటీసు బోర్డు సందేశాలను నిర్వహించండి</string>
+    <string name="voter_profile">ఓటరు ప్రొఫైల్</string>
+    <string name="update_voter_info">ఓటరు సమాచారాన్ని నవీకరించండి</string>
+    <string name="upload_voter_images">ఓటరు ఫోటోలు/గ్యాలరీని అప్‌లోడ్ చేయండి</string>
+    <string name="voter_ratings">ఓటరు రేటింగ్‌లు</string>
+    <string name="voter_donations">ఓటర్లు విరాళాలు</string>
+    <string name="voter_opinions">ఓటర్లు అభిప్రాయాలు</string>
+    <string name="voter_raise_issues">ఓటరు లేవనెత్తిన సమస్య</string>
+    <string name="update_voter_raise_issues">ఓటరు లేవనెత్తిన సమస్యను నవీకరించండి</string>
+    <string name="upload_voter_av_file">ఓటర్లు ఆడియో/వీడియో ఫైల్‌ను అప్‌లోడ్ చేయండి</string>
+    <string name="view_constituency_map">నియోజకవర్గ మ్యాప్</string>
+    <string name="add_constituency_dev">నియోజకవర్గ అభివృద్ధిని జోడించండి</string>
+    <string name="update_constituency_dev">నియోజకవర్గ అభివృద్ధిని నవీకరించండి</string>
+    <string name="manage_constituency_dev">నియోజకవర్గ అభివృద్ధిని నిర్వహించండి</string>
+    <string name="constituency_dev">నియోజకవర్గ అభివృద్ధి</string>
+    <string name="add_constituency_news">కొత్త నియోజకవర్గం తాజా వార్తలను జోడించండి</string>
+    <string name="update_constituency_news">నియోజకవర్గ తాజా వార్తలను నవీకరించండి</string>
+    <string name="constituency_news">నియోజకవర్గ తాజా వార్తలు</string>
+    <string name="add_constituency_opinion">కొత్త అభిప్రాయాన్ని జోడించండి</string>
+    <string name="update_constituency_opinion">నియోజకవర్గ అభిప్రాయాన్ని నవీకరించండి</string>
+    <string name="view_opinions">అభిప్రాయాలను వీక్షించండి</string>
+    <string name="manage_opinions">అభిప్రాయాలను నిర్వహించండి</string>
+    <string name="view_constituency_issues">నియోజకవర్గ సమస్యల ప్రత్యుత్తరాలు</string>
+    <string name="manage_constituency_issues">నియోజకవర్గ సమస్యలను నిర్వహించండి</string>
+    <string name="add_testimonials">కొత్త టెస్టిమోనియల్స్ జోడించండి</string>
+    <string name="contact_us_text">మమ్మల్ని సంప్రదించండి</string>
+
+    <!--    Success Messages heading names    -->
+    <string name="success_upload_manifesto">నియోజకవర్గ మ్యానిఫెస్టో ఫైల్ విజయవంతంగా అప్‌లోడ్ చేయబడింది</string>
+    <string name="success_upload_mla_av">ఎమ్మెల్యేల ఆడియో/వీడియో ఫైల్ విజయవంతంగా అప్‌లోడ్ చేయబడింది</string>
+    <string name="success_upload_mla_images">ఎమ్మెల్యేల ఫోటోలు/గ్యాలరీస్ ఫైల్ విజయవంతంగా అప్‌లోడ్ చేయబడింది</string>
+    <string name="success_update_voter">ఓటర్లు ప్రొఫైల్ విజయవంతంగా నవీకరించబడింది</string>
+    <string name="success_upload_voter_images">ఓటర్లు ఫోటోలు/గ్యాలరీస్ ఫైల్ విజయవంతంగా అప్‌లోడ్ చేయబడింది</string>
+    <string name="success_upload_voter_av">ఓటర్లు ఆడియో/వీడియో ఫైల్ విజయవంతంగా అప్‌లోడ్ చేయబడింది</string>
+    <string name="success_add_testimonial">టెస్టిమోనియల్ సందేశం విజయవంతంగా జోడించబడింది</string>
+    <string name="success_notice_message">నోటీసు బోర్డు సందేశాన్ని నవీకరించండి</string>
+    <string name="success_password">కొత్త పాస్‌వర్డ్ విజయవంతంగా మార్చబడింది</string>
+
+    <!--    Validation Messages heading names    -->
+    <string name="first_name_required">మొదటి పేరు అవసరం</string>
+    <string name="last_name_required">చివరి పేరు అవసరం</string>
+    <string name="mobile_number_required">మొబైల్ నంబర్ అవసరం</string>
+    <string name="constituency_name_required">నియోజకవర్గం పేరు అవసరం</string>
+    <string name="birth_place_required">పుట్టిన స్థలం అవసరం</string>
+    <string name="mandal_name_required">మండల్ పేరు అవసరం</string>
+    <string name="village_name_required">గ్రామం పేరు అవసరం</string>
+    <string name="voter_id_required">ఓటర్ ఐడి నంబర్ అవసరం</string>
+    <string name="exists_mobile_number_required">ఈ మొబైల్ నంబర్ ఇప్పటికే ఉంది. దయచేసి మరొక మొబైల్ నంబర్‌ను నమోదు చేయండి.</string>
+    <string name="current_password_required">ప్రస్తుత పాస్‌వర్డ్ అవసరం</string>
+    <string name="new_password_required">కొత్త పాస్‌వర్డ్ అవసరం</string>
+    <string name="confirm_password_required">కొత్త పాస్‌వర్డ్‌ని నిర్ధారించడం అవసరం</string>
+    <string name="did_not_match_required">కొత్త పాస్‌వర్డ్ మరియు ప్రస్తుత పాస్‌వర్డ్ సరిపోలలేదు. దయచేసి సరైన పాస్‌వర్డ్‌ని నిర్ధారించండి</string>
+    <string name="enter_current_password">దయచేసి సరైన ప్రస్తుత పాస్‌వర్డ్‌ని నమోదు చేయండి</string>
+    <string name="notice_title_required">నోటీసు శీర్షిక అవసరం</string>
+    <string name="notice_message_required">నోటీసు సందేశం అవసరం</string>
+    <string name="show_date_required">తేదీని చూపడం అవసరం</string>
+    <string name="news_title_required">వార్తలు శీర్షిక అవసరం</string>
+    <string name="news_message_required">వార్తలు సందేశం అవసరం</string>
+    <string name="opinion_required">అభిప్రాయ సందేశం అవసరం</string>
+    <string name="city_required">నగరం పేరు అవసరం</string>
+    <string name="state_required">రాష్ట్రం పేరు అవసరం</string>
+    <string name="country_required">దేశం పేరు అవసరం</string>
+    <string name="rating_required">రేటింగ్ అవసరం</string>
+    <string name="testimonial_text_required">టెస్టిమోనియల్స్ టెక్స్ట్ అవసరం</string>
+    <string name="department_id_required">డిపార్ట్‌మెంట్ ఐడి అవసరం</string>
+    <string name="past_year_required">గత సంవత్సరం అవసరం</string>
+    <string name="mandalvillage_required">మండలం లేదా గ్రామం పేరు అవసరం</string>
+    <string name="work_desc_required">పని వివరణ అవసరం</string>
+    <string name="current_year_required">ప్రస్తుత సంవత్సరం అవసరం</string>
+    <string name="current_work_desc_required">ప్రస్తుత పని వివరణ అవసరం</string>.
+    <string name="donation_amount_required">విరాళం మొత్తం అవసరం</string>
+    <string name="issue_required">అవసరమైన సమస్యను వివరించండి</string>
+    <string name="sarpanch_name_required">సర్పంచ్ పేరు అవసరం</string>
+    <string name="issue_reply_required">సమస్య ప్రత్యుత్తరం టెక్స్ట్ అవసరం</string>
 
 </resources>

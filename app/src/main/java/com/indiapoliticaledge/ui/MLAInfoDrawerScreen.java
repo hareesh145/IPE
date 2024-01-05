@@ -95,7 +95,7 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         int id = item.getItemId();
         if (id == R.id.manage_candidates) {
             fragment = new ManageCandidatesFragment();
-            setTitleText(getString(R.string.manage_candidates));
+            setTitleText(getString(R.string.manage_voters));
         } else if (id == R.id.notice_board_messages) {
             fragment = new NoticeBoardMessagesFragment();
             setTitleText(getString(R.string.notice_board_messages));

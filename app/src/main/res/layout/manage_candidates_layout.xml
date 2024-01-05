@@ -13,7 +13,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/_8sdp"
-            android:text="@string/total_donation"
+            android:text="@string/total_donation_amount"
             android:textColor="@color/black"
             android:textSize="@dimen/_10sdp"
             android:visibility="gone"
