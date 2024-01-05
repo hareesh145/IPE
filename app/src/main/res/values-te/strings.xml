@@ -380,5 +380,8 @@
     <string name="sarpanch_name_required">సర్పంచ్ పేరు అవసరం</string>
     <string name="issue_reply_required">సమస్య ప్రత్యుత్తరం టెక్స్ట్ అవసరం</string>
     <string name="no_latest_news">తాజా వార్తలు లేవు</string>
+    <string name="upload_party_logo">పార్టీ లోగోను అప్‌లోడ్ చేయండి</string>
+    <string name="select_mandal">మండల్ ఎంచుకోండి</string>
+    <string name="short_description">చిన్న వివరణ</string>
 
 </resources>

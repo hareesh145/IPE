@@ -396,7 +396,9 @@
 
     <string name="select_constituency_developement">Select Constituency Development</string>
     <string name="no_latest_news">No Latest News</string>
-
+    <string name="upload_party_logo">Upload Party Logo</string>
+    <string name="select_mandal">Select Mandal</string>
+    <string name="short_description">Short Description</string>
 
 
 </resources>

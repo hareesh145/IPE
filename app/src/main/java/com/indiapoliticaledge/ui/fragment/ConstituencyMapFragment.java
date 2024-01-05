@@ -24,8 +24,6 @@ import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyMapResponse;
-import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
-import com.indiapoliticaledge.ui.SuperAdminScreen;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 
@@ -62,7 +60,11 @@ public class ConstituencyMapFragment extends Fragment {
         Log.d("TAG", "onViewCreated: " + jsonObjectUser);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         mla_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
-        constituency_name_txt.setText(userInfo.constituency.constituencyName);
+        if (userInfo.constituency != null) {
+            constituency_name_txt.setText(userInfo.constituency.constituencyName);
+        } else {
+            constituency_name_txt.setText("");
+        }
         party_name_txt.setText(userInfo.getPartyName());
         mobile_number_txt.setText(userInfo.getMobileNumber());
 
@@ -74,12 +76,6 @@ public class ConstituencyMapFragment extends Fragment {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("userId", userInfo.userId);
         jsonObject.addProperty("constituencyId", userInfo.constituencyId);
-
-        if (requireActivity() instanceof SuperAdminScreen) {
-            ((SuperAdminScreen) requireActivity()).setTitleText("MLA Information");
-        } else if (requireActivity() instanceof MLAInfoDrawerScreen) {
-            ((MLAInfoDrawerScreen) requireActivity()).setTitleText("MLA Information");
-        }
         retrofitAPI.constituencyMap(jsonObject).enqueue(new Callback<ConstituencyMapResponse>() {
             @Override
             public void onResponse(Call<ConstituencyMapResponse> call, Response<ConstituencyMapResponse> response) {

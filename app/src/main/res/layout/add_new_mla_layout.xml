@@ -284,7 +284,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/party_logo"
                         android:layout_centerHorizontal="true"
-                        android:text="Upload Party Logo"
+                        android:text="@string/upload_party_logo"
                         android:textColor="@color/black" />
 
                 </RelativeLayout>

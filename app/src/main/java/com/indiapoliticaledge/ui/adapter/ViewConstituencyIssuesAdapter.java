@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.ItemConstituencyIssuesBinding;
 import com.indiapoliticaledge.network.responsemodel.IssuesList;
 
@@ -47,11 +48,11 @@ public class ViewConstituencyIssuesAdapter extends RecyclerView.Adapter<ViewCons
         }
 
         public void bind(IssuesList issuesList) {
-            binding.issuesTxt.setText("Issue : " + issuesList.describeIssue);
-            binding.mandalTxt.setText("Mandal : " + issuesList.mandalName);
-            binding.villageTxt.setText("Village : " + issuesList.villageName);
-            binding.createdDateTxt.setText("Create Date : " + issuesList.createdDate);
-            binding.sarpanchTxt.setText("Sarpanch Name : " + issuesList.sarpanchName);
+            binding.issuesTxt.setText(activity.getString(R.string.issues) + " : " + issuesList.describeIssue);
+            binding.mandalTxt.setText(activity.getString(R.string.mandal_name) + " : " + issuesList.mandalName);
+            binding.villageTxt.setText(activity.getString(R.string.village_name) + " : " + issuesList.villageName);
+            binding.createdDateTxt.setText(activity.getString(R.string.created_date) + " : " + issuesList.createdDate);
+            binding.sarpanchTxt.setText(activity.getString(R.string.sarpanch_name) + " : " + issuesList.sarpanchName);
         }
     }
 }

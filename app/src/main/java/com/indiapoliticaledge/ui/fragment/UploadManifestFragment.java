@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.indiapoliticaledge.R;
-import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 
 public class UploadManifestFragment extends Fragment {
 
@@ -24,8 +23,5 @@ public class UploadManifestFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Upload Manifest");
-
-
     }
 }

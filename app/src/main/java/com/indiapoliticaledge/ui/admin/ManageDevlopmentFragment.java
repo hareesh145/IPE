@@ -68,7 +68,11 @@ public class ManageDevlopmentFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     Log.d("TAG", "onResponse: " + response.body());
-                    binding.viewMlasList.setAdapter(new ConstituencyDevelopmentAdapter(requireActivity(), response.body().constituencyDepartmentsList));
+                    if (response.body().constituencyDepartmentsList != null && response.body().constituencyDepartmentsList.size() > 0) {
+                        binding.viewMlasList.setAdapter(new ConstituencyDevelopmentAdapter(requireActivity(), response.body().constituencyDepartmentsList));
+                    } else {
+
+                    }
                 }
 
             }

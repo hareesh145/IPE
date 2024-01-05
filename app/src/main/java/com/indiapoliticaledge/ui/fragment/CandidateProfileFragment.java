@@ -31,7 +31,7 @@ public class CandidateProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         View custom_title_view = view.findViewById(R.id.custom_title_view);
         TextView title_txt = custom_title_view.findViewById(R.id.title_txt);
-        title_txt.setText("Candidate Profile");
+        title_txt.setText(getString(R.string.candidate_profile));
     }
 
 

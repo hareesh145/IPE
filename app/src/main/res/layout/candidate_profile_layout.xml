@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <include-->
-<!--            android:id="@+id/custom_title_view"-->
-<!--            layout="@layout/custom_title_bar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize" />-->
+        <!--        <include-->
+        <!--            android:id="@+id/custom_title_view"-->
+        <!--            layout="@layout/custom_title_bar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="?attr/actionBarSize" />-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/add_new_mla_card"
@@ -86,7 +86,7 @@
                     android:background="@drawable/bg_semi_curved_grey"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
-                    android:hint="Select State"
+                    android:hint="@string/select_state"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
@@ -111,7 +111,7 @@
                     android:background="@drawable/bg_semi_curved_grey"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
-                    android:hint="Select District"
+                    android:hint="@string/select_district"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
@@ -136,7 +136,7 @@
                     android:background="@drawable/bg_semi_curved_grey"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
-                    android:hint="Select Mandal"
+                    android:hint="@string/select_mandal"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
@@ -160,7 +160,7 @@
                     android:background="@drawable/bg_semi_curved_grey"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
-                    android:hint="Select constituency"
+                    android:hint="@string/select_constituency"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"

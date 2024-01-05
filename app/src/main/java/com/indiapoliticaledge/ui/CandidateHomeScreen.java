@@ -28,6 +28,7 @@ import com.indiapoliticaledge.ui.fragment.AddTestimonialFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
+import com.indiapoliticaledge.ui.fragment.CandidateRatingFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
 import com.indiapoliticaledge.utils.Constants;
@@ -98,7 +99,7 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.upload_images_photos) {
             fragment = new UploadImagesFragment();
             setTitleText(getString(R.string.candidate_upload_images));
-        }else if (id == R.id.latest_news) {
+        } else if (id == R.id.latest_news) {
             fragment = new LatestNewsFragment();
             setTitleText(getString(R.string.latest_news));
         } else if (id == R.id.opinion_polling) {
@@ -116,6 +117,9 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.change_pwd) {
             fragment = new ChangePwdScreen();
             setTitleText(getString(R.string.change_password));
+        } else if (id == R.id.leader_rating) {
+            fragment = new CandidateRatingFragment();
+            setTitleText(getString(R.string.constituency_leader_rating));
         } else {
             fragment = new CandidateProfileFragment();
             setTitleText(getString(R.string.candidate_profile_info));

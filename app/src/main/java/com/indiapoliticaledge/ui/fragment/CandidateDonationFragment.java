@@ -19,8 +19,6 @@ import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.Donate;
 import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
-import com.indiapoliticaledge.ui.CandidateHomeScreen;
-import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 
@@ -50,11 +48,6 @@ public class CandidateDonationFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (requireActivity() instanceof MLAInfoDrawerScreen) {
-            ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Candidate Donations");
-        } else {
-            ((CandidateHomeScreen) requireActivity()).setTitleText("Candidate Donations");
-        }
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
