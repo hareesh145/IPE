@@ -83,7 +83,6 @@ public class ViewMLAListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(requireActivity(), AddNewMLAScreen.class);
-
                 intent.putExtra(USER_INFO, new Gson().toJson(userInfo));
                 startActivity(intent);
             }

@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class LoginScreen extends AppCompatActivity {
     Button submit_btn;
-    EditText phone_number;
+    EditText phone_number, password_text;
     private Locale myLocale;
 
     @Override
@@ -39,17 +39,24 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.login_screen);
         submit_btn = findViewById(R.id.submit_btn);
         phone_number = findViewById(R.id.phone_number);
+        password_text = findViewById(R.id.password_edit);
 
         submit_btn.setOnClickListener(v -> {
+            Utils.hideKeyboard(LoginScreen.this);
             if (phone_number.getText().toString().isEmpty()) {
                 Snackbar.make(phone_number, "Please Enter Phone Number", Snackbar.LENGTH_LONG).show();
                 return;
             }
+            if (password_text.getText().toString().isEmpty()) {
+                Snackbar.make(phone_number, "Please Enter Password", Snackbar.LENGTH_LONG).show();
+                return;
+            }
+
             try {
                 Utils.showProgessBar(this);
                 SignInModel signInModel = new SignInModel();
                 signInModel.setMobileNumber(phone_number.getText().toString());
-                signInModel.setPassword(phone_number.getText().toString());
+                signInModel.setPassword(password_text.getText().toString());
                 RetrofitClient retrofitClient = RetrofitClient.getInstance(this);
                 retrofitClient.getRetrofitAPI().signIn(signInModel).enqueue(new Callback<SignInResponseModel>() {
                     @Override
@@ -66,12 +73,15 @@ public class LoginScreen extends AppCompatActivity {
                                 } else if (signInResponseModel.userInfo.getRoleName().equals(Constants.ADMIN)) {
                                     navigateToAdmin(signInResponseModel);
                                 }
+                            } else {
+                                if (signInResponseModel.getErrorMessage() != null) {
+                                    Utils.showSnackBarAlert(submit_btn, signInResponseModel.getErrorMessage());
+                                }
                             }
                         } else {
-                            if (signInResponseModel != null) {
+                            if (signInResponseModel != null && signInResponseModel.getErrorMessage() != null) {
                                 Utils.showSnackBarAlert(submit_btn, signInResponseModel.getErrorMessage());
                             }
-
                         }
                     }
 
