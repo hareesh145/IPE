@@ -24,6 +24,6 @@ public class CandidateProfile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MLAInfoDrawerScreen) requireActivity()).setTitleText("Add New Candidate");
+        ((MLAInfoDrawerScreen) requireActivity()).setTitleText(getString(R.string.add_new_candidate));
     }
 }

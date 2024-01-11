@@ -1,6 +1,7 @@
 package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.CountriesList;
+import com.indiapoliticaledge.model.NoticeMessagesList;
 import com.indiapoliticaledge.model.UserInfo;
 
 import java.util.ArrayList;
@@ -16,6 +17,15 @@ public class SignInResponseModel {
 
     public String errorMessage;
 
+
+    public ArrayList<ConstituencyImage> constituencyImages;
+    public String constituencyCountry;
+    public ArrayList<MyAV> myAVs;
+    public ArrayList<NoticeMessagesList> noticeMessagesList;
+    public String constituencyDistrict;
+    public ArrayList<MyImage> myImages;
+    public ArrayList<ConstituencyAV> constituencyAVs;
+    public String constituencyState;
 
     public String getErrorMessage() {
         return errorMessage;

@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.model;
 
-public class NoticeMessagesList {
+import java.io.Serializable;
+
+public class NoticeMessagesList implements Serializable {
 
     public int noticeMessagesId;
     public int userId;

@@ -52,6 +52,12 @@
         <item>Saroornagar</item>
     </string-array>
 
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Telugu</item>
+    </string-array>
+
+
     <string-array name="constituencies">
         <item>Amberpet</item>
         <item>Khairatabad</item>
@@ -399,6 +405,14 @@
     <string name="upload_party_logo">Upload Party Logo</string>
     <string name="select_mandal">Select Mandal</string>
     <string name="short_description">Short Description</string>
+    <string name="select_language">Select Language</string>
 
+    <string-array name="languages">
+        <item>ENGLISH</item>
+        <item>TELUGU</item>
+        <!--<item>HINDI</item>-->
+    </string-array>
+
+    <string name="update_mla">Update MLA</string>
 
 </resources>

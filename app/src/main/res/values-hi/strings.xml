@@ -1,0 +1,408 @@
+<resources>
+    <string name="app_name">इंडियापॉलिटिकलएज</string>
+    <string name="change_password">पासवर्ड बदलें</string>
+    <string name="forgot_pwd_title">पासवर्ड भूल गए</string>
+    <string name="confirm_password">पासवर्ड की पुष्टि कीजिये</string>
+    <string name="current_password">वर्तमान पासवर्ड</string>
+    <string name="new_password">नया पासवर्ड</string>
+    <string name="old_password">पुराना पासवर्ड</string>
+    <string name="password">पासवर्ड</string>
+    <string name="forgot_pwd"><u>पासवर्ड भूल गए?</u></string>
+    <string name="enter_phone_number">फोन नंबर दर्ज</string>
+    <string name="new_user_signup">नए उपयोगकर्ता?? <u>साइन अप करें</u></string>
+    <string name="add_new_mla">नया विधायक जोड़ें</string>
+    <string name="start_date">आरंभ करने की तिथि</string>
+    <string name="end_date">अंतिम तिथि</string>
+    <string name="subscription_fees">सदस्यता शुल्क</string>
+    <string name="update_subscription">विधायकों की सदस्यता अद्यतन करें</string>
+    <string name="enter_amount">राशि डालें</string>
+    <string name="candidate_profile">मतदाता प्रोफ़ाइल</string>
+    <string name="date_of_birth">जन्म की तारीख</string>
+
+    <string-array name="states">
+        <item>तेलंगाना</item>
+        <item>आंध्र प्रदेश</item>
+    </string-array>
+    <string-array name="mlas_array">
+        <item>एमएलए का परीक्षण करें(10-12-2020 - 10-12-2027)</item>
+        <item>एमएलए का परीक्षण करें(10-12-2020 - 10-12-2027)</item>
+        <item>एमएलए का परीक्षण करें(10-12-2021 - 10-12-2028)</item>
+        <item>एमएलए का परीक्षण करें(10-12-2021 - 10-12-2028)</item>
+    </string-array>
+
+    <string-array name="districts">
+        <item>रंगा रेड्डी</item>
+        <item>नलगोंडा</item>
+        <item>हैदराबाद</item>
+        <item>वारंगल</item>
+    </string-array>
+    <string-array name="mandals">
+        <item>अंबरपेट</item>
+        <item>बंदलागुड़ा</item>
+        <item>हिमायतनगर</item>
+        <item>चित्याला</item>
+        <item>चांदूर</item>
+        <item>नारकेटपल्ली</item>
+        <item>बालापुर</item>
+        <item>महेश्वरम</item>
+        <item>सरूरनगर</item>
+        <item>खानापुर</item>
+        <item>नेक्कोंडा</item>
+        <item>सरूरनगर</item>
+    </string-array>
+
+    <string-array name="constituencies">
+        <item>अंबरपेट</item>
+        <item>खैरताबाद</item>
+        <item>देवरकोंडा</item>
+        <item>मिर्यालागुदा</item>
+        <item>नलगोंडा</item>
+        <item>वारंगल पश्चिम</item>
+        <item>वारंगल पूर्व</item>
+        <item>वरधानापेट</item>
+    </string-array>
+
+    <string name="opinion">राय</string>
+    <string name="opinion_hint">राय दर्ज करें</string>
+    <string name="constituency_details">निर्वाचन क्षेत्र का विवरण</string>
+    <string name="update">अद्यतन</string>
+    <string name="super_admin">सुपर एडमिन</string>
+    <string name="admin">व्यवस्थापक</string>
+    <string name="candidate">मतदाता</string>
+
+    <string name="navigation_drawer_open">नेविगेशन ड्रॉअर खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रॉअर बंद करें</string>
+    <string name="enter_donation">दान राशि दर्ज करें</string>
+    <string name="enter_purpose">दान का उद्देश्य दर्ज करें</string>
+    <string name="name">नाम</string>
+
+    <string-array name="testimonial_array">
+        <item>प्रशंसापत्र चुनें</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string name="state_enter">कृपया राज्य दर्ज करें</string>
+    <string name="country_enter">कृपया देश दर्ज करें</string>
+    <string name="city_enter">कृपया शहर दर्ज करें</string>
+    <string name="testimonial_enter">कृपया प्रशंसापत्र दर्ज करें</string>
+
+    <!--    Admin/MLA menu options    -->
+    <string name="admin_profile">व्यवस्थापक प्रोफ़ाइल</string>
+    <string name="notice_board_messages">नोटिस बोर्ड संदेश</string>
+    <string name="manage_candidates">उम्मीदवारों को प्रबंधित करें</string>
+    <string name="constituency_map">निर्वाचन क्षेत्र का नक्शा</string>
+    <string name="constituency_development">संविधान विकास</string>
+    <string name="manage_development">विकास प्रबंधित करें</string>
+    <string name="upload_manifesto">मेनिफेस्ट फ़ाइल अपलोड करें</string>
+    <string name="upload_av">एवी अपलोड करें</string>
+    <string name="view_candidate_donates">उम्मीदवार दान देखें</string>
+    <string name="constituency_issues">निर्वाचन क्षेत्र के मुद्दे</string>
+    <string name="view_candiates_rating">उम्मीदवारों की रेटिंग देखें</string>
+    <string name="latest_news">ताजा खबर</string>
+    <string name="opinion_polling">जनमत सर्वेक्षण</string>
+    <string name="upload_images">छवियाँ/फ़ोटो अपलोड करें</string>
+    <string name="testimonials">प्रशंसापत्र</string>
+    <string name="social_media_reviews">सोशल मीडिया समीक्षाएँ</string>
+    <string name="contact_us">संपर्क करें</string>
+    <string name="change_password_info">पासवर्ड बदलें</string>
+    <string name="logout">लॉग आउट</string>
+
+    <!--    Candidates menu options    -->
+    <string name="candidate_profile_info">मतदाता प्रोफ़ाइल</string>
+    <string name="candidate_constituency_map">निर्वाचन क्षेत्र का नक्शा</string>
+    <string name="candidate_constituency_development">संविधान विकास</string>
+    <string name="candidate_upload_av">एवी अपलोड करें</string>
+    <string name="candidate_donates">मतदाता दान करता है</string>
+    <string name="candidate_constituency_issues">निर्वाचन क्षेत्र के मुद्दे</string>
+    <string name="constituency_leader_rating">निर्वाचन क्षेत्र के नेता की रेटिंग</string>
+    <string name="candidate_latest_news">ताजा खबर</string>
+    <string name="candidate_opinion_polling">जनमत सर्वेक्षण</string>
+    <string name="candidate_upload_images">छवियाँ/फ़ोटो अपलोड करें</string>
+    <string name="candidate_testimonials">प्रशंसापत्र</string>
+    <string name="candidate_social_media_reviews">सोशल मीडिया समीक्षाएँ</string>
+    <string name="candidate_contact_us">संपर्क करें</string>
+    <string name="candidate_change_password">पासवर्ड बदलें</string>
+    <string name="candidate_logout">लॉग आउट</string>
+
+    <!--    add Candidates heading names    -->
+    <string name="first_name">पहला नाम</string>
+    <string name="last_name">उपनाम</string>
+    <string name="mobile_number">मोबाइल नंबर</string>
+    <string name="select_state">राज्य चुनें</string>
+    <string name="select_district">जिला चुनें</string>
+    <string name="select_constituency">निर्वाचन क्षेत्र का चयन करें</string>
+    <string name="education">शिक्षा</string>
+    <string name="mandal_name">मंडल नाम</string>
+    <string name="village_name">गाँव का नाम</string>
+    <string name="birth_place">जन्म स्थान</string>
+    <string name="voter_id">मतदाता पहचान संख्या</string>
+    <string name="submit">जमा करना</string>
+
+    <!--    Candidates Upload AV heading names    -->
+    <string name="candidate_av_upload">मतदाता एक ऑडियो/वीडियो फ़ाइल अपलोड करें (.mp4 जैसे प्रारूप)</string>
+    <string name="click_upload">अपलोड करने के लिए यहां क्लिक करें</string>
+
+    <!--    Candidates Donations heading names    -->
+    <string name="mla_name">विधायक का नाम</string>
+    <string name="party_name">दल का नाम</string>
+    <string name="mla_mobile_number">विधायक मोबाइल नंबर</string>
+    <string name="amount_for_donation">दान के लिए राशि दर्ज करें</string>
+    <string name="donation_purpose">दान का उद्देश्य</string>
+    <string name="donation_amount">दान राशि</string>
+    <string name="donation_date">दान की तिथि</string>
+    <string name="no_donation_data">कोई दान डेटा नहीं है. कृपया अपने नेता को कुछ राशि दान करें।</string>
+    <string name="total_donation_amount">कुल उम्मीदवारों की दान राशि</string>
+
+    <!--    Add Candidates Opinions heading names    -->
+    <string name="tell_your_opinions">अपनी राय बताएं</string>
+    <string name="agree">सहमत</string>
+    <string name="dis_agree">असहमत</string>
+
+    <!--    Candidates Dashboad Profile    -->
+    <string name="membership_profile">सदस्यता प्रोफ़ाइल</string>
+    <string name="candidate_manifesto">मतदाता घोषणापत्र</string>
+    <string name="my_images">मेरी छवियाँ</string>
+    <string name="my_videos">मेरे वीडियो</string>
+    <string name="constituency_images">निर्वाचन क्षेत्र गैलरी/छवियां</string>
+    <string name="constituency_videos">संविधान वीडियो</string>
+
+    <!--    Candidates Rating heading names    -->
+    <string name="no_candidate_rating_data">कोई उपयोगकर्ता रेटिंग डेटा नहीं है. कृपया अपने नेता को कुछ रेटिंग दें।</string>
+
+    <!--    Candidates Upload Photos names    -->
+    <string name="candidate_photo_upload">मतदाता एक फोटो/छवि फ़ाइल अपलोड करें (.jpg, .png जैसे प्रारूप)</string>
+
+    <!--    Raise Issues heading names    -->
+    <string name="raise_your_issue">अपने मुद्दे उठाएं</string>
+    <string name="pls_raise_your_issue">कृपया अपना मुद्दा उठाएं</string>
+    <string name="enter_mandal_name">मंडल नाम दर्ज करें</string>
+    <string name="enter_village_name">गांव का नाम दर्ज करें</string>
+    <string name="enter_sarpanch_name">सरपंच का नाम दर्ज करें</string>
+    <string name="enter_sarpanch_mobile">सरपंच का मोबाइल नंबर दर्ज करें</string>
+    <string name="update_raise_your_issue">अपडेट करें अपने मुद्दे उठाएं</string>
+
+    <!--    Manage Candidates heading names    -->
+    <string name="add_new_candidate">एक नया उम्मीदवार जोड़ें</string>
+    <string name="no_candidates_data">कोई उम्मीदवार डेटा नहीं है</string>
+
+    <!--    Upload Candidates data    -->
+    <string name="upload_candidates">सभी उम्मीदवारों की डेटा फ़ाइल अपलोड करें (प्रारूप .xlsx)</string>
+
+    <!--    Add Constituency Development heading names    -->
+    <string name="constituency_department">निर्वाचन क्षेत्र विभाग का चयन करें</string>
+    <string name="select_past_year">पिछले वर्ष का चयन करें</string>
+    <string name="mandal_village_name">मंडल का नाम या गांव का नाम</string>
+    <string name="pls_enter_amount">कृपया राशि दर्ज करें</string>
+    <string name="past_development">कृपया पिछले विकास का वर्णन करें</string>
+    <string name="select_new_year">नया साल चुनें</string>
+    <string name="current_development">कृपया वर्तमान विकास का वर्णन करें</string>
+    <string name="any_remarks">कृपया कोई टिप्पणी दर्ज करें</string>
+
+    <!--    Constituency Latest News heading names    -->
+    <string name="news_title">कृपया समाचार शीर्षक दर्ज करें</string>
+    <string name="news_description">कृपया समाचार विवरण दर्ज करें</string>
+    <string name="news_upload_file">फ़ाइल अपलोड करने के लिए यहां क्लिक करें (.jpg, .png जैसे प्रारूप)</string>
+
+    <!--    Add Opinion heading names    -->
+    <string name="constituency_name">निर्वाचन क्षेत्र का नाम</string>
+    <string name="district">ज़िला</string>
+    <string name="state">राज्य</string>
+    <string name="add_your_opinion">अपनी राय जोड़ें</string>
+    <string name="pls_mandal_name">कृपया मंडल नाम दर्ज करें</string>
+    <string name="pls_village_name">कृपया गांव का नाम दर्ज करें</string>
+    <string name="opinion_for_candidates">कृपया उम्मीदवारों के मतदान के लिए राय दर्ज करें</string>
+
+    <!--    View Constituency Development heading names    -->
+    <string name="select_year">वर्ष चुनें</string>
+    <string name="select_constituency_department">निर्वाचन क्षेत्र विकास विभाग का चयन करें</string>
+    <string name="no_constituency_department_data">कोई निर्वाचन क्षेत्र विभाग विकास डेटा नहीं है</string>
+
+    <!--    View Constituency Development heading names    -->
+    <string name="add_latest_news">नवीनतम समाचार जोड़ें</string>
+    <string name="from_date">की तिथि से</string>
+    <string name="to_date">तारीख तक</string>
+
+    <!--    Issues Replies heading names    -->
+    <string name="reply_to_issues">मुद्दों पर आपके उत्तर</string>
+    <string name="issue_reply">कृपया समस्या उत्तर दर्ज करें</string>
+    <string name="reply">उत्तर</string>
+    <string name="created_date">बनाई गई तिथियां</string>
+    <string name="no_issues_replies">कोई समस्या उत्तर डेटा नहीं है</string>
+
+    <!--    Manage Development heading names    -->
+    <string name="add_new_constituency_dev">एक नया निर्वाचन क्षेत्र विभाग विकास जोड़ें</string>
+    <string name="department_name">विभाग का नाम</string>
+    <string name="year">वर्ष</string>
+    <string name="mandal_or_village_name">मंडल/ग्राम का नाम</string>
+    <string name="description">विवरण</string>
+    <string name="work_amount">कार्य राशि</string>
+    <string name="current_year">चालू वर्ष</string>
+    <string name="remarks">टिप्पणी</string>
+    <string name="added_date">जोड़ी गई तारीख</string>
+    <string name="action">कार्रवाई</string>
+    <string name="no_department_development_data">कोई निर्वाचन क्षेत्र विभाग विकास डेटा नहीं है</string>
+
+    <!--    Manage Issues heading names    -->
+    <string name="add_new_issue">नया अंक जोड़ें</string>
+    <string name="issues">समस्याएँ</string>
+    <string name="sarpanch_name">सरपंच का नाम</string>
+    <string name="no_issues_data">कोई समस्या डेटा नहीं है</string>
+
+    <!--    Manage Opinions heading names    -->
+    <string name="add_new_opinion">नई राय जोड़ें</string>
+    <string name="no_opinions_data">कोई राय डेटा नहीं है</string>
+
+    <!--    Upload Constituency Dev and Manifesto upload file heading names    -->
+    <string name="upload_constituency_dev">निर्वाचन क्षेत्र विकास फ़ाइल अपलोड करें (प्रारूप .xlsx)</string>
+    <string name="upload_constituency_manifesto">निर्वाचन क्षेत्र घोषणापत्र फ़ाइल अपलोड करें (प्रारूप .pdf)</string>
+    <string name="upload_constituency_manifesto_text">निर्वाचन क्षेत्र घोषणापत्र फ़ाइल अपलोड की गई है। समीक्षा के लिए कृपया नीचे दी गई पीडीएफ फ़ाइल डाउनलोड करें।</string>
+    <string name="upload_mla_av_text">विधायकों की ऑडियो/वीडियो फ़ाइल अपलोड करें (.mp4 जैसे प्रारूप)</string>
+    <string name="upload_mla_images_text">विधायकों की तस्वीरें/छवियां फ़ाइल अपलोड करें (.jpg, .png जैसे प्रारूप)</string>
+
+    <!--    Social Media heading names    -->
+    <string name="social_media">सोशल मीडिया समीक्षाएँ</string>
+
+    <!--    Testimonials heading names    -->
+    <string name="enter_firstname">कृपया प्रथम नाम दर्ज करें</string>
+    <string name="enter_lastname">कृपया अंतिम नाम दर्ज करें</string>
+    <string name="select_rating">रेटिंग चुनें</string>
+    <string name="enter_state">कृपया राज्य दर्ज करें</string>
+    <string name="enter_country">कृपया देश दर्ज करें</string>
+    <string name="upload_testimonial_file">एक फ़ाइल अपलोड करें (.jpg, .png, .PDF, .mp4 जैसे प्रारूप)</string>
+    <string name="enter_city">कृपया शहर दर्ज करें</string>
+    <string name="enter_testimonials_text">कृपया प्रशंसापत्र पाठ दर्ज करें</string>
+    <string name="city">शहर</string>
+    <string name="rating">रेटिंग</string>
+    <string name="testimonials_text">प्रशंसापत्र पाठ</string>
+    <string name="mlacandidateuser">विधायक/उम्मीदवार उपयोगकर्ता</string>
+    <string name="image">छवि</string>
+
+    <!--    Noticeboard Messages heading names    -->
+    <string name="notice_title">कृपया सूचना शीर्षक दर्ज करें</string>
+    <string name="notice_message">कृपया सूचना संदेश दर्ज करें</string>
+    <string name="photoimage_file">एक फोटो/छवि अपलोड करें (.jpg, .png जैसे प्रारूप)</string>
+    <string name="show_date">दिनांक दिखाएं (YYYY-MM-DD)</string>
+    <string name="add_notice_message">एक नया नोटिस बोर्ड संदेश जोड़ें</string>
+    <string name="title">शीर्षक</string>
+    <string name="notice_message_text">संदेशों पर ध्यान दें</string>
+    <string name="search_notice_message">नोटिस बोर्ड संदेश खोजें</string>
+    <string name="no_notice_messages_data">कोई नोटिस बोर्ड संदेश डेटा नहीं है</string>
+
+    <!--    Admin Dashboard heading names    -->
+    <string name="constituency_voters_images">निर्वाचन क्षेत्र की मतदाता गैलरी/छवियां</string>
+    <string name="constituency_voters_videos">निर्वाचन क्षेत्र के मतदाता वीडियो</string>
+
+    <!--    All heading names    -->
+    <string name="mla_information">विधायक सूचना</string>
+    <string name="add_new_voter">एक नया मतदाता जोड़ें</string>
+    <string name="manage_voters">मतदाताओं को प्रबंधित करें</string>
+    <string name="view_voter_donations">मतदाता दान देखें</string>
+    <string name="view_voter_rating">मतदाता रेटिंग समीक्षाएँ देखें</string>
+    <string name="upload_manifesto_info">घोषणापत्र की जानकारी अपलोड करें</string>
+    <string name="upload_mla_av">विधायकों की ऑडियो/वीडियो फ़ाइल अपलोड करें</string>
+    <string name="upload_mla_image">विधायकों की तस्वीरें/गैलरी फ़ाइल अपलोड करें</string>
+    <string name="add_notice_board_message">एक नया नोटिस बोर्ड संदेश जोड़ें</string>
+    <string name="update_notice_board_message">नोटिस बोर्ड संदेश अद्यतन करें</string>
+    <string name="manage_notice_board_message">नोटिस बोर्ड संदेशों को प्रबंधित करें</string>
+    <string name="voter_profile">मतदाता प्रोफ़ाइल</string>
+    <string name="update_voter_info">मतदाता जानकारी अद्यतन करें</string>
+    <string name="upload_voter_images">मतदाता फोटो/गैलरी अपलोड करें</string>
+    <string name="voter_ratings">मतदाता रेटिंग</string>
+    <string name="voter_donations">मतदाता दान</string>
+    <string name="voter_opinions">मतदाता राय</string>
+    <string name="voter_raise_issues">मतदाता ने उठाया मुद्दा</string>
+    <string name="update_voter_raise_issues">अद्यतन मतदाता मुद्दा उठाएँ</string>
+    <string name="upload_voter_av_file">मतदाता ऑडियो/वीडियो फ़ाइल अपलोड करें</string>
+    <string name="view_constituency_map">निर्वाचन क्षेत्र का नक्शा</string>
+    <string name="add_constituency_dev">निर्वाचन क्षेत्र विकास जोड़ें</string>
+    <string name="update_constituency_dev">अद्यतन निर्वाचन क्षेत्र विकास</string>
+    <string name="manage_constituency_dev">निर्वाचन क्षेत्र के विकास का प्रबंधन करें</string>
+    <string name="constituency_dev">संविधान विकास</string>
+    <string name="add_constituency_news">एक नया निर्वाचन क्षेत्र नवीनतम समाचार जोड़ें</string>
+    <string name="update_constituency_news">अद्यतन निर्वाचन क्षेत्र नवीनतम समाचार</string>
+    <string name="constituency_news">निर्वाचन क्षेत्र नवीनतम समाचार</string>
+    <string name="add_constituency_opinion">एक नया निर्वाचन क्षेत्र राय जोड़ें</string>
+    <string name="update_constituency_opinion">निर्वाचन क्षेत्र की राय अद्यतन करें</string>
+    <string name="view_opinions">राय देखें</string>
+    <string name="manage_opinions">राय प्रबंधित करें</string>
+    <string name="view_constituency_issues">निर्वाचन क्षेत्र के मुद्दे उत्तर</string>
+    <string name="manage_constituency_issues">निर्वाचन क्षेत्र के मुद्दों का प्रबंधन करें</string>
+    <string name="add_testimonials">एक नया प्रशंसापत्र जोड़ें</string>
+    <string name="contact_us_text">संपर्क करें</string>
+
+    <!--    Success Messages heading names    -->
+    <string name="success_upload_manifesto">निर्वाचन क्षेत्र घोषणापत्र फ़ाइल सफलतापूर्वक अपलोड की गई</string>
+    <string name="success_upload_mla_av">विधायकों की ऑडियो/वीडियो फ़ाइल सफलतापूर्वक अपलोड की गई</string>
+    <string name="success_upload_mla_images">विधायकों की तस्वीरें/गैलरी फ़ाइल सफलतापूर्वक अपलोड की गई</string>
+    <string name="success_update_voter">मतदाता प्रोफ़ाइल को सफलतापूर्वक अद्यतन किया गया</string>
+    <string name="success_upload_voter_images">मतदाताओं की तस्वीरें/गैलरी फ़ाइल सफलतापूर्वक अपलोड की गई</string>
+    <string name="success_upload_voter_av">मतदाता ऑडियो/वीडियो फ़ाइल सफलतापूर्वक अपलोड की गई</string>
+    <string name="success_add_testimonial">प्रशंसापत्र संदेश सफलतापूर्वक जोड़ा गया</string>
+    <string name="success_notice_message">नोटिस बोर्ड संदेश अद्यतन करें</string>
+    <string name="success_password">नया पासवर्ड सफलतापूर्वक बदल दिया गया है</string>
+
+    <!--    Validation Messages heading names    -->
+    <string name="first_name_required">पहला नाम (की आवश्यकता</string>
+    <string name="last_name_required">अंतिम नाम आवश्यक है</string>
+    <string name="mobile_number_required">मोबाइल नंबर आवश्यक है</string>
+    <string name="constituency_name_required">निर्वाचन क्षेत्र का नाम आवश्यक है</string>
+    <string name="birth_place_required">जन्मस्थान आवश्यक</string>
+    <string name="mandal_name_required">मंडल नाम आवश्यक है</string>
+    <string name="village_name_required">ग्राम का नाम आवश्यक है</string>
+    <string name="voter_id_required">मतदाता पहचान संख्या आवश्यक है</string>
+    <string name="exists_mobile_number_required">यह मोबाइल नंबर पहले से मौजूद है. कृपया कोई अन्य मोबाइल नंबर दर्ज करें.</string>
+    <string name="current_password_required">वर्तमान पासवर्ड आवश्यक है</string>
+    <string name="new_password_required">नया पासवर्ड आवश्यक है</string>
+    <string name="confirm_password_required">नए पासवर्ड की पुष्टि करें</string>
+    <string name="did_not_match_required">नया पासवर्ड और वर्तमान पासवर्ड मेल नहीं खाते. कृपया सही कन्फर्म पासवर्ड दर्ज करें</string>
+    <string name="enter_current_password">कृपया सही वर्तमान पासवर्ड दर्ज करें</string>
+    <string name="notice_title_required">सूचना शीर्षक आवश्यक है</string>
+    <string name="notice_message_required">सूचना संदेश आवश्यक</string>
+    <string name="show_date_required">दिनांक दिखाएँ आवश्यक</string>
+    <string name="news_title_required">समाचार शीर्षक आवश्यक</string>
+    <string name="news_message_required">समाचार संदेश आवश्यक है</string>
+    <string name="opinion_required">राय संदेश आवश्यक है</string>
+    <string name="city_required">शहर का नाम आवश्यक है</string>
+    <string name="state_required">राज्य का नाम आवश्यक है</string>
+    <string name="country_required">देश का नाम आवश्यक है</string>
+    <string name="rating_required">रेटिंग आवश्यक है</string>
+    <string name="testimonial_text_required">प्रशंसापत्र पाठ आवश्यक</string>
+    <string name="department_id_required">विभाग आईडी आवश्यक है</string>
+    <string name="past_year_required">पिछले वर्ष की आवश्यकता है</string>
+    <string name="mandalvillage_required">मंडल या गांव का नाम आवश्यक है</string>
+    <string name="work_desc_required">कार्य विवरण आवश्यक है</string>
+    <string name="current_year_required">चालू वर्ष आवश्यक</string>
+    <string name="current_work_desc_required">वर्तमान कार्य विवरण आवश्यक है</string>
+    <string name="donation_amount_required">दान राशि आवश्यक है</string>
+    <string name="issue_required">समस्या का वर्णन करना आवश्यक है</string>
+    <string name="sarpanch_name_required">सरपंच का नाम आवश्यक है</string>
+    <string name="issue_reply_required">समस्या उत्तर पाठ आवश्यक है</string>
+    <string name="address_info">पता \n हैदराबाद, तेलंगाना, भारत 500038</string>
+    <string name="enter_candidate_opinion_polling">कृपया उम्मीदवार मतदान के लिए राय दर्ज करें</string>
+
+    <!--Constituency -->
+    <string-array name="constituency_array">
+        <item>कृषि एवं सहकारिता</item>
+        <item>पशुपालन एवं मत्स्य पालन</item>
+        <item>पिछड़ा वर्ग कल्याण</item>
+    </string-array>
+
+    <string name="select_constituency_developement">निर्वाचन क्षेत्र विकास का चयन करें</string>
+    <string name="no_latest_news">कोई नवीनतम समाचार नहीं</string>
+    <string name="upload_party_logo">पार्टी का लोगो अपलोड करें</string>
+    <string name="select_mandal">मंडल का चयन करें</string>
+    <string name="short_description">संक्षिप्त वर्णन</string>
+    <string name="select_language">भाषा चुने</string>
+
+    <string-array name="languages">
+        <item>अंग्रेज़ी</item>
+        <item>तेलुगु</item>
+        <!--<item>हिंदी</item>-->
+    </string-array>
+
+    <string name="update_mla">अद्यतन विधायक</string>
+
+</resources>

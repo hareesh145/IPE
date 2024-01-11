@@ -78,7 +78,7 @@ public class UpdateMLAScreen extends AppCompatActivity {
 
         View view = findViewById(R.id.custom_title_view);
         TextView title_txt = view.findViewById(R.id.title_txt);
-        title_txt.setText("Update MLA");
+        title_txt.setText(getText(R.string.update_mla));
 
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(this).getRetrofitAPI();
         JsonObject jsonObject = new JsonObject();

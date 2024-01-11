@@ -19,12 +19,20 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.databinding.MlaInfoFragmentBinding;
+import com.indiapoliticaledge.model.NoticeMessagesList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
+import com.indiapoliticaledge.ui.adapter.HomeNoticeAdapter;
 import com.indiapoliticaledge.utils.Constants;
+import com.indiapoliticaledge.utils.SharedPref;
 import com.indiapoliticaledge.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,13 +40,16 @@ import retrofit2.Response;
 
 public class MLAInfoFragment extends Fragment {
     private TextView mla_name, constituency_txt, start_date_value_txt, end_date_value_txt;
-    ImageView profile_image,party_icon;
-    WebView  map_section_map ;
+    ImageView profile_image, party_icon;
+    WebView map_section_map;
+
+    MlaInfoFragmentBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.mla_info_fragment, container, false);
+        binding = MlaInfoFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -62,6 +73,10 @@ public class MLAInfoFragment extends Fragment {
                         UserInfo userInfo = viewMemberResponse.getUserInfo();
                         if (userInfo != null) {
                             bindUserInfo(viewMemberResponse);
+
+                            String noticeMessages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.NOTICE_MESSAGES);
+                            List<NoticeMessagesList> noticeMessagesLists = Arrays.asList(new Gson().fromJson(noticeMessages, NoticeMessagesList[].class));
+                            binding.noticeMessagesList.setAdapter(new HomeNoticeAdapter(requireActivity(),noticeMessagesLists));
                         }
                     }
                 }

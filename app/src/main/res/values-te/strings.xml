@@ -384,4 +384,9 @@
     <string name="select_mandal">మండల్ ఎంచుకోండి</string>
     <string name="short_description">చిన్న వివరణ</string>
 
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Telugu</item>
+    </string-array>
+    <string name="select_language">Select Language</string>
 </resources>

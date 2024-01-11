@@ -22,29 +22,29 @@
             android:background="@color/white"
             android:padding="@dimen/_8sdp">
 
-        <ImageView
-            android:id="@+id/raise_issues_card_img"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/raise_your_hand"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/raise_issues_card_img"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@drawable/raise_your_hand"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/raise_your_issue"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_60sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/bg_semi_curved_grey"
-            android:hint="Please Raise Your Issue"
-            android:paddingStart="@dimen/_6sdp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/greyTeal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/raise_issues_card_img" />
+            <EditText
+                android:id="@+id/raise_your_issue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/bg_semi_curved_grey"
+                android:hint="@string/pls_raise_your_issue"
+                android:paddingStart="@dimen/_6sdp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/greyTeal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/raise_issues_card_img" />
 
             <EditText
                 android:id="@+id/mandal_name"
@@ -53,7 +53,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/bg_semi_curved_grey"
                 android:hint="@string/enter_mandal_name"
-                android:inputType="text"
+                android:inputType="none"
                 android:paddingStart="@dimen/_5sdp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/greyTeal"

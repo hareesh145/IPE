@@ -1,5 +1,6 @@
 package com.indiapoliticaledge.ui;
 
+import static com.indiapoliticaledge.utils.Constants.NOTICE_MESSAGES;
 import static com.indiapoliticaledge.utils.Constants.USER_INFO;
 
 import android.content.Intent;
@@ -20,6 +21,7 @@ import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.requestmodel.SignInModel;
 import com.indiapoliticaledge.network.responsemodel.SignInResponseModel;
 import com.indiapoliticaledge.utils.Constants;
+import com.indiapoliticaledge.utils.SharedPref;
 import com.indiapoliticaledge.utils.Utils;
 
 import java.util.Locale;
@@ -88,11 +90,12 @@ public class LoginScreen extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<SignInResponseModel> call, Throwable t) {
                         Utils.hideProgessBar();
-                        navigateHome(null);
+                        //navigateHome(null);
+                        Utils.showSnackBarAlert(submit_btn, "We're sorry ! The server has encountered an internal error !!! Please try again later.");
                     }
                 });
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         });
 
@@ -107,9 +110,12 @@ public class LoginScreen extends AppCompatActivity {
             conf.locale = myLocale;
             res.updateConfiguration(conf, dm);
         }
+        SharedPref.getmSharedPrefInstance(this).saveString(NOTICE_MESSAGES, new Gson().toJson(signInResponseModel.noticeMessagesList));
         Intent refresh = new Intent(this, MLAInfoDrawerScreen.class);
-        refresh.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
-        startActivity(refresh);
+        if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
+            refresh.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
+            startActivity(refresh);
+        }
         finish();
     }
 
@@ -123,15 +129,19 @@ public class LoginScreen extends AppCompatActivity {
             res.updateConfiguration(conf, dm);
         }
         Intent intent = new Intent(LoginScreen.this, CandidateHomeScreen.class);
-        intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
-        startActivity(intent);
+        if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
+            intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
+            startActivity(intent);
+        }
         finish();
     }
 
     private void navigateHome(SignInResponseModel signInResponseModel) {
         Intent intent = new Intent(LoginScreen.this, SuperAdminScreen.class);
-        intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
-        startActivity(intent);
+        if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
+            intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));
+            startActivity(intent);
+        }
         finish();
     }
 }

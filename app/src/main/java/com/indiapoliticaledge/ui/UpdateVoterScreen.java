@@ -2,7 +2,6 @@ package com.indiapoliticaledge.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,20 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.github.dhaval2404.imagepicker.constant.ImageProvider;
 import com.github.dhaval2404.imagepicker.listener.DismissListener;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.ConstituencyList;
@@ -39,6 +31,7 @@ import com.indiapoliticaledge.network.responsemodel.DistrictResponse;
 import com.indiapoliticaledge.network.responsemodel.DistrictsList;
 import com.indiapoliticaledge.network.responsemodel.StatesList;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
+import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 import com.skydoves.powerspinner.OnSpinnerItemSelectedListener;
@@ -48,6 +41,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -55,71 +50,60 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddNewMLAScreen extends AppCompatActivity {
-    private static final int PICK_IMAGE_REQUEST_CODE = 123;
-    private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 141;
-    private static final int PROFILE_IMAGE_REQ_CODE = 123;
-    private static final int PARTY_IMAGE_REQ_CODE = 1234;
+public class UpdateVoterScreen extends AppCompatActivity {
     Button submit_btn;
-    EditText first_name_et, last_name_et, phone_number, party_edit;
+    EditText first_name_et, last_name_et, phone_number;
     TextView start_date, end_date;
     PowerSpinnerView state_drop_down, district_drop_down, mandal_drop_down, constituency_drop_down;
     RetrofitAPI retrofitAPI;
-    private UserInfo userInfo;
-
+    private static final int PICK_IMAGE_REQUEST_CODE = 123;
+    private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 141;
+    private CircleImageView img;
+    private static final int PROFILE_IMAGE_REQ_CODE = 123;
+    private Uri mProfileUri;
     StatesResponse statesResponse;
     DistrictResponse districtResponse;
 
     ConstituencyResponse constituencyResponse;
 
     String constituencyName;
-    private Uri mProfileUri;
-    CircleImageView profileImage;
-
-    ImageView party_logo;
-    RelativeLayout upload_party_logo;
-    private Uri mPartyUri;
-
-    boolean isProfileClicked = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_new_mla_layout);
+        setContentView(R.layout.update_candidate_profile_layout);
         retrofitAPI = RetrofitClient.getInstance(this).getRetrofitAPI();
         initFields();
+
         View view = findViewById(R.id.custom_title_view);
-        TextView titleTxtzview = view.findViewById(R.id.title_txt);
-        titleTxtzview.setText("Add MLA");
-        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
-        userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        TextView title_txt = view.findViewById(R.id.title_txt);
+        title_txt.setText(getText(R.string.update_voter_info));
 
+        RetrofitAPI retrofitAPI = RetrofitClient.getInstance(this).getRetrofitAPI();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userId", getIntent().getIntExtra("user_id", -1));
+        retrofitAPI.getMember(jsonObject).enqueue(new Callback<ViewMemberResponse>() {
+            @Override
+            public void onResponse(Call<ViewMemberResponse> call, Response<ViewMemberResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    ViewMemberResponse viewMemberResponse = response.body();
+                    if (viewMemberResponse != null && viewMemberResponse.successCode.equals("200")) {
+                        UserInfo userInfo = viewMemberResponse.getUserInfo();
+                        if (userInfo != null) {
+                            bindUserInfo(viewMemberResponse);
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ViewMemberResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+            }
+        });
         submit_btn = findViewById(R.id.submit_btn);
-        profileImage = findViewById(R.id.img);
-        upload_party_logo = findViewById(R.id.upload_party_logo);
-        party_logo = findViewById(R.id.party_logo);
-        findViewById(R.id.add_remove_icon).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isProfileClicked = true;
-                pickProfileImage(PROFILE_IMAGE_REQ_CODE);
-            }
-        });
-
-        upload_party_logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isProfileClicked = false;
-                pickProfileImage(PARTY_IMAGE_REQ_CODE);
-            }
-        });
-        findViewById(R.id.img).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isProfileClicked = true;
-                pickProfileImage(PROFILE_IMAGE_REQ_CODE);
-            }
-        });
         submit_btn.setOnClickListener(v -> {
 
             if (first_name_et.getText().toString().isEmpty()) {
@@ -134,10 +118,7 @@ public class AddNewMLAScreen extends AppCompatActivity {
                 Utils.showSnackBar(phone_number, "Please Enter Mobile Number");
                 return;
             }
-            if (party_edit.getText().toString().isEmpty()) {
-                Utils.showSnackBar(party_edit, "Please Enter Party Name");
-                return;
-            }
+
 
             Utils.showProgessBar(this);
             Member member = new Member();
@@ -145,17 +126,16 @@ public class AddNewMLAScreen extends AppCompatActivity {
             member.setLastName(last_name_et.getText().toString());
             member.setMobileNumber(phone_number.getText().toString());
             member.setActiveFlag("Y");
-            member.setRoleName(Constants.INTERNAL);
-            member.setPartyName(party_edit.getText().toString());
-            member.setStartDate(start_date.getText().toString());
-            member.setConstituencyId(getConstituencyId(constituency_drop_down.getText().toString()));
+            member.setRoleName(Constants.CANDIDATE);
+
 
             retrofitAPI.addMember(member).enqueue(new Callback<AddMemberResponse>() {
                 @Override
                 public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null && response.body().successCode.equals("200")) {
-                            Toast.makeText(AddNewMLAScreen.this, "Profile Created", Toast.LENGTH_SHORT).show();
+
+                            Utils.showSnackBar(submit_btn, "Updated Successfully");
                         }
                     }
                 }
@@ -165,10 +145,8 @@ public class AddNewMLAScreen extends AppCompatActivity {
 
                 }
             });
-            startActivity(new Intent(AddNewMLAScreen.this, SubscriptionFeesScreen.class));
+            startActivity(new Intent(UpdateVoterScreen.this, SubscriptionFeesScreen.class));
         });
-
-        getStates();
 
         state_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
                 (oldIndex, oldItem, newIndex, newItem) -> {
@@ -199,6 +177,50 @@ public class AddNewMLAScreen extends AppCompatActivity {
                         constituencyName = "";
                     }
                 });
+
+
+    }
+
+    private void bindUserInfo(ViewMemberResponse viewMemberResponse) {
+        UserInfo userInfo = viewMemberResponse.userInfo;
+        first_name_et.setText(userInfo.getFirstName());
+        last_name_et.setText(userInfo.getLastName());
+        phone_number.setText(userInfo.getMobileNumber());
+
+        Glide.with(this).load(viewMemberResponse.userInfo.profilePhotoUrl).placeholder(R.drawable.ic_user_logo).into(img);
+
+        getStates();
+    }
+
+    private void initFields() {
+        first_name_et = findViewById(R.id.first_name_et);
+        last_name_et = findViewById(R.id.last_name_et);
+        phone_number = findViewById(R.id.phone_number);
+        state_drop_down = findViewById(R.id.state_drop_down);
+        district_drop_down = findViewById(R.id.district_drop_down);
+        mandal_drop_down = findViewById(R.id.mandal_drop_down);
+        constituency_drop_down = findViewById(R.id.constituency_drop_down);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            // Uri object will not be null for RESULT_OK
+            Uri uri = data.getData();
+
+            switch (requestCode) {
+                case PROFILE_IMAGE_REQ_CODE:
+                    mProfileUri = uri;
+                    Glide.with(this).load(uri).into(img);
+                    break;
+
+            }
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private int getStateId(String newItem) {
@@ -229,20 +251,6 @@ public class AddNewMLAScreen extends AppCompatActivity {
             }
         }
         return -1;
-    }
-
-    private void initFields() {
-        first_name_et = findViewById(R.id.first_name_et);
-        last_name_et = findViewById(R.id.last_name_et);
-        phone_number = findViewById(R.id.phone_number);
-        start_date = findViewById(R.id.start_date);
-        end_date = findViewById(R.id.end_date);
-        state_drop_down = findViewById(R.id.state_drop_down);
-        district_drop_down = findViewById(R.id.district_drop_down);
-        mandal_drop_down = findViewById(R.id.mandal_drop_down);
-        constituency_drop_down = findViewById(R.id.constituency_drop_down);
-        party_edit = findViewById(R.id.party_edit);
-
     }
 
     private void getStates() {
@@ -329,91 +337,5 @@ public class AddNewMLAScreen extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void pickProfileImage(int requestCode) {
-        ImagePicker.with(this)
-                .cropSquare()
-                .setImageProviderInterceptor(new Function1<ImageProvider, Unit>() {
-                    @Override
-                    public Unit invoke(ImageProvider imageProvider) {
-                        Log.d("ImagePicker", "Selected ImageProvider: " + imageProvider.toString());
-                        return null;
-                    }
-                }).setDismissListener(new DismissListener() {
-                    @Override
-                    public void onDismiss() {
-                        Log.d("ImagePicker", "Dialog Dismiss");
-                    }
-                })
-                // Image resolution will be less than 512 x 512
-                .maxResultSize(200, 200)
-                .start(requestCode);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            // Uri object will not be null for RESULT_OK
-            Uri uri = data.getData();
-
-            switch (requestCode) {
-                case PROFILE_IMAGE_REQ_CODE:
-                    mProfileUri = uri;
-                    Glide.with(this).load(uri).into(profileImage);
-                    break;
-                case PARTY_IMAGE_REQ_CODE:
-                    mPartyUri = uri;
-                    Glide.with(this).load(uri).into(party_logo);
-                    break;
-
-            }
-        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case READ_EXTERNAL_STORAGE_REQUEST_CODE: {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (isProfileClicked) {
-                        pickProfileImage(PROFILE_IMAGE_REQ_CODE);
-                    } else {
-                        pickProfileImage(PARTY_IMAGE_REQ_CODE);
-                    }
-                }
-                break;
-            }
-        }
-    }
-
-    private File uriToImageFile(Uri uri) {
-        String[] filePathColumn = new String[]{MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String filePath = cursor.getString(columnIndex);
-                cursor.close();
-                return new File(filePath);
-            }
-            cursor.close();
-        }
-        return null;
-    }
-
-    private Bitmap uriToBitmap(Uri uri) {
-        try {
-            return MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-        } catch (IOException e) {
-            return null;
-        }
     }
 }
