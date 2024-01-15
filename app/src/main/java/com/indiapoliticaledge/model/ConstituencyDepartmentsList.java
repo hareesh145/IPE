@@ -20,6 +20,12 @@ public class ConstituencyDepartmentsList implements Serializable {
     public Departments departments;
 
 
+    public int currentYear;
+    public String currentWorkDescription;
+    public double currentWorkAmount;
+    public String currentWorkLocation;
+
+
     public int getConstituencyDepartmentId() {
         return constituencyDepartmentId;
     }

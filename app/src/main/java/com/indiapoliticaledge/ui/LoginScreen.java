@@ -1,5 +1,9 @@
 package com.indiapoliticaledge.ui;
 
+import static com.indiapoliticaledge.utils.Constants.CONSTITUENCY_IMAGES;
+import static com.indiapoliticaledge.utils.Constants.CONSTITUENCY_VIDEOS;
+import static com.indiapoliticaledge.utils.Constants.MY_IMAGES;
+import static com.indiapoliticaledge.utils.Constants.MY_VIDEOS;
 import static com.indiapoliticaledge.utils.Constants.NOTICE_MESSAGES;
 import static com.indiapoliticaledge.utils.Constants.USER_INFO;
 
@@ -111,6 +115,11 @@ public class LoginScreen extends AppCompatActivity {
             res.updateConfiguration(conf, dm);
         }
         SharedPref.getmSharedPrefInstance(this).saveString(NOTICE_MESSAGES, new Gson().toJson(signInResponseModel.noticeMessagesList));
+        SharedPref.getmSharedPrefInstance(this).saveString(MY_IMAGES, new Gson().toJson(signInResponseModel.myImages));
+        SharedPref.getmSharedPrefInstance(this).saveString(MY_VIDEOS, new Gson().toJson(signInResponseModel.myAVs));
+        SharedPref.getmSharedPrefInstance(this).saveString(CONSTITUENCY_IMAGES, new Gson().toJson(signInResponseModel.constituencyImages));
+        SharedPref.getmSharedPrefInstance(this).saveString(CONSTITUENCY_VIDEOS, new Gson().toJson(signInResponseModel.constituencyAVs));
+
         Intent refresh = new Intent(this, MLAInfoDrawerScreen.class);
         if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
             refresh.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));

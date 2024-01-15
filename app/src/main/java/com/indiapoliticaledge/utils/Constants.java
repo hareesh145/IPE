@@ -10,4 +10,10 @@ public class Constants {
     public static final String USER_INFO = "user_info";
 
     public static final String NOTICE_MESSAGES = "NOTICE_MESSAGES";
+
+    public static final String MY_IMAGES = "MY_IMAGES";
+    public static final String MY_VIDEOS = "MY_VIDEOS";
+    public static final String CONSTITUENCY_IMAGES = "CONSTITUENCY_IMAGES";
+    public static final String CONSTITUENCY_VIDEOS = "CONSTITUENCY_VIDEOS";
+
 }

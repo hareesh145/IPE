@@ -74,6 +74,15 @@ public class SignInResponseModel {
                 ", success=" + success +
                 ", countriesList=" + countriesList +
                 ", successCode='" + successCode + '\'' +
+                ", errorMessage='" + errorMessage + '\'' +
+                ", constituencyImages=" + constituencyImages +
+                ", constituencyCountry='" + constituencyCountry + '\'' +
+                ", myAVs=" + myAVs +
+                ", noticeMessagesList=" + noticeMessagesList +
+                ", constituencyDistrict='" + constituencyDistrict + '\'' +
+                ", myImages=" + myImages +
+                ", constituencyAVs=" + constituencyAVs +
+                ", constituencyState='" + constituencyState + '\'' +
                 '}';
     }
 }

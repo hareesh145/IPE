@@ -14,10 +14,12 @@ import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.databinding.ConstutiencyDevFragmentBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
-import com.indiapoliticaledge.network.responsemodel.FilteredVCDByYearsResponse;
+import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
+import com.indiapoliticaledge.ui.adapter.ViewConstituencyDevAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 
@@ -28,11 +30,13 @@ import retrofit2.Response;
 public class ConstituencyDevFragment extends Fragment {
     private static final String TAG = ConstituencyDevFragment.class.getSimpleName();
     private TextView no_data_found_txt;
+    ConstutiencyDevFragmentBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.constutiency_dev_fragment, container, false);
+        binding = ConstutiencyDevFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
 
@@ -45,25 +49,27 @@ public class ConstituencyDevFragment extends Fragment {
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("constituencyId", userInfo.getConstituencyId());
-        jsonObject.addProperty("year", 2022);
-        jsonObject.addProperty("filterYear", 2023);
+        jsonObject.addProperty("userId", userInfo.getUserId());
+        jsonObject.addProperty("constituencyId", userInfo.constituencyId);
         jsonObject.addProperty("deleteFlag", "N");
         Utils.showProgessBar(requireContext());
-        retrofitAPI.viewConstituencyDevByYears(jsonObject).enqueue(new Callback<FilteredVCDByYearsResponse>() {
+        retrofitAPI.viewConstituencyDevelopment(jsonObject).enqueue(new Callback<VDevelopmentResponse>() {
             @Override
-            public void onResponse(Call<FilteredVCDByYearsResponse> call, Response<FilteredVCDByYearsResponse> response) {
+            public void onResponse(Call<VDevelopmentResponse> call, Response<VDevelopmentResponse> response) {
                 try {
                     Utils.hideProgessBar();
                     Log.d(TAG, "onResponse: " + response.body());
-                    no_data_found_txt.setVisibility(View.VISIBLE);
+                    if (response.body().constituencyDepartmentsList != null && response.body().constituencyDepartmentsList.size() > 0) {
+                        binding.constituencyDevList.setAdapter(new ViewConstituencyDevAdapter(requireActivity(), response.body().constituencyDepartmentsList));
+                    }
+//                    no_data_found_txt.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void onFailure(Call<FilteredVCDByYearsResponse> call, Throwable t) {
+            public void onFailure(Call<VDevelopmentResponse> call, Throwable t) {
                 Utils.hideProgessBar();
             }
         });

@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
-import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
+import com.indiapoliticaledge.ui.fragment.MLAInfoFragment;
 
 import java.util.ArrayList;
 
@@ -86,32 +86,28 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
             party_icon = itemView.findViewById(R.id.party_icon);
 
             itemView.findViewById(R.id.mla_name).setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
-                Log.d("TAG", "userInfo " + userInfo);
-                intent.putExtra("user_id", userInfo.getUserId());
-                activity.startActivity(intent);
+                if (activity instanceof SuperAdminScreen) {
+                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                    ((SuperAdminScreen) activity).createFragment(new MLAInfoFragment(), new Gson().toJson(userInfo));
+                }
             });
             itemView.findViewById(R.id.profile_image).setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
-                Log.d("TAG", "userInfo " + userInfo);
-                intent.putExtra("user_id", userInfo.getUserId());
-                activity.startActivity(intent);
+                if (activity instanceof SuperAdminScreen) {
+                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                    ((SuperAdminScreen) activity).createFragment(new MLAInfoFragment(), new Gson().toJson(userInfo));
+                }
             });
             itemView.findViewById(R.id.party_icon).setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
-                Log.d("TAG", "userInfo " + userInfo);
-                intent.putExtra("user_id", userInfo.getUserId());
-                activity.startActivity(intent);
+                if (activity instanceof SuperAdminScreen) {
+                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                    ((SuperAdminScreen) activity).createFragment(new MLAInfoFragment(), new Gson().toJson(userInfo));
+                }
             });
             itemView.findViewById(R.id.constituency_name_txt).setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
-                Log.d("TAG", "userInfo " + userInfo);
-                intent.putExtra("user_id", userInfo.getUserId());
-                activity.startActivity(intent);
+                if (activity instanceof SuperAdminScreen) {
+                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                    ((SuperAdminScreen) activity).createFragment(new MLAInfoFragment(), new Gson().toJson(userInfo));
+                }
             });
             itemView.findViewById(R.id.edit_icon).setOnClickListener(v -> {
                 Intent intent = new Intent(activity, UpdateMLAScreen.class);
@@ -141,9 +137,9 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
             dashboard_icon.setOnClickListener(v -> {
                 UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
                 if (activity instanceof SuperAdminScreen) {
-                    ((SuperAdminScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
+                    ((SuperAdminScreen) activity).createFragment(new MLAInfoFragment(), new Gson().toJson(userInfo));
                 } else {
-                    ((MLAInfoDrawerScreen) activity).createFragment(new ConstituencyMapFragment(), new Gson().toJson(userInfo));
+                    ((MLAInfoDrawerScreen) activity).createFragment(new MLAInfoFragment(), new Gson().toJson(userInfo));
                 }
             });
         }

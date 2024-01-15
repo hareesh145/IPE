@@ -38,7 +38,6 @@
         <activity android:name=".ui.ManageMLASubscription" />
         <activity android:name=".ui.UpdateMLAScreen" />
         <activity android:name=".ui.UpdateVoterScreen" />
-<!--        <activity android:name=".ui.ChangePwdScreen" />-->
         <activity android:name=".ui.OptionsScreen" />
         <activity android:name=".ui.MLAInfoDrawerScreen" />
         <activity android:name=".ui.CandidateHomeScreen" />

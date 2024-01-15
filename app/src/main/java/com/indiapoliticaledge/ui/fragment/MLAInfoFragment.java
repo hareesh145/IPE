@@ -1,6 +1,7 @@
 package com.indiapoliticaledge.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +21,21 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.MlaInfoFragmentBinding;
+import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.NoticeMessagesList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
+import com.indiapoliticaledge.network.responsemodel.ConstituencyImage;
+import com.indiapoliticaledge.network.responsemodel.MyImage;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
+import com.indiapoliticaledge.ui.adapter.ConstituencyImagesAdapter;
 import com.indiapoliticaledge.ui.adapter.HomeNoticeAdapter;
+import com.indiapoliticaledge.ui.adapter.MyImagesAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.SharedPref;
 import com.indiapoliticaledge.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,8 +80,27 @@ public class MLAInfoFragment extends Fragment {
                             bindUserInfo(viewMemberResponse);
 
                             String noticeMessages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.NOTICE_MESSAGES);
-                            List<NoticeMessagesList> noticeMessagesLists = Arrays.asList(new Gson().fromJson(noticeMessages, NoticeMessagesList[].class));
-                            binding.noticeMessagesList.setAdapter(new HomeNoticeAdapter(requireActivity(),noticeMessagesLists));
+                            if (noticeMessages != null && !noticeMessages.equals("")) {
+                                List<NoticeMessagesList> noticeMessagesLists = Arrays.asList(new Gson().fromJson(noticeMessages, NoticeMessagesList[].class));
+                                binding.noticeMessagesList.setAdapter(new HomeNoticeAdapter(requireActivity(), noticeMessagesLists));
+                            } else {
+                                getAllNoticeMessages(userInfo.getUserId());
+                            }
+
+                            String myImages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.MY_IMAGES);
+                            Log.d("TAG", "onResponse: "+myImages);
+                            if (myImages != null && !myImages.equals("")) {
+                                List<MyImage> myImageList = Arrays.asList(new Gson().fromJson(myImages, MyImage[].class));
+                                binding.myImagesList.setAdapter(new MyImagesAdapter(requireActivity(), myImageList));
+                            }
+
+                            String constituencyImages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.CONSTITUENCY_IMAGES);
+                            Log.d("TAG", "onResponse constituencyImages: "+constituencyImages);
+                            if (constituencyImages != null && !constituencyImages.equals("")) {
+                                List<ConstituencyImage> myImageList = Arrays.asList(new Gson().fromJson(constituencyImages, ConstituencyImage[].class));
+                                binding.constituencyImagesList.setAdapter(new ConstituencyImagesAdapter(requireActivity(), myImageList));
+                            }
+
                         }
                     }
                 }
@@ -85,6 +109,28 @@ public class MLAInfoFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ViewMemberResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+            }
+        });
+    }
+
+    private void getAllNoticeMessages(int userId) {
+        Utils.showProgessBar(requireActivity());
+        RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("userId", userId);
+        retrofitAPI.getAllNoticeBoardMessages(jsonObject).enqueue(new Callback<NoticeBoardResponse>() {
+            @Override
+            public void onResponse(Call<NoticeBoardResponse> call, Response<NoticeBoardResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    binding.noticeMessagesList.setAdapter(new HomeNoticeAdapter(requireActivity(), response.body().noticeMessagesList));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<NoticeBoardResponse> call, Throwable t) {
                 Utils.hideProgessBar();
             }
         });

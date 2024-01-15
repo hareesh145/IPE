@@ -8,12 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
@@ -38,11 +36,11 @@ import com.indiapoliticaledge.ui.fragment.ManageCandidatesFragment;
 import com.indiapoliticaledge.ui.fragment.UploadManifestFragment;
 import com.indiapoliticaledge.utils.Constants;
 
-public class MLAInfoDrawerScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView toolbar_title;
     Fragment fragment = null;
-    FragmentManager fragmentManager = getSupportFragmentManager();
+
     private DrawerLayout drawer;
 
     @Override
@@ -83,12 +81,6 @@ public class MLAInfoDrawerScreen extends AppCompatActivity implements Navigation
         createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
     }
 
-    public void createFragment(Fragment fragment, String userInfo) {
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.USER_INFO, userInfo);
-        fragment.setArguments(bundle);
-        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
