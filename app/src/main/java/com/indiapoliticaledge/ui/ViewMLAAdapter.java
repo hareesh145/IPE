@@ -18,15 +18,18 @@ import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.ui.fragment.MLAInfoFragment;
+import com.indiapoliticaledge.ui.superadmin.ViewMLAListFragment;
 
 import java.util.ArrayList;
 
 public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAHolder> {
 
+    private ViewMLAListFragment fragment;
     private final Activity activity;
     private final ArrayList<UserInfo> usersList;
 
-    public ViewMLAAdapter(Activity activity, ArrayList<UserInfo> usersList) {
+    public ViewMLAAdapter(ViewMLAListFragment fragment, Activity activity, ArrayList<UserInfo> usersList) {
+        this.fragment = fragment;
         this.activity = activity;
         this.usersList = usersList;
     }
@@ -121,10 +124,13 @@ public class ViewMLAAdapter extends RecyclerView.Adapter<ViewMLAAdapter.ViewMLAH
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
                 builder1.setMessage("Are you sure you want to delete?");
                 builder1.setCancelable(true);
+                builder1.setPositiveButton("Yes", (dialog, which) -> {
+                    UserInfo userInfo = usersList.get(getAbsoluteAdapterPosition());
+                    userInfo.deleteFlag = "Y";
+                    fragment.deleteMember(userInfo);
+                    dialog.cancel();
+                });
 
-                builder1.setPositiveButton(
-                        "Yes",
-                        (dialog, id) -> dialog.cancel());
 
                 builder1.setNegativeButton(
                         "No",

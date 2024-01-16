@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import com.indiapoliticaledge.databinding.TestimonialsLayoutBinding;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.TestimonialResponseModel;
+import com.indiapoliticaledge.network.responsemodel.TestimonialsList;
 import com.indiapoliticaledge.ui.adapter.TestimonialsAdapter;
 import com.indiapoliticaledge.utils.Utils;
 
@@ -38,6 +39,10 @@ public class TestimonialsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getAllTestimonials();
+    }
+
+    private void getAllTestimonials() {
         Utils.showProgessBar(requireActivity());
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("deleteFlag", "N");
@@ -48,7 +53,7 @@ public class TestimonialsFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body().testimonialsList != null && response.body().testimonialsList.size() > 0) {
                         binding.noDataFoundTxt.setVisibility(View.GONE);
-                        binding.testimonialList.setAdapter(new TestimonialsAdapter(requireActivity(), response.body().testimonialsList));
+                        binding.testimonialList.setAdapter(new TestimonialsAdapter(TestimonialsFragment.this, requireActivity(), response.body().testimonialsList));
                     } else {
                         binding.noDataFoundTxt.setVisibility(View.VISIBLE);
                     }
@@ -64,6 +69,25 @@ public class TestimonialsFragment extends Fragment {
                 binding.noDataFoundTxt.setVisibility(View.VISIBLE);
             }
         });
+    }
 
+    public void deleteTestimonial(TestimonialsList testimonialsList) {
+        Utils.showProgessBar(requireActivity());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("testimonialsId", testimonialsList.testimonialsId);
+        RetrofitClient.getInstance(requireActivity()).getRetrofitAPI().deleteTestimonial(jsonObject).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    getAllTestimonials();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Utils.hideProgessBar();
+            }
+        });
     }
 }

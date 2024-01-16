@@ -16,4 +16,6 @@ public class Constants {
     public static final String CONSTITUENCY_IMAGES = "CONSTITUENCY_IMAGES";
     public static final String CONSTITUENCY_VIDEOS = "CONSTITUENCY_VIDEOS";
 
+    public static final String TESTIMONIAL = "TESTIMONIAL";
+
 }

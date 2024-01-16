@@ -26,4 +26,8 @@ public class BaseActivity extends AppCompatActivity {
         fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
     }
+
+    public void updateFragment(Fragment fragment) {
+        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
+    }
 }

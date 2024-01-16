@@ -20,6 +20,7 @@ import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
+import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.MembersResponse;
 import com.indiapoliticaledge.ui.AddNewMLAScreen;
 import com.indiapoliticaledge.ui.ViewMLAAdapter;
@@ -51,6 +52,18 @@ public class ViewMLAListFragment extends Fragment {
         view_mlas_list = view.findViewById(R.id.view_mlas_list);
         add_mla_button = view.findViewById(R.id.add_mla_button);
 
+
+        add_mla_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireActivity(), AddNewMLAScreen.class);
+                intent.putExtra(USER_INFO, new Gson().toJson(userInfo));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getAllMLAs() {
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
@@ -66,7 +79,7 @@ public class ViewMLAListFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().successCode.equals("200")) {
                         ArrayList<UserInfo> usersList = response.body().usersList;
-                        view_mlas_list.setAdapter(new ViewMLAAdapter(requireActivity(), usersList));
+                        view_mlas_list.setAdapter(new ViewMLAAdapter(ViewMLAListFragment.this, requireActivity(), usersList));
                     }
                 }
             }
@@ -78,14 +91,29 @@ public class ViewMLAListFragment extends Fragment {
 //                view_mlas_list.setAdapter(new ViewMLAAdapter(ViewMLAListScreen.this, usersList));
             }
         });
+    }
 
-        add_mla_button.setOnClickListener(new View.OnClickListener() {
+    public void deleteMember(UserInfo userInfo) {
+        Utils.showProgessBar(requireActivity());
+        RetrofitClient.getInstance(requireActivity()).getRetrofitAPI().updateMember(userInfo).enqueue(new Callback<AddMemberResponse>() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(requireActivity(), AddNewMLAScreen.class);
-                intent.putExtra(USER_INFO, new Gson().toJson(userInfo));
-                startActivity(intent);
+            public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    getAllMLAs();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddMemberResponse> call, Throwable t) {
+                Utils.hideProgessBar();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllMLAs();
     }
 }

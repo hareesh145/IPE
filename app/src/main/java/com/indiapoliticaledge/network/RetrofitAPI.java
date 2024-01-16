@@ -3,6 +3,7 @@ package com.indiapoliticaledge.network;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.Testimonial;
+import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.requestmodel.AddOpinionRequest;
 import com.indiapoliticaledge.network.requestmodel.CDevelopmentRequest;
 import com.indiapoliticaledge.network.requestmodel.Candidate;
@@ -12,7 +13,6 @@ import com.indiapoliticaledge.network.requestmodel.Member;
 import com.indiapoliticaledge.network.requestmodel.SignInModel;
 import com.indiapoliticaledge.network.requestmodel.UDevelopmentRequest;
 import com.indiapoliticaledge.network.requestmodel.UpdateCandidate;
-import com.indiapoliticaledge.network.requestmodel.UpdateMember;
 import com.indiapoliticaledge.network.requestmodel.UpdateOpinionPolling;
 import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.CandidateBiographyResponse;
@@ -32,6 +32,7 @@ import com.indiapoliticaledge.network.responsemodel.Response;
 import com.indiapoliticaledge.network.responsemodel.SignInResponseModel;
 import com.indiapoliticaledge.network.responsemodel.StatesResponse;
 import com.indiapoliticaledge.network.responsemodel.TestimonialResponseModel;
+import com.indiapoliticaledge.network.responsemodel.TestimonialsList;
 import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewConstituencyIssuesResponse;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
@@ -51,7 +52,7 @@ public interface RetrofitAPI {
 
     //deleteFlag - Y to delete N to update
     @POST("update-member")
-    Call<AddMemberResponse> updateMember(@Body UpdateMember updateMember);
+    Call<AddMemberResponse> updateMember(@Body UserInfo userInfo);
 
     @POST("add-candidate-profile")
     Call<AddMemberResponse> addCandidate(@Body Candidate candidate);
@@ -151,6 +152,9 @@ public interface RetrofitAPI {
     @POST("add-testimonials")
     Call<JsonObject> addTestimonial(@Body Testimonial testimonial);
 
+    @POST("update-testimonials")
+    Call<JsonObject> updateTestimonial(@Body TestimonialsList testimonialsList);
+
     @POST("all-testimonials")
     Call<TestimonialResponseModel> getAllTestimonials(@Body JsonObject jsonObject);
 
@@ -169,5 +173,8 @@ public interface RetrofitAPI {
 
     @POST("view-opinions")
     Call<OpinionResponse> manageOpinions(@Body JsonObject jsonObject);
+
+    @POST("delete-testimonials")
+    Call<JsonObject> deleteTestimonial(@Body JsonObject jsonObject);
 
 }

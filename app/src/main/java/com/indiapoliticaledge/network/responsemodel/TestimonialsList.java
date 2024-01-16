@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network.responsemodel;
 
-public class TestimonialsList {
+import java.io.Serializable;
+
+public class TestimonialsList implements Serializable {
     public int testimonialsId;
     public String firstName;
     public String lastName;

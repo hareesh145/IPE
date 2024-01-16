@@ -80,6 +80,7 @@ public class MLAInfoFragment extends Fragment {
                             bindUserInfo(viewMemberResponse);
 
                             String noticeMessages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.NOTICE_MESSAGES);
+                            Log.d("TAG", "onResponse noticeMessages: " + noticeMessages);
                             if (noticeMessages != null && !noticeMessages.equals("")) {
                                 List<NoticeMessagesList> noticeMessagesLists = Arrays.asList(new Gson().fromJson(noticeMessages, NoticeMessagesList[].class));
                                 binding.noticeMessagesList.setAdapter(new HomeNoticeAdapter(requireActivity(), noticeMessagesLists));
@@ -88,14 +89,14 @@ public class MLAInfoFragment extends Fragment {
                             }
 
                             String myImages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.MY_IMAGES);
-                            Log.d("TAG", "onResponse: "+myImages);
+                            Log.d("TAG", "onResponse: " + myImages);
                             if (myImages != null && !myImages.equals("")) {
                                 List<MyImage> myImageList = Arrays.asList(new Gson().fromJson(myImages, MyImage[].class));
                                 binding.myImagesList.setAdapter(new MyImagesAdapter(requireActivity(), myImageList));
                             }
 
                             String constituencyImages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.CONSTITUENCY_IMAGES);
-                            Log.d("TAG", "onResponse constituencyImages: "+constituencyImages);
+                            Log.d("TAG", "onResponse constituencyImages: " + constituencyImages);
                             if (constituencyImages != null && !constituencyImages.equals("")) {
                                 List<ConstituencyImage> myImageList = Arrays.asList(new Gson().fromJson(constituencyImages, ConstituencyImage[].class));
                                 binding.constituencyImagesList.setAdapter(new ConstituencyImagesAdapter(requireActivity(), myImageList));

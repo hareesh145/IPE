@@ -27,7 +27,6 @@ import com.indiapoliticaledge.model.ConstituencyList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
-import com.indiapoliticaledge.network.requestmodel.Member;
 import com.indiapoliticaledge.network.responsemodel.AddMemberResponse;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyResponse;
 import com.indiapoliticaledge.network.responsemodel.DistrictResponse;
@@ -83,6 +82,7 @@ public class UpdateMLAScreen extends AppCompatActivity {
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(this).getRetrofitAPI();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("userId", getIntent().getIntExtra("user_id", -1));
+        Utils.showProgessBar(this);
         retrofitAPI.getMember(jsonObject).enqueue(new Callback<ViewMemberResponse>() {
             @Override
             public void onResponse(Call<ViewMemberResponse> call, Response<ViewMemberResponse> response) {
@@ -140,23 +140,23 @@ public class UpdateMLAScreen extends AppCompatActivity {
 
 
             Utils.showProgessBar(this);
-            Member member = new Member();
-            member.setFirstName(first_name_et.getText().toString());
-            member.setLastName(last_name_et.getText().toString());
-            member.setMobileNumber(phone_number.getText().toString());
-            member.setActiveFlag("Y");
-            member.setRoleName(Constants.INTERNAL);
-            member.setPartyName(party_edit.getText().toString());
-            member.setStartDate(start_date.getText().toString());
+            userInfo.setFirstName(first_name_et.getText().toString());
+            userInfo.setLastName(last_name_et.getText().toString());
+            userInfo.setMobileNumber(phone_number.getText().toString());
+            userInfo.setActiveFlag("Y");
+            userInfo.setRoleName(Constants.INTERNAL);
+            userInfo.setPartyName(party_edit.getText().toString());
+            userInfo.setStartDate(start_date.getText().toString());
 
 
-            retrofitAPI.addMember(member).enqueue(new Callback<AddMemberResponse>() {
+            retrofitAPI.updateMember(userInfo).enqueue(new Callback<AddMemberResponse>() {
                 @Override
                 public void onResponse(Call<AddMemberResponse> call, Response<AddMemberResponse> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null && response.body().successCode.equals("200")) {
 
                             Utils.showSnackBar(submit_btn, "Updated Successfully");
+                            finish();
                         }
                     }
                 }
@@ -166,7 +166,6 @@ public class UpdateMLAScreen extends AppCompatActivity {
 
                 }
             });
-            startActivity(new Intent(UpdateMLAScreen.this, SubscriptionFeesScreen.class));
         });
 
         state_drop_down.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>)
@@ -202,8 +201,10 @@ public class UpdateMLAScreen extends AppCompatActivity {
 
     }
 
+    UserInfo userInfo;
+
     private void bindUserInfo(ViewMemberResponse viewMemberResponse) {
-        UserInfo userInfo = viewMemberResponse.userInfo;
+        userInfo = viewMemberResponse.userInfo;
         first_name_et.setText(userInfo.getFirstName());
         last_name_et.setText(userInfo.getLastName());
         phone_number.setText(userInfo.getMobileNumber());

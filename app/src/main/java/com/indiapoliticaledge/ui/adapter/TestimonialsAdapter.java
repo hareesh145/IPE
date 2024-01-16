@@ -1,6 +1,10 @@
 package com.indiapoliticaledge.ui.adapter;
 
+import static com.indiapoliticaledge.utils.Constants.TESTIMONIAL;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +18,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.network.responsemodel.TestimonialsList;
+import com.indiapoliticaledge.ui.SuperAdminScreen;
+import com.indiapoliticaledge.ui.fragment.TestimonialsFragment;
+import com.indiapoliticaledge.ui.fragment.UpdateTestimonialFragment;
 
 import java.util.ArrayList;
 
 public class TestimonialsAdapter extends RecyclerView.Adapter<TestimonialsAdapter.TestimonialHolder> {
 
+    private TestimonialsFragment fragment;
     private final Activity activity;
     private final ArrayList<TestimonialsList> testimonialsLists;
 
-    public TestimonialsAdapter(Activity activity, ArrayList<TestimonialsList> testimonialsLists) {
+    public TestimonialsAdapter(TestimonialsFragment fragment, Activity activity, ArrayList<TestimonialsList> testimonialsLists) {
+        this.fragment = fragment;
         this.activity = activity;
         this.testimonialsLists = testimonialsLists;
     }
@@ -59,10 +68,30 @@ public class TestimonialsAdapter extends RecyclerView.Adapter<TestimonialsAdapte
             party_name_txt = itemView.findViewById(R.id.party_name_txt);
             profile_image = itemView.findViewById(R.id.profile_image);
             edit_icon = itemView.findViewById(R.id.edit_icon);
-            edit_icon.setOnClickListener(new View.OnClickListener() {
+            edit_icon.setOnClickListener(v -> {
+                UpdateTestimonialFragment testimonialFragment = new UpdateTestimonialFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(TESTIMONIAL, testimonialsLists.get(getAdapterPosition()));
+                testimonialFragment.setArguments(bundle);
+                ((SuperAdminScreen) activity).updateFragment(testimonialFragment);
+            });
+            itemView.findViewById(R.id.delete_icon).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+                    builder1.setMessage("Are you sure you want to delete?");
+                    builder1.setCancelable(true);
+                    builder1.setPositiveButton("Yes", (dialog, which) -> {
+                        dialog.cancel();
+                        fragment.deleteTestimonial(testimonialsLists.get(getAdapterPosition()));
 
+                    });
+                    builder1.setNegativeButton(
+                            "No",
+                            (dialog, id) -> dialog.cancel());
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             });
 

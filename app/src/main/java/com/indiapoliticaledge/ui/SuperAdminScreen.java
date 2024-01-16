@@ -24,7 +24,7 @@ import com.indiapoliticaledge.ui.fragment.TestimonialsFragment;
 import com.indiapoliticaledge.ui.superadmin.ViewMLAListFragment;
 import com.indiapoliticaledge.utils.Constants;
 
-public class SuperAdminScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class SuperAdminScreen extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     ImageView menu_icon;
@@ -131,12 +131,6 @@ public class SuperAdminScreen extends AppCompatActivity implements NavigationVie
         return true;
     }
 
-    public void createFragment(Fragment fragment, String userInfo) {
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.USER_INFO, userInfo);
-        fragment.setArguments(bundle);
-        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commitAllowingStateLoss();
-    }
 
     public void setTitleText(String titleText) {
         toolbar_title.setText(titleText);
