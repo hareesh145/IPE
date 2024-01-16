@@ -46,8 +46,8 @@ public class NoticeBoardMessagesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (requireActivity() instanceof MLAInfoDrawerScreen) {
-                    AddNoticeBoardFragment addNoticeBoardFragment = new AddNoticeBoardFragment();
-                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addNoticeBoardFragment, bundle.getString(Constants.USER_INFO));
+                    AddUpdateNoticeBoardFragment addUpdateNoticeBoardFragment = new AddUpdateNoticeBoardFragment();
+                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addUpdateNoticeBoardFragment, bundle.getString(Constants.USER_INFO));
                 }
             }
         });
@@ -63,7 +63,7 @@ public class NoticeBoardMessagesFragment extends Fragment {
                         Utils.hideProgessBar();
                         if (response.isSuccessful()) {
                             if (response.body().noticeMessagesList != null && response.body().noticeMessagesList.size() > 0) {
-                                binding.viewMlasList.setAdapter(new NoticeMessagesAdapter(requireActivity(), response.body().noticeMessagesList));
+                                binding.viewMlasList.setAdapter(new NoticeMessagesAdapter(requireActivity(), response.body().noticeMessagesList, bundle.getString(Constants.USER_INFO)));
                                 binding.noDataFoundTxt.setVisibility(View.GONE);
                             } else {
                                 binding.noDataFoundTxt.setVisibility(View.VISIBLE);

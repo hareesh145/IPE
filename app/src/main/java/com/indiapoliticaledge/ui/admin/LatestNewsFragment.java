@@ -45,8 +45,8 @@ public class LatestNewsFragment extends Fragment {
 
         binding.addMlaButton.setOnClickListener(v -> {
             if (requireActivity() instanceof MLAInfoDrawerScreen) {
-                AddLatestNewsFragment addLatestNewsFragment = new AddLatestNewsFragment();
-                ((MLAInfoDrawerScreen) requireActivity()).createFragment(addLatestNewsFragment, bundle.getString(Constants.USER_INFO));
+                AddUpdateLatestNewsFragment addUpdateLatestNewsFragment = new AddUpdateLatestNewsFragment();
+                ((MLAInfoDrawerScreen) requireActivity()).createFragment(addUpdateLatestNewsFragment, bundle.getString(Constants.USER_INFO));
             }
         });
         Utils.showProgessBar(requireActivity());
@@ -60,7 +60,7 @@ public class LatestNewsFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     if (response.body().newsList != null && response.body().newsList.size() > 0) {
-                        binding.constituencyDevList.setAdapter(new LatestNewsAdapter(requireActivity(), response.body().newsList));
+                        binding.constituencyDevList.setAdapter(new LatestNewsAdapter(requireActivity(), response.body().newsList,bundle.getString(Constants.USER_INFO)));
                         binding.noDataFoundTxt.setVisibility(View.GONE);
                     } else {
                         binding.noDataFoundTxt.setVisibility(View.VISIBLE);

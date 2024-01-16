@@ -50,7 +50,7 @@ public class ManageDevlopmentFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (requireActivity() instanceof MLAInfoDrawerScreen) {
-                    AddConstituencyDevelopmentFragment addLatestNewsFragment = new AddConstituencyDevelopmentFragment();
+                    AddUpdateConstituencyDevelopmentFragment addLatestNewsFragment = new AddUpdateConstituencyDevelopmentFragment();
                     ((MLAInfoDrawerScreen) requireActivity()).createFragment(addLatestNewsFragment, bundle.getString(Constants.USER_INFO));
                 }
             }
@@ -69,7 +69,7 @@ public class ManageDevlopmentFragment extends Fragment {
                 if (response.isSuccessful()) {
                     Log.d("TAG", "onResponse: " + response.body());
                     if (response.body().constituencyDepartmentsList != null && response.body().constituencyDepartmentsList.size() > 0) {
-                        binding.viewMlasList.setAdapter(new ConstituencyDevelopmentAdapter(requireActivity(), response.body().constituencyDepartmentsList));
+                        binding.viewMlasList.setAdapter(new ConstituencyDevelopmentAdapter(requireActivity(), response.body().constituencyDepartmentsList,bundle.getString(Constants.USER_INFO)));
                     } else {
 
                     }

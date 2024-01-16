@@ -45,8 +45,8 @@ public class OpinionPollingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (requireActivity() instanceof MLAInfoDrawerScreen) {
-                    AddOpinionPollingFragment addOpinionPollingFragment = new AddOpinionPollingFragment();
-                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addOpinionPollingFragment, bundle.getString(Constants.USER_INFO));
+                    AddUpdateOpinionPollingFragment addUpdateOpinionPollingFragment = new AddUpdateOpinionPollingFragment();
+                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addUpdateOpinionPollingFragment, bundle.getString(Constants.USER_INFO));
                 }
             }
         });
@@ -61,7 +61,7 @@ public class OpinionPollingFragment extends Fragment {
             public void onResponse(Call<OpinionResponse> call, Response<OpinionResponse> response) {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
-                    binding.viewMlasList.setAdapter(new ViewOpinionPollingAdapter(requireActivity(), response.body().userOpinionsList));
+                    binding.viewMlasList.setAdapter(new ViewOpinionPollingAdapter(requireActivity(), response.body().userOpinionsList,bundle.getString(Constants.USER_INFO)));
                 }
             }
 

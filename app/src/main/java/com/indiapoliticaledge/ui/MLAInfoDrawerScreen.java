@@ -155,7 +155,12 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (!toolbar_title.getText().toString().equals(getString(R.string.admin_profile))) {
+                setTitleText(getString(R.string.admin_profile));
+                createFragment(new MLAInfoFragment(), getIntent().getStringExtra(Constants.USER_INFO));
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -176,4 +181,5 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
     public void setTitleText(String titleText) {
         toolbar_title.setText(titleText);
     }
+
 }
