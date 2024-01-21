@@ -18,12 +18,15 @@ public class Constants {
 
     public static final String TESTIMONIAL = "TESTIMONIAL";
 
-    public static final String SINGLE_NOTICE_MESSAGE="SINGLE_NOTICE_MESSAGE";
+    public static final String SINGLE_NOTICE_MESSAGE = "SINGLE_NOTICE_MESSAGE";
 
-    public static final String SINGLE_CONSTITUENCY_DEV="SINGLE_CONSTITUENCY_DEV";
+    public static final String SINGLE_CONSTITUENCY_DEV = "SINGLE_CONSTITUENCY_DEV";
 
     public static final String SINGLE_LATEST_NEWS = "SINGLE_LATEST_NEWS";
 
     public static final String SINGLE_OPINION_POLLING = "SINGLE_OPINION_POLLING";
+
+    public static final String MLA_INFO = "MLA_INFO";
+    public static final String LOGIN_RESPONSE = "LOGIN_RESPONSE";
 
 }

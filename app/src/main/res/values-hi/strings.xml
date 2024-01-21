@@ -163,7 +163,7 @@
 
     <!--    Candidates Dashboad Profile    -->
     <string name="membership_profile">सदस्यता प्रोफ़ाइल</string>
-    <string name="candidate_manifesto">मतदाता घोषणापत्र</string>
+    <string name="candidate_manifesto">घोषणापत्र</string>
     <string name="my_images">मेरी छवियाँ</string>
     <string name="my_videos">मेरे वीडियो</string>
     <string name="constituency_images">निर्वाचन क्षेत्र गैलरी/छवियां</string>

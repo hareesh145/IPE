@@ -170,7 +170,7 @@
 
     <!--    Candidates Dashboad Profile    -->
     <string name="membership_profile">Membership Profile</string>
-    <string name="candidate_manifesto">Voter Manifesto</string>
+    <string name="candidate_manifesto">Manifesto</string>
     <string name="my_images">My Images</string>
     <string name="my_videos">My Videos</string>
     <string name="constituency_images">Constituency Gallery/Images</string>

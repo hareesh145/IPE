@@ -1,6 +1,7 @@
 package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.Constituency;
+import com.indiapoliticaledge.model.UserConstituencies;
 
 import java.io.Serializable;
 
@@ -22,6 +23,16 @@ public class MlaInfo implements Serializable {
     public int constituencyId;
     public String deleteFlag;
     public Constituency constituency;
+
+
+
+    public String partyName;
+    public String partyLogo;
+    public String language;
+    public String startDate;
+    public String endDate;
+    public String roleName;
+    public UserConstituencies userConstituencies;
 
 
     public int getUserId() {

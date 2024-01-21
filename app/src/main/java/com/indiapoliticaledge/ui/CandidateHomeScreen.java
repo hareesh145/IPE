@@ -1,5 +1,6 @@
 package com.indiapoliticaledge.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -7,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -35,7 +35,7 @@ import com.indiapoliticaledge.utils.Constants;
 
 import java.util.Objects;
 
-public class CandidateHomeScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CandidateHomeScreen extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     TextView toolbar_title;
@@ -120,6 +120,10 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
         } else if (id == R.id.leader_rating) {
             fragment = new CandidateRatingFragment();
             setTitleText(getString(R.string.constituency_leader_rating));
+        } else if (id == R.id.logout) {
+            finishAffinity();
+            startActivity(new Intent(this, LoginScreen.class));
+            return true;
         } else {
             fragment = new CandidateProfileFragment();
             setTitleText(getString(R.string.candidate_profile_info));
@@ -139,7 +143,7 @@ public class CandidateHomeScreen extends AppCompatActivity implements Navigation
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.indiapoliticaledge.databinding.ItemLatestNewsBinding;
 import com.indiapoliticaledge.network.responsemodel.NewsList;
+import com.indiapoliticaledge.ui.CandidateHomeScreen;
 import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.admin.AddUpdateLatestNewsFragment;
 import com.indiapoliticaledge.utils.Constants;
@@ -63,7 +64,11 @@ public class LatestNewsAdapter extends RecyclerView.Adapter<LatestNewsAdapter.La
                     bundle.putSerializable(SINGLE_LATEST_NEWS, newsList.get(getAdapterPosition()));
                     AddUpdateLatestNewsFragment addUpdateLatestNewsFragment = new AddUpdateLatestNewsFragment();
                     addUpdateLatestNewsFragment.setArguments(bundle);
-                    ((MLAInfoDrawerScreen) activity).updateFragment(addUpdateLatestNewsFragment);
+                    if (activity instanceof MLAInfoDrawerScreen) {
+                        ((MLAInfoDrawerScreen) activity).updateFragment(addUpdateLatestNewsFragment);
+                    } else if (activity instanceof CandidateHomeScreen) {
+                        ((CandidateHomeScreen) activity).updateFragment(addUpdateLatestNewsFragment);
+                    }
                 }
             });
 

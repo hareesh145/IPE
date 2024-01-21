@@ -26,11 +26,15 @@ import com.indiapoliticaledge.model.NoticeMessagesList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
+import com.indiapoliticaledge.network.responsemodel.ConstituencyAV;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyImage;
+import com.indiapoliticaledge.network.responsemodel.MyAV;
 import com.indiapoliticaledge.network.responsemodel.MyImage;
 import com.indiapoliticaledge.network.responsemodel.ViewMemberResponse;
+import com.indiapoliticaledge.ui.adapter.ConstituencyAVAdapter;
 import com.indiapoliticaledge.ui.adapter.ConstituencyImagesAdapter;
 import com.indiapoliticaledge.ui.adapter.HomeNoticeAdapter;
+import com.indiapoliticaledge.ui.adapter.MyAVAdapter;
 import com.indiapoliticaledge.ui.adapter.MyImagesAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.SharedPref;
@@ -92,14 +96,56 @@ public class MLAInfoFragment extends Fragment {
                             Log.d("TAG", "onResponse: " + myImages);
                             if (myImages != null && !myImages.equals("")) {
                                 List<MyImage> myImageList = Arrays.asList(new Gson().fromJson(myImages, MyImage[].class));
-                                binding.myImagesList.setAdapter(new MyImagesAdapter(requireActivity(), myImageList));
+                                if (myImageList != null && myImageList.size() > 0) {
+                                    binding.myImagesSectionCard.setVisibility(View.VISIBLE);
+                                    binding.myImagesList.setAdapter(new MyImagesAdapter(requireActivity(), myImageList));
+                                } else {
+                                    binding.myImagesSectionCard.setVisibility(View.GONE);
+                                }
+                            } else {
+                                binding.myImagesSectionCard.setVisibility(View.GONE);
                             }
 
                             String constituencyImages = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.CONSTITUENCY_IMAGES);
                             Log.d("TAG", "onResponse constituencyImages: " + constituencyImages);
                             if (constituencyImages != null && !constituencyImages.equals("")) {
                                 List<ConstituencyImage> myImageList = Arrays.asList(new Gson().fromJson(constituencyImages, ConstituencyImage[].class));
-                                binding.constituencyImagesList.setAdapter(new ConstituencyImagesAdapter(requireActivity(), myImageList));
+                                if (myImageList != null && myImageList.size() > 0) {
+                                    binding.constituencyImagesSectionCard.setVisibility(View.VISIBLE);
+                                    binding.constituencyImagesList.setAdapter(new ConstituencyImagesAdapter(requireActivity(), myImageList));
+                                } else {
+                                    binding.constituencyImagesSectionCard.setVisibility(View.GONE);
+                                }
+                            } else {
+                                binding.constituencyImagesSectionCard.setVisibility(View.VISIBLE);
+                            }
+
+                            String myAVs = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.MY_VIDEOS);
+                            Log.d("TAG", "onResponse MyAVs: " + myAVs);
+                            if (myAVs != null && !myAVs.equals("")) {
+                                List<MyAV> myImageList = Arrays.asList(new Gson().fromJson(myAVs, MyAV[].class));
+                                if (myImageList != null && myImageList.size() > 0) {
+                                    binding.myVideosSectionCard.setVisibility(View.VISIBLE);
+                                    binding.myVideosList.setAdapter(new MyAVAdapter(requireActivity(), myImageList));
+                                } else {
+                                    binding.myVideosSectionCard.setVisibility(View.GONE);
+                                }
+                            } else {
+                                binding.myVideosSectionCard.setVisibility(View.GONE);
+                            }
+
+                            String constituencyVideos = SharedPref.getmSharedPrefInstance(requireActivity()).getString(Constants.CONSTITUENCY_VIDEOS);
+                            Log.d("TAG", "onResponse MyAVs: " + constituencyVideos);
+                            if (constituencyVideos != null && !constituencyVideos.equals("")) {
+                                List<ConstituencyAV> constituencyAVS = Arrays.asList(new Gson().fromJson(constituencyVideos, ConstituencyAV[].class));
+                                if (constituencyAVS.size() > 0) {
+                                    binding.constituencyVideosSectionCard.setVisibility(View.VISIBLE);
+                                    binding.constituencyVideosList.setAdapter(new ConstituencyAVAdapter(requireActivity(), constituencyAVS));
+                                } else {
+                                    binding.constituencyVideosSectionCard.setVisibility(View.GONE);
+                                }
+                            } else {
+                                binding.constituencyVideosSectionCard.setVisibility(View.GONE);
                             }
 
                         }

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.AddLatestNewsLayoutBinding;
 import com.indiapoliticaledge.network.responsemodel.NewsList;
+import com.indiapoliticaledge.ui.CandidateHomeScreen;
 import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 
 public class AddUpdateLatestNewsFragment extends Fragment {
@@ -33,10 +34,18 @@ public class AddUpdateLatestNewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         if (bundle.containsKey(SINGLE_LATEST_NEWS)) {
-            ((MLAInfoDrawerScreen) requireActivity()).setTitleText(getString(R.string.update_constituency_news));
+            if (requireActivity() instanceof MLAInfoDrawerScreen) {
+                ((MLAInfoDrawerScreen) requireActivity()).setTitleText(getString(R.string.update_constituency_news));
+            } else if (requireActivity() instanceof CandidateHomeScreen) {
+                ((CandidateHomeScreen) requireActivity()).setTitleText(getString(R.string.update_constituency_news));
+            }
             newsList = (NewsList) bundle.get(SINGLE_LATEST_NEWS);
         } else {
-            ((MLAInfoDrawerScreen) requireActivity()).setTitleText(getString(R.string.add_latest_news));
+            if (requireActivity() instanceof MLAInfoDrawerScreen) {
+                ((MLAInfoDrawerScreen) requireActivity()).setTitleText(getString(R.string.add_latest_news));
+            } else if (requireActivity() instanceof CandidateHomeScreen) {
+                ((CandidateHomeScreen) requireActivity()).setTitleText(getString(R.string.add_latest_news));
+            }
         }
 
         if (newsList != null) {

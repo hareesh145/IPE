@@ -2,6 +2,8 @@ package com.indiapoliticaledge.ui;
 
 import static com.indiapoliticaledge.utils.Constants.CONSTITUENCY_IMAGES;
 import static com.indiapoliticaledge.utils.Constants.CONSTITUENCY_VIDEOS;
+import static com.indiapoliticaledge.utils.Constants.LOGIN_RESPONSE;
+import static com.indiapoliticaledge.utils.Constants.MLA_INFO;
 import static com.indiapoliticaledge.utils.Constants.MY_IMAGES;
 import static com.indiapoliticaledge.utils.Constants.MY_VIDEOS;
 import static com.indiapoliticaledge.utils.Constants.NOTICE_MESSAGES;
@@ -137,6 +139,14 @@ public class LoginScreen extends AppCompatActivity {
             conf.locale = myLocale;
             res.updateConfiguration(conf, dm);
         }
+        SharedPref.getmSharedPrefInstance(this).saveString(LOGIN_RESPONSE, new Gson().toJson(signInResponseModel));
+        SharedPref.getmSharedPrefInstance(this).saveString(NOTICE_MESSAGES, new Gson().toJson(signInResponseModel.noticeMessagesList));
+        SharedPref.getmSharedPrefInstance(this).saveString(MY_IMAGES, new Gson().toJson(signInResponseModel.myImages));
+        SharedPref.getmSharedPrefInstance(this).saveString(MY_VIDEOS, new Gson().toJson(signInResponseModel.myAVs));
+        SharedPref.getmSharedPrefInstance(this).saveString(CONSTITUENCY_IMAGES, new Gson().toJson(signInResponseModel.constituencyImages));
+        SharedPref.getmSharedPrefInstance(this).saveString(CONSTITUENCY_VIDEOS, new Gson().toJson(signInResponseModel.constituencyAVs));
+        SharedPref.getmSharedPrefInstance(this).saveString(MLA_INFO, new Gson().toJson(signInResponseModel.mlaInfo));
+
         Intent intent = new Intent(LoginScreen.this, CandidateHomeScreen.class);
         if (signInResponseModel != null && signInResponseModel.getUserInfo() != null) {
             intent.putExtra(USER_INFO, new Gson().toJson(signInResponseModel.getUserInfo()));

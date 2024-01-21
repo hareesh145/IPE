@@ -4,9 +4,10 @@ import com.indiapoliticaledge.model.CountriesList;
 import com.indiapoliticaledge.model.NoticeMessagesList;
 import com.indiapoliticaledge.model.UserInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SignInResponseModel {
+public class SignInResponseModel implements Serializable {
 
     public UserInfo userInfo;
 
@@ -26,6 +27,10 @@ public class SignInResponseModel {
     public ArrayList<MyImage> myImages;
     public ArrayList<ConstituencyAV> constituencyAVs;
     public String constituencyState;
+
+    public MlaInfo mlaInfo;
+
+    public String constituencyName;
 
     public String getErrorMessage() {
         return errorMessage;
