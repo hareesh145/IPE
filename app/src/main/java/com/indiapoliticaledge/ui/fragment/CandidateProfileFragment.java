@@ -2,6 +2,8 @@ package com.indiapoliticaledge.ui.fragment;
 
 import static com.indiapoliticaledge.utils.Constants.LOGIN_RESPONSE;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -72,6 +74,8 @@ public class CandidateProfileFragment extends Fragment {
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
         Log.d("TAG", "onViewCreated: " + jsonObjectUser);
+
+
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         bindVoterInfo(userInfo);
         bindMLAInfo();
@@ -140,6 +144,17 @@ public class CandidateProfileFragment extends Fragment {
         } else {
             binding.constituencyVideosSectionCard.setVisibility(View.GONE);
         }
+
+        binding.candidateManifestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String loginResponse = SharedPref.getmSharedPrefInstance(requireActivity()).getString(LOGIN_RESPONSE);
+                SignInResponseModel signInResponseModel = new Gson().fromJson(loginResponse, SignInResponseModel.class);
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(signInResponseModel.manifestFilePath));
+                startActivity(i);
+            }
+        });
 
     }
 

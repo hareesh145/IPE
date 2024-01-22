@@ -32,6 +32,9 @@ public class SignInResponseModel implements Serializable {
 
     public String constituencyName;
 
+    public String manifestFilePath;
+    public String manifestFileName;
+
     public String getErrorMessage() {
         return errorMessage;
     }
