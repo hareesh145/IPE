@@ -404,5 +404,8 @@
     </string-array>
 
     <string name="update_mla">अद्यतन विधायक</string>
-
+    <string name="pls_group_name">कृपया समूह का नाम दर्ज करें</string>
+    <string name="pls_poll_center_name">कृपया मतदान केन्द्र का नाम दर्ज करें</string>
+    <string name="pls_poll_center_id">कृपया मतदान केंद्र आईडी दर्ज करें</string>
+    <string name="pls_address">कृपया पता दर्ज करें</string>
 </resources>

@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_150sdp"
-    android:background="@drawable/bg_gradient"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/_16sdp"
-    android:paddingTop="@dimen/_10sdp"
-    android:paddingRight="@dimen/_16sdp"
-    android:paddingBottom="@dimen/_16sdp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/header_linear_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:background="@drawable/bg_gradient"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/_16sdp"
         android:paddingTop="@dimen/_10sdp"
-        android:visibility="gone"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:paddingRight="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_16sdp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_6sdp"
-        android:text="MLA "
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/user_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_8sdp"
-        android:text="+91111111111 "
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_6sdp"
+            android:text="MLA "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/user_role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Roja Ramani" />
+        <TextView
+            android:id="@+id/user_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_8sdp"
+            android:text="+91111111111 "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/user_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roja Ramani" />
+
+    </LinearLayout>
+</layout>

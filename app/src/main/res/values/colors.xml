@@ -12,4 +12,7 @@
     <color name="greyTeal">#dee2e6</color>
     <color name="darkColor">#A9A9A9</color>
     <color name="orangeTeal">#FFA500</color>
+
+    <color name="partyText">#58cddf</color>
+    <color name="partyBg">#079db4</color>
 </resources>

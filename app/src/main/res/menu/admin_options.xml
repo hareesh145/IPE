@@ -15,6 +15,14 @@
     <item
         android:id="@+id/constituency_map"
         android:title="@string/constituency_map" />
+
+    <item
+        android:id="@+id/booth_level_management"
+        android:title="@string/booth_level_managment" />
+
+    <item
+        android:id="@+id/pool_management"
+        android:title="@string/pool_managment" />
     <item
         android:id="@+id/constituency_devs"
         android:title="@string/constituency_development" />

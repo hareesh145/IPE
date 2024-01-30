@@ -420,6 +420,12 @@
     <string name="add_constituency_development">Add Constituency Development</string>
     <string name="update_constituency_development">Update Constituency Development</string>
 
+    <string name="booth_level_managment">Booth Level Management</string>
+    <string name="pool_managment">Poll Management</string>
+
+    <string name="search_group">Search Group Name</string>
+    <string name="search_poll">Search Poll Centers</string>
+
 
     <string-array name="constituency_years">
         <item>2023</item>
@@ -435,5 +441,12 @@
         <item>2013</item>
         <item>2012</item>
     </string-array>
+
+    <string name="pls_group_name">Please enter Group Name</string>
+    <string name="pls_poll_center_name">Please enter Poll Center Name</string>
+    <string name="pls_poll_center_id">Please enter Poll Center ID</string>
+    <string name="pls_address">Please enter Address</string>
+    <string name="add_booth_poll_group">Add Booth Poll Group</string>
+    <string name="constituency_poll_managment">Constituency Poll Management</string>
 
 </resources>

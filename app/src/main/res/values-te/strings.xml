@@ -389,4 +389,11 @@
         <item>Telugu</item>
     </string-array>
     <string name="select_language">Select Language</string>
+    <string name="pls_group_name">దయచేసి గ్రూప్ పేరును నమోదు చేయండి</string>
+    <string name="pls_poll_center_name">దయచేసి పోల్ సెంటర్ పేరును నమోదు చేయండి</string>
+    <string name="pls_poll_center_id">దయచేసి పోల్ సెంటర్ IDని నమోదు చేయండి</string>
+    <string name="pls_address">దయచేసి చిరునామాను నమోదు చేయండి</string>
+    <string name="add_booth_poll_group">బూత్ పోల్ సమూహాన్ని జోడించండి</string>
+    <string name="constituency_poll_managment">నియోజకవర్గ పోల్ నిర్వహణ</string>
+
 </resources>

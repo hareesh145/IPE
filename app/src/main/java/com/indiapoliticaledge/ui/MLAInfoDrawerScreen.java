@@ -3,12 +3,14 @@ package com.indiapoliticaledge.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -16,7 +18,10 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.databinding.AdminFlowLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.ui.admin.BoothPoolManagementFragment;
+import com.indiapoliticaledge.ui.admin.ConstituencyPoolManagementFragment;
 import com.indiapoliticaledge.ui.admin.ContactUsFragment;
 import com.indiapoliticaledge.ui.admin.LatestNewsFragment;
 import com.indiapoliticaledge.ui.admin.ManageDevlopmentFragment;
@@ -43,12 +48,20 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
 
     private DrawerLayout drawer;
 
+    AdminFlowLayoutBinding binding;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.admin_flow_layout);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+//        if (userInfo.getPartyName().equals("BJP")) {
+//        setTheme(R.style.Theme_IndiaPoliticalEdge_Mint);
+//        }
+        binding = AdminFlowLayoutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -67,6 +80,8 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);
         TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
 
+        updateBGColors(userInfo);
+
         user_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
         user_role.setText(getString(R.string.admin));
         user_number.setText(userInfo.getMobileNumber());
@@ -79,6 +94,14 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         fragment = new MLAInfoFragment();
         setTitleText(getString(R.string.admin_profile));
         createFragment(fragment, getIntent().getStringExtra(Constants.USER_INFO));
+    }
+
+    private void updateBGColors(UserInfo userInfo) {
+        if (userInfo.getPartyName().equals("TDP")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+        }
     }
 
 
@@ -130,6 +153,12 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         } else if (id == R.id.social_media_reviews) {
             fragment = new SocialMediaFragment();
             setTitleText(getString(R.string.social_media_reviews));
+        } else if (id == R.id.booth_level_management) {
+            fragment = new BoothPoolManagementFragment();
+            setTitleText(getString(R.string.booth_level_managment));
+        } else if (id == R.id.pool_management) {
+            fragment = new ConstituencyPoolManagementFragment();
+            setTitleText(getString(R.string.constituency_poll_managment));
         } else if (id == R.id.contact_us) {
             fragment = new ContactUsFragment();
             setTitleText(getString(R.string.contact_us));
