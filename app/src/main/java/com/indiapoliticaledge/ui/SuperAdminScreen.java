@@ -2,6 +2,7 @@ package com.indiapoliticaledge.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -36,6 +36,19 @@ public class SuperAdminScreen extends BaseActivity implements NavigationView.OnN
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
+        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        Log.d("TAG", "onCreate: 1111111111111111111 "+userInfo.getPartyName());
+        if (userInfo.getPartyName().equalsIgnoreCase("BJP")) {
+            setTheme(R.style.Theme_IndiaPoliticalEdge_BJP);
+        } else if (userInfo.getPartyName().equalsIgnoreCase("TDP")) {
+            setTheme(R.style.Theme_IndiaPoliticalEdge_TDP);
+        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+            setTheme(R.style.Theme_IndiaPoliticalEdge_JANA_SENA);
+        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+            setTheme(R.style.Theme_IndiaPoliticalEdge_JANA_SENA);
+        }
         setContentView(R.layout.super_admin_flow_layout);
 
         menu_icon = findViewById(R.id.menu_icon);
@@ -48,8 +61,7 @@ public class SuperAdminScreen extends BaseActivity implements NavigationView.OnN
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
         setTitleText("");
-        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
-        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         TextView user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
         TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);

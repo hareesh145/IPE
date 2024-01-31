@@ -2,6 +2,7 @@ package com.indiapoliticaledge.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -55,9 +56,22 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        if (userInfo.getPartyName().equals("BJP")) {
-//        setTheme(R.style.Theme_IndiaPoliticalEdge_Mint);
-//        }
+        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
+        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        Log.d("TAG", "onCreate: 1111111111111111111 " + userInfo.getPartyName());
+        if (userInfo != null && userInfo.getPartyName() != null) {
+            if (userInfo.getPartyName().equalsIgnoreCase("BJP")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_BJP);
+            } else if (userInfo.getPartyName().equalsIgnoreCase("TDP")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_TDP);
+            } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_JANA_SENA);
+            } else {
+                setTheme(R.style.Theme_IndiaPoliticalEdge);
+            }
+        } else {
+            setTheme(R.style.Theme_IndiaPoliticalEdge);
+        }
         binding = AdminFlowLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -74,8 +88,6 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
 
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
-        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
-        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         TextView user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
         TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);
         TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
@@ -97,10 +109,22 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
     }
 
     private void updateBGColors(UserInfo userInfo) {
-        if (userInfo.getPartyName().equals("TDP")) {
+        if (userInfo.getPartyName().equals("BJP")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
+        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
+        } else if (userInfo.getPartyName().equals("TDP")) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+        } else {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
         }
     }
 

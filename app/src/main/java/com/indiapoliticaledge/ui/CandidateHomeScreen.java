@@ -2,13 +2,16 @@ package com.indiapoliticaledge.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -17,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.databinding.CandidateFlowLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.ui.admin.ContactUsFragment;
 import com.indiapoliticaledge.ui.admin.LatestNewsFragment;
@@ -41,13 +45,33 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
     TextView toolbar_title;
     Fragment fragment = null;
     FragmentManager fragmentManager = getSupportFragmentManager();
+    private Toolbar toolbar;
+
+    CandidateFlowLayoutBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.candidate_flow_layout);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
+        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        Log.d("TAG", "onCreate: 1111111111111111111 " + userInfo.getPartyName());
+        if (userInfo != null && userInfo.getPartyName() != null) {
+            if (userInfo.getPartyName().equalsIgnoreCase("BJP")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_BJP);
+            } else if (userInfo.getPartyName().equalsIgnoreCase("TDP")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_TDP);
+            } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_JANA_SENA);
+            } else {
+                setTheme(R.style.Theme_IndiaPoliticalEdge);
+            }
+        } else {
+            setTheme(R.style.Theme_IndiaPoliticalEdge);
+        }
+        binding = CandidateFlowLayoutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -58,8 +82,7 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        String jsonObjectUser = getIntent().getStringExtra(Constants.USER_INFO);
-        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+
         TextView user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
         TextView user_role = navigationView.getHeaderView(0).findViewById(R.id.user_role);
         TextView user_number = navigationView.getHeaderView(0).findViewById(R.id.user_number);
@@ -132,6 +155,27 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private void updateBGColors(UserInfo userInfo) {
+        if (userInfo.getPartyName().equals("BJP")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
+        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
+        } else if (userInfo.getPartyName().equals("TDP")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+        } else {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
+        }
     }
 
     private void createFragment() {

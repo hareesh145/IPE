@@ -1,4 +1,5 @@
 <resources>
-    <attr name="partyTextColor" format="reference"/>
-    <attr name="partyBgColor" format="reference"/>
+    <attr name="partyTextColor" format="reference" />
+    <attr name="partyBgColor" format="reference" />
+    <attr name="bg_background" format="reference"/>
 </resources>

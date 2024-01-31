@@ -74,7 +74,7 @@
             android:layout_margin="@dimen/_25sdp"
             android:src="@android:drawable/ic_input_add"
             android:tint="@color/white"
-            app:backgroundTint="@color/bg_gradient_start"
+            app:backgroundTint="?partyBgColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:rippleColor="@color/white" />

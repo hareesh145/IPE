@@ -13,8 +13,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="itemBackground">@color/white</item>
         <!-- Customize your theme here. -->
-        <item name="partyTextColor">@color/partyText</item>
-        <item name="partyBgColor">@color/partyBg</item>
+        <item name="partyTextColor">@color/bg_gradient_start</item>
+        <item name="partyBgColor">@color/bg_gradient_start</item>
+        <item name="bg_background">@drawable/bg_semi_curved</item>
     </style>
 
     <style name="Theme.IndiaPoliticalEdge.Mint" parent="Theme.Design.NoActionBar">
@@ -33,6 +34,39 @@
         <!-- Buttons Color -->
         <item name="partyTextColor">@color/orangeTeal</item>
         <item name="partyBgColor">@color/orangeTeal</item>
+        <item name="bg_background">@drawable/bg_semi_curved</item>
+    </style>
+
+    <style name="Theme.IndiaPoliticalEdge.BJP" parent="Theme.IndiaPoliticalEdge">
+        <item name="colorPrimary">@color/bjp_color</item>
+        <item name="colorPrimaryVariant">@color/bjp_color</item>
+        <item name="colorSecondary">@color/bjp_color</item>
+        <item name="colorSecondaryVariant">@color/bjp_color</item>
+        <item name="partyTextColor">@color/bjp_color</item>
+        <item name="partyBgColor">@color/bjp_color</item>
+        <item name="bg_background">@drawable/bg_semi_curved_bjp</item>
+    </style>
+
+    <style name="Theme.IndiaPoliticalEdge.TDP" parent="Theme.IndiaPoliticalEdge">
+        <item name="colorPrimary">@color/tdp_color</item>
+        <item name="colorPrimaryVariant">@color/tdp_color</item>
+        <item name="colorSecondary">@color/tdp_color</item>
+        <item name="colorSecondaryVariant">@color/tdp_color</item>
+
+        <item name="partyTextColor">@color/tdp_color</item>
+        <item name="partyBgColor">@color/tdp_color</item>
+        <item name="bg_background">@drawable/bg_semi_curved</item>
+    </style>
+
+    <style name="Theme.IndiaPoliticalEdge.JANA_SENA" parent="Theme.IndiaPoliticalEdge">
+        <item name="colorPrimary">@color/jana_sena_color</item>
+        <item name="colorPrimaryVariant">@color/jana_sena_color</item>
+        <item name="colorSecondary">@color/jana_sena_color</item>
+        <item name="colorSecondaryVariant">@color/jana_sena_color</item>
+
+        <item name="partyTextColor">@color/jana_sena_color</item>
+        <item name="partyBgColor">@color/jana_sena_color</item>
+        <item name="bg_background">@drawable/bg_semi_curved_janasena</item>
     </style>
 
     <style name="Theme.IndiaPoliticalEdge.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

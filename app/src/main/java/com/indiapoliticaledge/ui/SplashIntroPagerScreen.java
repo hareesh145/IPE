@@ -1,20 +1,20 @@
 package com.indiapoliticaledge.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
+import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.SplashViewPagerLayoutBinding;
+import com.indiapoliticaledge.ui.adapter.SplashImageAdapter;
+
+import java.util.ArrayList;
 
 public class SplashIntroPagerScreen extends AppCompatActivity {
 
-    private static final int NUM_PAGES = 2;
-    private ViewPager mPager;
     SplashViewPagerLayoutBinding binding;
 
     /**
@@ -26,28 +26,25 @@ public class SplashIntroPagerScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = SplashViewPagerLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ScreenSlidePagerAdapter screenSlidePagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        binding.imagesViewPager.setAdapter(screenSlidePagerAdapter);
 
-    }
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(R.drawable.spalsh_screen_en_img);
+        integers.add(R.drawable.splash_screen_te_img);
 
+        binding.recyclerViewImage.setAdapter(new SplashImageAdapter(this, integers));
 
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            if (position == 1) {
-                return new ScreenSlideTePageFragment();
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SplashIntroPagerScreen.this, LoginScreen.class));
             }
-            return new ScreenSlidePageFragment();
-        }
+        });
 
-        @Override
-        public int getCount() {
-            return NUM_PAGES;
-        }
+
+//        ScreenSlidePagerAdapter screenSlidePagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+//        binding.imagesViewPager.setAdapter(screenSlidePagerAdapter);
+
     }
+
+
 }

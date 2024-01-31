@@ -130,7 +130,7 @@
                 android:layout_width="@dimen/_250sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
-                android:background="@drawable/bg_semi_curved"
+                android:background="?bg_background"
                 android:text="@string/submit"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"

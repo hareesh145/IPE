@@ -197,6 +197,7 @@ public class MLAInfoFragment extends Fragment {
         UserInfo userInfo = viewMemberResponse.userInfo;
         mla_name.setText(userInfo.firstName + " " + userInfo.lastName);
         constituency_txt.setText(viewMemberResponse.constituencyMap);
+        binding.partyNameTxt.setText(userInfo.getPartyName());
         if (userInfo.userConstituencies != null) {
             if (userInfo.userConstituencies.startDate != null) {
                 start_date_value_txt.setText(userInfo.userConstituencies.startDate.split("\\s")[0]);

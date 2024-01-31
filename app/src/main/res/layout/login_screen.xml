@@ -86,7 +86,7 @@
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_marginTop="@dimen/_18sdp"
-                android:background="@drawable/bg_semi_curved"
+                android:background="?bg_background"
                 android:text="Submit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

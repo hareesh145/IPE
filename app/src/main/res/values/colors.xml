@@ -15,4 +15,8 @@
 
     <color name="partyText">#58cddf</color>
     <color name="partyBg">#079db4</color>
+    <!--BJP Color code-->
+    <color name="bjp_color">#ffa200</color>
+    <color name="tdp_color">#ffe200</color>
+    <color name="jana_sena_color">#FF0000</color>
 </resources>

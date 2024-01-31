@@ -10,8 +10,8 @@
         android:id="@+id/custom_title_view"
         layout="@layout/custom_title_bar"
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="gone" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -30,7 +30,7 @@
         android:layout_margin="@dimen/_25sdp"
         android:src="@android:drawable/ic_input_add"
         android:tint="@color/white"
-        app:backgroundTint="@color/bg_gradient_start"
+        app:backgroundTint="?partyBgColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@color/white" />
