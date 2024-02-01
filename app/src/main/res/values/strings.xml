@@ -448,5 +448,6 @@
     <string name="pls_address">Please enter Address</string>
     <string name="add_booth_poll_group">Add Booth Poll Group</string>
     <string name="constituency_poll_managment">Constituency Poll Management</string>
+    <string name="group_name">Group Name</string>
 
 </resources>

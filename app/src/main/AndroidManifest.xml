@@ -42,6 +42,8 @@
         <activity android:name=".ui.MLAInfoDrawerScreen" />
         <activity android:name=".ui.CandidateHomeScreen" />
 
+        <activity android:name=".ui.ListOfVotersScreen" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBvKdYasIAmefShPrgPwjAPKSmzKdnDqxY" />

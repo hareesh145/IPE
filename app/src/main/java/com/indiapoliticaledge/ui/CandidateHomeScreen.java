@@ -79,6 +79,7 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar_title = toolbar.findViewById(R.id.toolbar_title);
 
+        updateBGColors(userInfo);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -159,18 +160,32 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
 
 
     private void updateBGColors(UserInfo userInfo) {
-        if (userInfo.getPartyName().equals("BJP")) {
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
-            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
-            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
-        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
-            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
-            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
-        } else if (userInfo.getPartyName().equals("TDP")) {
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
-            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
-            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+        if (userInfo.getPartyName() != null) {
+            if (userInfo.getPartyName().equals("BJP")) {
+                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
+                View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
+            } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
+                View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
+            } else if (userInfo.getPartyName().equals("TDP")) {
+                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.tdp_color));
+                View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.tdp_color));
+            } else if (userInfo.getPartyName().equals("CONGRESS")) {
+                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.congress_color_header));
+                View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.congress_color_header));
+            } else if (userInfo.getPartyName().equals("YSRCP")) {
+                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.ysrcp_color_header));
+                View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.ysrcp_color_header));
+            } else {
+                toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
+                View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+                rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
+            }
         } else {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);

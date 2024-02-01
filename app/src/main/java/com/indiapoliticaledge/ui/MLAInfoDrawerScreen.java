@@ -66,6 +66,10 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
                 setTheme(R.style.Theme_IndiaPoliticalEdge_TDP);
             } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
                 setTheme(R.style.Theme_IndiaPoliticalEdge_JANA_SENA);
+            } else if (userInfo.getPartyName().equalsIgnoreCase("CONGRESS")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_CONGRESS);
+            } else if (userInfo.getPartyName().equalsIgnoreCase("YSRCP")) {
+                setTheme(R.style.Theme_IndiaPoliticalEdge_YSRCP);
             } else {
                 setTheme(R.style.Theme_IndiaPoliticalEdge);
             }
@@ -118,9 +122,17 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
         } else if (userInfo.getPartyName().equals("TDP")) {
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.tdp_color));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
-            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.orangeTeal));
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.tdp_color));
+        } else if (userInfo.getPartyName().equals("CONGRESS")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.congress_color_header));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.congress_color_header));
+        } else if (userInfo.getPartyName().equals("YSRCP")) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.ysrcp_color_header));
+            View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
+            rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.ysrcp_color_header));
         } else {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_gradient_start));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);

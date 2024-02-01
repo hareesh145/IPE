@@ -395,5 +395,6 @@
     <string name="pls_address">దయచేసి చిరునామాను నమోదు చేయండి</string>
     <string name="add_booth_poll_group">బూత్ పోల్ సమూహాన్ని జోడించండి</string>
     <string name="constituency_poll_managment">నియోజకవర్గ పోల్ నిర్వహణ</string>
+    <string name="group_name">Group Name</string>
 
 </resources>

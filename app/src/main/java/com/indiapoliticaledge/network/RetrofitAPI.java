@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.network;
 
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.model.BoothLevelManagmentResponse;
+import com.indiapoliticaledge.model.BoothLevelResponse;
 import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.Testimonial;
 import com.indiapoliticaledge.model.UserInfo;
@@ -176,6 +178,10 @@ public interface RetrofitAPI {
 
     @POST("delete-testimonials")
     Call<JsonObject> deleteTestimonial(@Body JsonObject jsonObject);
+
+
+    @POST("boothlevel-management")
+    Call<BoothLevelResponse> getBoothLevelManagement(@Body JsonObject jsonObject);
 
 
 }

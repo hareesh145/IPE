@@ -19,4 +19,8 @@
     <color name="bjp_color">#ffa200</color>
     <color name="tdp_color">#ffe200</color>
     <color name="jana_sena_color">#FF0000</color>
+    <color name="ysrcp_color_header">#0266B4</color>
+    <color name="ysrcp_color_buttons">#008E48</color>
+    <color name="congress_color_header">#138808</color>
+    <color name="congress_color_buttons">#ff9933</color>
 </resources>

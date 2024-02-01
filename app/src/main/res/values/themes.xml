@@ -44,6 +44,7 @@
         <item name="colorSecondaryVariant">@color/bjp_color</item>
         <item name="partyTextColor">@color/bjp_color</item>
         <item name="partyBgColor">@color/bjp_color</item>
+        <item name="buttonBgColor">@color/bjp_color</item>
         <item name="bg_background">@drawable/bg_semi_curved_bjp</item>
     </style>
 
@@ -55,6 +56,7 @@
 
         <item name="partyTextColor">@color/tdp_color</item>
         <item name="partyBgColor">@color/tdp_color</item>
+        <item name="buttonBgColor">@color/tdp_color</item>
         <item name="bg_background">@drawable/bg_semi_curved</item>
     </style>
 
@@ -66,7 +68,32 @@
 
         <item name="partyTextColor">@color/jana_sena_color</item>
         <item name="partyBgColor">@color/jana_sena_color</item>
+        <item name="buttonBgColor">@color/jana_sena_color</item>
         <item name="bg_background">@drawable/bg_semi_curved_janasena</item>
+    </style>
+
+    <style name="Theme.IndiaPoliticalEdge.YSRCP" parent="Theme.IndiaPoliticalEdge">
+        <item name="colorPrimary">@color/ysrcp_color_header</item>
+        <item name="colorPrimaryVariant">@color/ysrcp_color_header</item>
+        <item name="colorSecondary">@color/ysrcp_color_header</item>
+        <item name="colorSecondaryVariant">@color/ysrcp_color_header</item>
+
+        <item name="partyTextColor">@color/ysrcp_color_header</item>
+        <item name="partyBgColor">@color/ysrcp_color_header</item>
+        <item name="buttonBgColor">@color/ysrcp_color_buttons</item>
+        <item name="bg_background">@drawable/bg_semi_curved_ysrcp</item>
+    </style>
+
+    <style name="Theme.IndiaPoliticalEdge.CONGRESS" parent="Theme.IndiaPoliticalEdge">
+        <item name="colorPrimary">@color/congress_color_header</item>
+        <item name="colorPrimaryVariant">@color/congress_color_header</item>
+        <item name="colorSecondary">@color/congress_color_header</item>
+        <item name="colorSecondaryVariant">@color/congress_color_header</item>
+
+        <item name="partyTextColor">@color/congress_color_header</item>
+        <item name="partyBgColor">@color/congress_color_header</item>
+        <item name="buttonBgColor">@color/congress_color_buttons</item>
+        <item name="bg_background">@drawable/bg_semi_curved_congress</item>
     </style>
 
     <style name="Theme.IndiaPoliticalEdge.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
