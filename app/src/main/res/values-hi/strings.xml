@@ -409,4 +409,6 @@
     <string name="pls_poll_center_id">कृपया मतदान केंद्र आईडी दर्ज करें</string>
     <string name="pls_address">कृपया पता दर्ज करें</string>
     <string name="group_name">Group Name</string>
+
+    <string name="voters_information">Voters Information</string>
 </resources>

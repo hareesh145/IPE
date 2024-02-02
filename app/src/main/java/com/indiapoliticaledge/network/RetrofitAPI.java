@@ -183,5 +183,8 @@ public interface RetrofitAPI {
     @POST("boothlevel-management")
     Call<BoothLevelResponse> getBoothLevelManagement(@Body JsonObject jsonObject);
 
+    @POST("view-group-voters")
+    Call<BoothLevelManagmentResponse> viewGroupVoters(@Body JsonObject jsonObject);
+
 
 }

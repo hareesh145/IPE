@@ -56,7 +56,7 @@ public class BoothPoolManagementFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     if (response.body().boothlevelMgmtList != null && response.body().boothlevelMgmtList.size() > 0) {
-                        binding.boothLevelList.setAdapter(new BoothLevelAdapter(requireActivity(), response.body().boothlevelMgmtList));
+                        binding.boothLevelList.setAdapter(new BoothLevelAdapter(requireActivity(), response.body().boothlevelMgmtList,userInfo));
                     }
                 }
             }

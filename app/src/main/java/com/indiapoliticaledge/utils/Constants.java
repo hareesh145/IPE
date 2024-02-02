@@ -29,4 +29,6 @@ public class Constants {
     public static final String MLA_INFO = "MLA_INFO";
     public static final String LOGIN_RESPONSE = "LOGIN_RESPONSE";
 
+    public static final String BOOTH_LEVEL_MANEGEMENT="BOOTH_LEVEL_MANEGEMENT";
+
 }

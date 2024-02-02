@@ -1,14 +1,22 @@
 package com.indiapoliticaledge.ui.adapter;
 
+import static com.indiapoliticaledge.utils.Constants.BOOTH_LEVEL_MANEGEMENT;
+
 import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.ItemBoothLevelManagementBinding;
 import com.indiapoliticaledge.model.BoothlevelMgmtInfo;
+import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.ui.ListOfVotersScreen;
+import com.indiapoliticaledge.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -16,10 +24,12 @@ public class BoothLevelAdapter extends RecyclerView.Adapter<BoothLevelAdapter.Bo
 
     private final Activity activity;
     private final ArrayList<BoothlevelMgmtInfo> boothlevelMgmtInfos;
+    private UserInfo userInfo;
 
-    public BoothLevelAdapter(Activity activity, ArrayList<BoothlevelMgmtInfo> boothlevelMgmtInfos) {
+    public BoothLevelAdapter(Activity activity, ArrayList<BoothlevelMgmtInfo> boothlevelMgmtInfos, UserInfo userInfo) {
         this.activity = activity;
         this.boothlevelMgmtInfos = boothlevelMgmtInfos;
+        this.userInfo = userInfo;
     }
 
     @NonNull
@@ -45,6 +55,16 @@ public class BoothLevelAdapter extends RecyclerView.Adapter<BoothLevelAdapter.Bo
         public BoothLevelHolder(@NonNull ItemBoothLevelManagementBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(activity, ListOfVotersScreen.class);
+                    intent.putExtra(Constants.USER_INFO, new Gson().toJson(userInfo));
+                    intent.putExtra(BOOTH_LEVEL_MANEGEMENT, boothlevelMgmtInfos.get(getBindingAdapterPosition()));
+                    activity.startActivity(intent);
+                }
+            });
         }
 
         public void bind(BoothlevelMgmtInfo boothlevelMgmtInfo) {
