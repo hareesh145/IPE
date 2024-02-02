@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import com.indiapoliticaledge.model.BoothLevelManagmentResponse;
 import com.indiapoliticaledge.model.BoothLevelResponse;
 import com.indiapoliticaledge.model.NoticeBoardResponse;
+import com.indiapoliticaledge.model.PollManagementResponse;
+import com.indiapoliticaledge.model.PollManagmentVotersResponse;
 import com.indiapoliticaledge.model.Testimonial;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.requestmodel.AddOpinionRequest;
@@ -185,6 +187,19 @@ public interface RetrofitAPI {
 
     @POST("view-group-voters")
     Call<BoothLevelManagmentResponse> viewGroupVoters(@Body JsonObject jsonObject);
+
+
+    @POST("poll-management")
+    Call<PollManagementResponse> getPollManagement(@Body JsonObject jsonObject);
+
+    @POST("poll-center-voters")
+    Call<PollManagmentVotersResponse> getPollVoters(@Body JsonObject jsonObject);
+
+    @POST("add-boothlevel-group")
+    Call<JsonObject> addBoothLevelGroup(@Body JsonObject jsonObject);
+
+    @POST("add-polling-center")
+    Call<JsonObject> addPollingCenter(@Body JsonObject jsonObject);
 
 
 }

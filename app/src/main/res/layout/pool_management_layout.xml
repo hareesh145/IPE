@@ -89,7 +89,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/constituency_name_txt"
+                    android:id="@+id/party_name_txt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -98,6 +98,17 @@
                     app:layout_constraintEnd_toStartOf="@+id/party_icon"
                     app:layout_constraintStart_toEndOf="@+id/profile_image"
                     app:layout_constraintTop_toBottomOf="@+id/mla_name" />
+
+                <TextView
+                    android:id="@+id/constituency_name_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Maheswaram"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/party_icon"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/party_name_txt" />
 
                 <TextView
                     android:id="@+id/start_date_txt"

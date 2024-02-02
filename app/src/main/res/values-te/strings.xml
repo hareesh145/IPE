@@ -397,4 +397,9 @@
     <string name="constituency_poll_managment">నియోజకవర్గ పోల్ నిర్వహణ</string>
     <string name="group_name">Group Name</string>
     <string name="voters_information">Voters Information</string>
+
+    <string name="poll_center_name">పోల్ సెంటర్ పేరు</string>
+    <string name="poll_center_id">పోల్ సెంటర్ ID</string>
+
+    <string name="add_polling_center">కొత్త పోలింగ్ కేంద్రాన్ని జోడించండి</string>
 </resources>

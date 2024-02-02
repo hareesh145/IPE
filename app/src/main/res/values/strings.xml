@@ -451,4 +451,8 @@
     <string name="group_name">Group Name</string>
     <string name="voters_information">Voters Information</string>
 
+    <string name="poll_center_name">Poll Center Name</string>
+    <string name="poll_center_id">Poll Center ID</string>
+    <string name="add_polling_center">Add a New Polling Center</string>
+
 </resources>

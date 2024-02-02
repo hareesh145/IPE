@@ -30,5 +30,6 @@ public class Constants {
     public static final String LOGIN_RESPONSE = "LOGIN_RESPONSE";
 
     public static final String BOOTH_LEVEL_MANEGEMENT="BOOTH_LEVEL_MANEGEMENT";
+    public static final String POLL_MANEGEMENT="POLL_MANEGEMENT";
 
 }

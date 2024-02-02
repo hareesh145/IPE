@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.indiapoliticaledge.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -153,6 +154,22 @@ public class Utils {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    public static int getLoggedInPartyColor(Context context, String partyName) {
+        if (partyName.equalsIgnoreCase("BJP")) {
+            return R.color.bjp_color;
+        } else if (partyName.equalsIgnoreCase("JANASENA")) {
+            return R.color.jana_sena_color;
+        } else if (partyName.equalsIgnoreCase("TDP")) {
+            return R.color.tdp_color;
+        } else if (partyName.equalsIgnoreCase("CONGRESS")) {
+            return R.color.congress_color_header;
+        } else if (partyName.equalsIgnoreCase("YSRCP")) {
+            return R.color.ysrcp_color_header;
+        } else {
+            return R.color.bg_gradient_start;
         }
     }
 }

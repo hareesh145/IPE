@@ -411,4 +411,8 @@
     <string name="group_name">Group Name</string>
 
     <string name="voters_information">Voters Information</string>
+
+    <string name="poll_center_name">मतदान केंद्र का नाम</string>
+    <string name="poll_center_id">मतदान केंद्र आईडी</string>
+
 </resources>
