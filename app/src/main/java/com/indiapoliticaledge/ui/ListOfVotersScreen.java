@@ -85,5 +85,7 @@ public class ListOfVotersScreen extends AppCompatActivity {
             });
         }
 
+
+
     }
 }

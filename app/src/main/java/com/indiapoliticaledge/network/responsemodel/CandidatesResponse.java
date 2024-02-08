@@ -10,6 +10,8 @@ public class CandidatesResponse implements Serializable {
     public MlaInfo mlaInfo;
     public String successCode;
 
+    public ArrayList<String> mandalNamesList;
+
     public boolean isSuccess() {
         return success;
     }
@@ -41,6 +43,7 @@ public class CandidatesResponse implements Serializable {
     public void setSuccessCode(String successCode) {
         this.successCode = successCode;
     }
+
 
     @Override
     public String toString() {

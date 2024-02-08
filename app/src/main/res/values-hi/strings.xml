@@ -98,9 +98,10 @@
     <string name="manage_development">विकास प्रबंधित करें</string>
     <string name="upload_manifesto">मेनिफेस्ट फ़ाइल अपलोड करें</string>
     <string name="upload_av">एवी अपलोड करें</string>
-    <string name="view_candidate_donates">उम्मीदवार दान देखें</string>
+    <string name="upload_image_av">छवियाँ अपलोड करें &amp; ए.वी.एस</string>
+    <string name="view_candidate_donates">मतदाता दान देखें</string>
     <string name="constituency_issues">निर्वाचन क्षेत्र के मुद्दे</string>
-    <string name="view_candiates_rating">उम्मीदवारों की रेटिंग देखें</string>
+    <string name="view_candiates_rating">मतदाता रेटिंग देखें</string>
     <string name="latest_news">ताजा खबर</string>
     <string name="opinion_polling">जनमत सर्वेक्षण</string>
     <string name="upload_images">छवियाँ/फ़ोटो अपलोड करें</string>
@@ -414,5 +415,9 @@
 
     <string name="poll_center_name">मतदान केंद्र का नाम</string>
     <string name="poll_center_id">मतदान केंद्र आईडी</string>
+    <string name="search_voter">मतदाता खोजें</string>
+
+    <string name="booth_level_managment">बूथ स्तर प्रबंधन</string>
+    <string name="pool_managment">मतदान प्रबंधन</string>
 
 </resources>

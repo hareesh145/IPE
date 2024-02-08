@@ -4,47 +4,52 @@
         android:id="@+id/candidate_profile"
         android:title="@string/candidate_profile_info" />
     <item
-        android:id="@+id/constituency_map"
-        android:title="@string/candidate_constituency_map" />
-
-    <item
         android:id="@+id/constituency_devs"
         android:title="@string/candidate_constituency_development" />
-
     <item
-        android:id="@+id/candidate_av"
-        android:title="@string/candidate_upload_av" />
+        android:id="@+id/leader_rating"
+        android:title="@string/constituency_leader_rating" />
     <item
-        android:id="@+id/candidate_donation"
-        android:title="@string/candidate_donates" />
+        android:id="@+id/constituency_map"
+        android:title="@string/candidate_constituency_map" />
 
     <item
         android:id="@+id/consti_issues"
         android:title="@string/candidate_constituency_issues" />
 
     <item
-        android:id="@+id/leader_rating"
-        android:title="@string/constituency_leader_rating" />
+        android:id="@+id/opinion_polling"
+        android:title="@string/candidate_opinion_polling" />
+
+    <item
+        android:id="@+id/candidate_donation"
+        android:title="@string/candidate_donates" />
+
+
     <item
         android:id="@+id/latest_news"
         android:title="@string/candidate_latest_news" />
 
     <item
-        android:id="@+id/opinion_polling"
-        android:title="@string/candidate_opinion_polling" />
-
-    <item
         android:id="@+id/upload_images_photos"
-        android:title="@string/candidate_upload_images" />
-
-
-    <item
-        android:id="@+id/testimonials"
-        android:title="@string/candidate_testimonials" />
+        android:title="@string/upload_image_av" />
 
     <item
         android:id="@+id/social_reviews"
         android:title="@string/candidate_social_media_reviews" />
+
+<!--
+    <item
+        android:id="@+id/candidate_av"
+        android:title="@string/candidate_upload_av" />
+-->
+
+
+
+    <!--    <item-->
+<!--        android:id="@+id/testimonials"-->
+<!--        android:title="@string/candidate_testimonials" />-->
+
 
     <item
         android:id="@+id/contact_us"

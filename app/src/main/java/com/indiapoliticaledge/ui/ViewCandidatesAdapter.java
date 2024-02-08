@@ -45,7 +45,7 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
     }
 
     class ViewMLAHolder extends RecyclerView.ViewHolder {
-        TextView mla_name, constituency_name_txt, party_name_txt, village_name_txt, mandal_name_txt;
+        TextView mla_name, constituency_name_txt, party_name_txt, village_name_txt, mandal_name_txt, mobile_number_txt;
         ImageView party_icon, profile_image, edit_icon;
 
         public ViewMLAHolder(@NonNull View itemView) {
@@ -58,6 +58,7 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
             constituency_name_txt = itemView.findViewById(R.id.constituency_name_txt);
             village_name_txt = itemView.findViewById(R.id.village_name_txt);
             mandal_name_txt = itemView.findViewById(R.id.mandal_name_txt);
+            mobile_number_txt = itemView.findViewById(R.id.mobile_number_txt);
             mla_name.setOnClickListener(v -> {
                 Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
                 activity.startActivity(intent);
@@ -87,13 +88,13 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
             mla_name.setText(candidatesList.firstName + " " + candidatesList.lastName);
             constituency_name_txt.setText(candidatesList.mobileNumber);
             if (candidatesList.birthPlace != null) {
-                party_name_txt.setText("Birth Place : " + candidatesList.birthPlace);
+                party_name_txt.setText(activity.getString(R.string.birth_place) + " : " + candidatesList.birthPlace);
             } else {
                 party_name_txt.setText("Birth Place : ");
             }
 
             if (candidatesList.villageName != null) {
-                village_name_txt.setText("Village :  " + candidatesList.villageName);
+                village_name_txt.setText(activity.getString(R.string.village_name) + " : " + candidatesList.villageName);
             } else {
                 village_name_txt.setText("Village :  ");
             }
@@ -102,6 +103,10 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
                 mandal_name_txt.setText("Mandal : " + candidatesList.mandalName);
             } else {
                 mandal_name_txt.setText("Mandal :  ");
+            }
+
+            if (candidatesList.voterIdNumber != null) {
+                mobile_number_txt.setText(activity.getString(R.string.voter_id) + " : " + candidatesList.voterIdNumber);
             }
 
         }

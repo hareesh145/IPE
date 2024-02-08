@@ -6,8 +6,10 @@ import com.indiapoliticaledge.model.BoothLevelResponse;
 import com.indiapoliticaledge.model.NoticeBoardResponse;
 import com.indiapoliticaledge.model.PollManagementResponse;
 import com.indiapoliticaledge.model.PollManagmentVotersResponse;
+import com.indiapoliticaledge.model.SearchVoterResponse;
 import com.indiapoliticaledge.model.Testimonial;
 import com.indiapoliticaledge.model.UserInfo;
+import com.indiapoliticaledge.model.VoterMandalResponse;
 import com.indiapoliticaledge.network.requestmodel.AddOpinionRequest;
 import com.indiapoliticaledge.network.requestmodel.CDevelopmentRequest;
 import com.indiapoliticaledge.network.requestmodel.Candidate;
@@ -201,5 +203,14 @@ public interface RetrofitAPI {
     @POST("add-polling-center")
     Call<JsonObject> addPollingCenter(@Body JsonObject jsonObject);
 
+    @POST("search-by-voter")
+    Call<SearchVoterResponse> searchByVoter(@Body JsonObject jsonObject);
+
+    @POST("search-by-voters-in-mandal")
+    Call<VoterMandalResponse> searchVotersByMandal(@Body JsonObject jsonObject);
+
+
+    @POST("search-by-voters-in-village")
+    Call<VoterMandalResponse> searchVotersByVillage(@Body JsonObject jsonObject);
 
 }

@@ -98,8 +98,9 @@
     <string name="upload_manifesto">మానిఫెస్ట్ ఫైల్‌ను అప్‌లోడ్ చేయండి</string>
     <string name="upload_av">AVని అప్‌లోడ్ చేయండి</string>
     <string name="view_candidate_donates">ఓటరు విరాళాలను వీక్షించండి</string>
+    <string name="upload_image_av">చిత్రాలను అప్‌లోడ్ చేయండి &amp; AVలు</string>
     <string name="constituency_issues">నియోజకవర్గ సమస్యలు</string>
-    <string name="view_candiates_rating">అభ్యర్థుల రేటింగ్‌ని వీక్షించండి</string>
+    <string name="view_candiates_rating">ఓటర్ల రేటింగ్‌ని వీక్షించండి</string>
     <string name="latest_news">తాజా వార్తలు</string>
     <string name="opinion_polling">అభిప్రాయ సేకరణ</string>
     <string name="upload_images">చిత్రాలు/ఫోటోలను అప్‌లోడ్ చేయండి</string>
@@ -402,4 +403,8 @@
     <string name="poll_center_id">పోల్ సెంటర్ ID</string>
 
     <string name="add_polling_center">కొత్త పోలింగ్ కేంద్రాన్ని జోడించండి</string>
+    <string name="search_voter">ఓటరును వెతకండి</string>
+
+    <string name="booth_level_managment">బూత్ స్థాయి నిర్వహణ</string>
+    <string name="pool_managment">పోల్ నిర్వహణ</string>
 </resources>

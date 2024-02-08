@@ -114,25 +114,25 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
         } else if (id == R.id.candidate_donation) {
             setTitleText(getString(R.string.candidate_donates));
             fragment = new CandidateDonationFragment();
-        } else if (id == R.id.candidate_av) {
+        } /*else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
             setTitleText(getString(R.string.candidate_upload_av));
-        } else if (id == R.id.consti_issues) {
+        }*/ else if (id == R.id.consti_issues) {
             fragment = new ViewConstituencyIssuesFragment();
             setTitleText(getString(R.string.candidate_constituency_issues));
         } else if (id == R.id.upload_images_photos) {
             fragment = new UploadImagesFragment();
-            setTitleText(getString(R.string.candidate_upload_images));
+            setTitleText(getString(R.string.upload_image_av));
         } else if (id == R.id.latest_news) {
             fragment = new LatestNewsFragment();
             setTitleText(getString(R.string.latest_news));
         } else if (id == R.id.opinion_polling) {
             fragment = new OpinionPollingFragment();
             setTitleText(getString(R.string.opinion_polling));
-        } else if (id == R.id.testimonials) {
+        } /*else if (id == R.id.testimonials) {
             fragment = new AddTestimonialFragment();
             setTitleText(getString(R.string.candidate_testimonials));
-        } else if (id == R.id.social_reviews) {
+        }*/ else if (id == R.id.social_reviews) {
             fragment = new SocialMediaFragment();
             setTitleText(getString(R.string.social_media_reviews));
         } else if (id == R.id.contact_us) {

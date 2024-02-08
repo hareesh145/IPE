@@ -38,7 +38,7 @@ import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
 import com.indiapoliticaledge.ui.fragment.MLAInfoFragment;
-import com.indiapoliticaledge.ui.fragment.ManageCandidatesFragment;
+import com.indiapoliticaledge.ui.fragment.ManageVotersFragment;
 import com.indiapoliticaledge.ui.fragment.UploadManifestFragment;
 import com.indiapoliticaledge.utils.Constants;
 
@@ -145,7 +145,7 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.manage_candidates) {
-            fragment = new ManageCandidatesFragment();
+            fragment = new ManageVotersFragment();
             setTitleText(getString(R.string.manage_voters));
         } else if (id == R.id.notice_board_messages) {
             fragment = new NoticeBoardMessagesFragment();
@@ -162,10 +162,12 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         } else if (id == R.id.candidate_donation) {
             fragment = new CandidateDonationFragment();
             setTitleText(getString(R.string.view_candidate_donates));
-        } else if (id == R.id.candidate_av) {
+        }
+        /*else if (id == R.id.candidate_av) {
             fragment = new CandidateAVFragment();
             setTitleText(getString(R.string.upload_av));
-        } else if (id == R.id.view_candidate_donations) {
+        }*/
+        else if (id == R.id.view_candidate_donations) {
             fragment = new ViewCandidateDonationsFrgment();
             setTitleText(getString(R.string.view_candidate_donates));
         } else if (id == R.id.consti_issues) {
@@ -185,7 +187,7 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
             setTitleText(getString(R.string.testimonials));
         } else if (id == R.id.upload_images) {
             fragment = new UploadImagesFragment();
-            setTitleText(getString(R.string.upload_images));
+            setTitleText(getString(R.string.upload_image_av));
         } else if (id == R.id.social_media_reviews) {
             fragment = new SocialMediaFragment();
             setTitleText(getString(R.string.social_media_reviews));
