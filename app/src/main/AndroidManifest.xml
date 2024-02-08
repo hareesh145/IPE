@@ -20,6 +20,7 @@
         <activity
             android:name="com.indiapoliticaledge.ui.SplashIntroPagerScreen"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.IndiaPoliticalEdge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,22 +28,50 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.indiapoliticaledge.ui.LoginScreen" />
-        <activity android:name=".ui.ForgotPwdScreen" />
+        <activity
+            android:name="com.indiapoliticaledge.ui.LoginScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ForgotPwdScreen"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.AddNewMLAScreen" />
-        <activity android:name=".ui.SubscriptionFeesScreen" />
-        <activity android:name=".ui.SuperAdminScreen" />
-        <activity android:name=".ui.ViewMLAInfoScreen" />
-        <activity android:name=".ui.CandidateProfile" />
-        <activity android:name=".ui.ManageMLASubscription" />
-        <activity android:name=".ui.UpdateMLAScreen" />
-        <activity android:name=".ui.UpdateVoterScreen" />
-        <activity android:name=".ui.OptionsScreen" />
-        <activity android:name=".ui.MLAInfoDrawerScreen" />
-        <activity android:name=".ui.CandidateHomeScreen" />
+        <activity
+            android:name=".ui.AddNewMLAScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SubscriptionFeesScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SuperAdminScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ViewMLAInfoScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CandidateProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ManageMLASubscription"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.UpdateMLAScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.UpdateVoterScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.OptionsScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MLAInfoDrawerScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CandidateHomeScreen"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.ListOfVotersScreen" />
+        <activity
+            android:name=".ui.ListOfVotersScreen"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
