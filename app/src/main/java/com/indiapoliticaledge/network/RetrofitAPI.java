@@ -213,4 +213,8 @@ public interface RetrofitAPI {
     @POST("search-by-voters-in-village")
     Call<VoterMandalResponse> searchVotersByVillage(@Body JsonObject jsonObject);
 
+
+    @POST("view-department-and-year-development")
+    Call<JsonObject> viewDepartmentAndYearDevelopment(@Body JsonObject jsonObject);
+
 }

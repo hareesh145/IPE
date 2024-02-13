@@ -17,6 +17,7 @@
             app:cardElevation="@dimen/_12sdp"
             app:layout_constraintEnd_toStartOf="@+id/current_year_card_view"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +45,7 @@
                 <TextView
                     android:id="@+id/prev_work_desc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_150sdp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
@@ -69,6 +70,7 @@
             android:background="@color/white"
             app:cardCornerRadius="@dimen/_8sdp"
             app:cardElevation="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/prev_year_card_view"
             app:layout_constraintTop_toTopOf="parent">
@@ -98,7 +100,7 @@
                 <TextView
                     android:id="@+id/current_work_desc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_150sdp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"

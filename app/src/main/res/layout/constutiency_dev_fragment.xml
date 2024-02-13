@@ -5,42 +5,88 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:paddingTop="@dimen/_8sdp">
 
 
         <TextView
-            android:id="@+id/start_date"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/bg_semi_curved_grey"
-            android:drawableEnd="@drawable/date_logo"
-            android:gravity="center_vertical"
-            android:hint="@string/from_date"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_5sdp"
+            android:id="@+id/select_year_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:text="Select Year"
             android:textColor="@color/black"
-            android:textColorHint="@color/greyTeal"
-            app:layout_constraintEnd_toStartOf="@+id/end_date"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/end_date"
-            android:layout_width="0dp"
+
+        <FrameLayout
+            android:id="@+id/years_frame"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/bg_semi_curved_grey"
-            android:drawableEnd="@drawable/date_logo"
-            android:gravity="center_vertical"
-            android:hint="@string/to_date"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_5sdp"
+            android:layout_margin="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_year_txt">
+
+            <Spinner
+                android:id="@+id/years_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/bg_white_curved_spinner"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/years_down_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:src="@drawable/ic_down_arrow" />
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/select_constituency_dev_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:text="Select Constituency Development Department"
             android:textColor="@color/black"
-            android:textColorHint="@color/greyTeal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/start_date"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/years_frame" />
+
+
+        <FrameLayout
+            android:id="@+id/constituency_dev_frame"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_constituency_dev_txt">
+
+            <Spinner
+                android:id="@+id/constituency_dev_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/bg_white_curved_spinner"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/constituency_dev_down_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:src="@drawable/ic_down_arrow" />
+        </FrameLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -52,7 +98,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/end_date" />
+            app:layout_constraintTop_toBottomOf="@+id/constituency_dev_frame" />
 
         <TextView
             android:id="@+id/no_data_found_txt"

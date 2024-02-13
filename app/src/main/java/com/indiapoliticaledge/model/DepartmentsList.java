@@ -6,9 +6,18 @@ public class DepartmentsList implements Serializable {
 
     public int departmentId;
     public String departmentName;
+    public String departmentNameLang;
     public String departmentDescription;
     public String deleteDate;
     public String deleteFlag;
+
+    public String getDepartmentNameLang() {
+        return departmentNameLang;
+    }
+
+    public void setDepartmentNameLang(String departmentNameLang) {
+        this.departmentNameLang = departmentNameLang;
+    }
 
     public int getDepartmentId() {
         return departmentId;

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,13 @@ import com.indiapoliticaledge.databinding.ConstutiencyDevFragmentBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
+import com.indiapoliticaledge.network.responsemodel.CandidatesResponse;
 import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
 import com.indiapoliticaledge.ui.adapter.ViewConstituencyDevAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +35,8 @@ public class ConstituencyDevFragment extends Fragment {
     private static final String TAG = ConstituencyDevFragment.class.getSimpleName();
     private TextView no_data_found_txt;
     ConstutiencyDevFragmentBinding binding;
+
+    ArrayList<String> yearsList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -44,6 +50,10 @@ public class ConstituencyDevFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         no_data_found_txt = view.findViewById(R.id.no_data_found_txt);
+
+        setYearsList();
+
+
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
@@ -75,5 +85,18 @@ public class ConstituencyDevFragment extends Fragment {
         });
 
 
+    }
+
+    private void setYearsList() {
+        yearsList.add(0, "Select Year");
+        for (int i = 2018; i <= 2100; i++) {
+            yearsList.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(requireContext(),
+                R.layout.spinner_item, yearsList);
+        stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        binding.yearsSpinner.setAdapter(stringArrayAdapter);
+        binding.yearsSpinner.setSelection(0);
     }
 }

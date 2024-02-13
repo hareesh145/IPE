@@ -6,9 +6,7 @@
     <item
         android:id="@+id/constituency_devs"
         android:title="@string/candidate_constituency_development" />
-    <item
-        android:id="@+id/leader_rating"
-        android:title="@string/constituency_leader_rating" />
+
     <item
         android:id="@+id/constituency_map"
         android:title="@string/candidate_constituency_map" />
@@ -29,6 +27,10 @@
     <item
         android:id="@+id/latest_news"
         android:title="@string/candidate_latest_news" />
+
+    <item
+        android:id="@+id/leader_rating"
+        android:title="@string/constituency_leader_rating" />
 
     <item
         android:id="@+id/upload_images_photos"
