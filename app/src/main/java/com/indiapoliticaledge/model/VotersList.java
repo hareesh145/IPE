@@ -22,4 +22,7 @@ public class VotersList {
     public String villageName;
     public String language;
     public String roleName;
+
+    public int age;
+    public String dateOfBirth;
 }

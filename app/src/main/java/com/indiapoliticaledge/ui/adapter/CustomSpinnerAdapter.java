@@ -5,32 +5,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.DepartmentsList;
+
+import java.util.ArrayList;
 
 public class CustomSpinnerAdapter extends BaseAdapter {
     Context context;
-    int flags[];
-    String[] countryNames;
     LayoutInflater inflter;
+    private ArrayList<DepartmentsList> departmentsLists;
 
-    public CustomSpinnerAdapter(Context applicationContext, int[] flags, String[] countryNames) {
+    public CustomSpinnerAdapter(Context applicationContext, ArrayList<DepartmentsList> departmentsLists) {
         this.context = applicationContext;
-        this.flags = flags;
-        this.countryNames = countryNames;
         inflter = (LayoutInflater.from(applicationContext));
+        this.departmentsLists = departmentsLists;
     }
 
     @Override
     public int getCount() {
-        return flags.length;
+        return departmentsLists.size();
     }
 
     @Override
-    public Object getItem(int i) {
-        return null;
+    public DepartmentsList getItem(int i) {
+        return departmentsLists.get(i);
     }
 
     @Override
@@ -40,12 +40,9 @@ public class CustomSpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.spinner_item, null);
-        ImageView icon = (ImageView) view.findViewById(R.id.imageView);
+        view = inflter.inflate(R.layout.item_department_spinner, null);
         TextView names = (TextView) view.findViewById(R.id.textView);
-        icon.setImageResource(flags[i]);
-        names.setText(countryNames[i]);
+        names.setText(departmentsLists.get(i).departmentName);
         return view;
     }
-}
 }

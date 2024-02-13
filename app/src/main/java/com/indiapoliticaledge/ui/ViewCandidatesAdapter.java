@@ -45,13 +45,14 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
     }
 
     class ViewMLAHolder extends RecyclerView.ViewHolder {
-        TextView mla_name, constituency_name_txt, party_name_txt, village_name_txt, mandal_name_txt, mobile_number_txt;
+        TextView mla_name, constituency_name_txt, party_name_txt, village_name_txt, mandal_name_txt, mobile_number_txt,date_of_birth_txt;
         ImageView party_icon, profile_image, edit_icon;
 
         public ViewMLAHolder(@NonNull View itemView) {
             super(itemView);
             mla_name = itemView.findViewById(R.id.mla_name);
             party_name_txt = itemView.findViewById(R.id.party_name_txt);
+            date_of_birth_txt = itemView.findViewById(R.id.date_of_birth_txt);
             profile_image = itemView.findViewById(R.id.profile_image);
             party_icon = itemView.findViewById(R.id.party_icon);
             edit_icon = itemView.findViewById(R.id.edit_icon);
@@ -87,10 +88,16 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
         public void bind(CandidatesList candidatesList) {
             mla_name.setText(candidatesList.firstName + " " + candidatesList.lastName);
             constituency_name_txt.setText(candidatesList.mobileNumber);
-            if (candidatesList.birthPlace != null) {
-                party_name_txt.setText(activity.getString(R.string.birth_place) + " : " + candidatesList.birthPlace);
+            if (candidatesList.age != 0) {
+                party_name_txt.setText(activity.getString(R.string.age) + " : " + candidatesList.age);
             } else {
-                party_name_txt.setText("Birth Place : ");
+                party_name_txt.setText(activity.getString(R.string.age));
+            }
+
+            if (candidatesList.dateOfBirth != null) {
+                date_of_birth_txt.setText(activity.getString(R.string.date_of_birth) + " : " + candidatesList.dateOfBirth);
+            } else {
+                date_of_birth_txt.setText(activity.getString(R.string.date_of_birth));
             }
 
             if (candidatesList.villageName != null) {
@@ -108,6 +115,7 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
             if (candidatesList.voterIdNumber != null) {
                 mobile_number_txt.setText(activity.getString(R.string.voter_id) + " : " + candidatesList.voterIdNumber);
             }
+
 
         }
     }

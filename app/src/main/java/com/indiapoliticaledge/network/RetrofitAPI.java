@@ -215,6 +215,6 @@ public interface RetrofitAPI {
 
 
     @POST("view-department-and-year-development")
-    Call<JsonObject> viewDepartmentAndYearDevelopment(@Body JsonObject jsonObject);
+    Call<VDevelopmentResponse> viewDepartmentAndYearDevelopment(@Body JsonObject jsonObject);
 
 }

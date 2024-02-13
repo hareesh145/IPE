@@ -31,7 +31,9 @@ public class CandidatesList implements Serializable {
     public String voterIdNumber;
     public String mandalName;
     public String villageName;
-    public Object roleName;
+    public String roleName;
+    public int age;
+    public String dateOfBirth;
 
 
     public int getCandidateId() {

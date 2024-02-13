@@ -456,5 +456,7 @@
     <string name="poll_center_id">Poll Center ID</string>
     <string name="add_polling_center">Add a New Polling Center</string>
     <string name="search_voter">Search Voter</string>
+    <string name="age">Age</string>
+    <string name="no_poll_centers">There is no Poll Centers</string>
 
 </resources>

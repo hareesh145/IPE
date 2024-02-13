@@ -47,7 +47,8 @@ public class VotersListAdapter extends RecyclerView.Adapter<VotersListAdapter.Vo
                     + votersList.firstName + " " + votersList.lastName);
             binding.donationAmount.setText(activity.getString(R.string.mobile_number)
                     + " : " + votersList.mobileNumber);
-            binding.donationDate.setText(activity.getString(R.string.birth_place) + " : " + votersList.birthPlace);
+            binding.donationDate.setText(activity.getString(R.string.age) + " : " + votersList.age);
+            binding.dateOfBirthTxt.setText(activity.getString(R.string.date_of_birth) + " : " + votersList.dateOfBirth);
             binding.villageName.setText(activity.getString(R.string.village_name) + " : " + votersList.villageName);
             binding.voterId.setText(activity.getString(R.string.voter_id) + " : " + votersList.voterIdNumber);
         }

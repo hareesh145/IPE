@@ -419,5 +419,6 @@
 
     <string name="booth_level_managment">बूथ स्तर प्रबंधन</string>
     <string name="pool_managment">मतदान प्रबंधन</string>
+    <string name="age">आयु</string>
 
 </resources>

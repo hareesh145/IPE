@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -16,11 +17,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.ConstutiencyDevFragmentBinding;
+import com.indiapoliticaledge.model.DepartmentsList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
-import com.indiapoliticaledge.network.responsemodel.CandidatesResponse;
 import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
+import com.indiapoliticaledge.ui.adapter.CustomSpinnerAdapter;
 import com.indiapoliticaledge.ui.adapter.ViewConstituencyDevAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
@@ -37,6 +39,11 @@ public class ConstituencyDevFragment extends Fragment {
     ConstutiencyDevFragmentBinding binding;
 
     ArrayList<String> yearsList = new ArrayList<>();
+
+    ArrayList<DepartmentsList> departmentsLists = new ArrayList<>();
+
+    int departmentID = -1;
+    int selectedYear = 0;
 
     @Nullable
     @Override
@@ -71,8 +78,16 @@ public class ConstituencyDevFragment extends Fragment {
                     Log.d(TAG, "onResponse: " + response.body());
                     if (response.body().constituencyDepartmentsList != null && response.body().constituencyDepartmentsList.size() > 0) {
                         binding.constituencyDevList.setAdapter(new ViewConstituencyDevAdapter(requireActivity(), response.body().constituencyDepartmentsList));
+                        binding.noDataFoundTxt.setVisibility(View.GONE);
+                    } else {
+                        binding.constituencyDevList.setVisibility(View.GONE);
+                        binding.noDataFoundTxt.setText(getString(R.string.no_constituency_department_data));
+                        binding.noDataFoundTxt.setVisibility(View.VISIBLE);
                     }
-//                    no_data_found_txt.setVisibility(View.VISIBLE);
+                    if (departmentsLists.size() == 0) {
+                        departmentsLists = response.body().departmentsList;
+                    }
+                    binding.constituencyDevSpinner.setAdapter(new CustomSpinnerAdapter(requireContext(), departmentsLists));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -81,6 +96,39 @@ public class ConstituencyDevFragment extends Fragment {
             @Override
             public void onFailure(Call<VDevelopmentResponse> call, Throwable t) {
                 Utils.hideProgessBar();
+            }
+        });
+
+        binding.yearsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    viewDepartmentAndYearDevelopment(departmentID);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        binding.constituencyDevSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    DepartmentsList departmentsList = (DepartmentsList) parent.getSelectedItem();
+                    departmentID = departmentsList.departmentId;
+                    viewDepartmentAndYearDevelopment(departmentID);
+                } catch (Exception e) {
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -98,5 +146,48 @@ public class ConstituencyDevFragment extends Fragment {
 
         binding.yearsSpinner.setAdapter(stringArrayAdapter);
         binding.yearsSpinner.setSelection(0);
+    }
+
+    private void viewDepartmentAndYearDevelopment(int departmentId) {
+        if (binding.yearsSpinner.getSelectedItemPosition() == 0)
+            return;
+        if (departmentId == -1)
+            return;
+        RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
+        Bundle bundle = getArguments();
+        String jsonObjectUser = bundle.getString(Constants.USER_INFO);
+        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("constituencyId", userInfo.constituencyId);
+        jsonObject.addProperty("departmentId", departmentId);
+        jsonObject.addProperty("deleteFlag", "N");
+        jsonObject.addProperty("year", Integer.parseInt(binding.yearsSpinner.getSelectedItem().toString()));
+        Utils.showProgessBar(requireContext());
+
+        retrofitAPI.viewDepartmentAndYearDevelopment(jsonObject).enqueue(new Callback<VDevelopmentResponse>() {
+            @Override
+            public void onResponse(Call<VDevelopmentResponse> call, Response<VDevelopmentResponse> response) {
+                try {
+                    Utils.hideProgessBar();
+                    Log.d(TAG, "onResponse: " + response.body());
+                    if (response.body().constituencyDepartmentsList != null && response.body().constituencyDepartmentsList.size() > 0) {
+                        binding.constituencyDevList.setAdapter(new ViewConstituencyDevAdapter(requireActivity(), response.body().constituencyDepartmentsList));
+                        binding.noDataFoundTxt.setVisibility(View.GONE);
+                    } else {
+                        binding.constituencyDevList.setVisibility(View.GONE);
+                        binding.noDataFoundTxt.setText(getString(R.string.no_constituency_department_data));
+                        binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VDevelopmentResponse> call, Throwable t) {
+
+            }
+        });
+
     }
 }

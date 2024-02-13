@@ -1,6 +1,8 @@
 package com.indiapoliticaledge.ui.admin;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,7 @@ import retrofit2.Response;
 public class ConstituencyPoolManagementFragment extends Fragment {
 
     PoolManagementLayoutBinding binding;
+    private UserInfo userInfo;
 
     @Nullable
     @Override
@@ -45,7 +48,7 @@ public class ConstituencyPoolManagementFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
-        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
 
         bindMlaInfo(userInfo);
 
@@ -59,7 +62,10 @@ public class ConstituencyPoolManagementFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     if (response.body().pollManagementList != null && response.body().pollManagementList.size() > 0) {
-                        binding.boothLevelList.setAdapter(new PollManagementAdapter(requireActivity(), response.body().pollManagementList,userInfo));
+                        binding.noDataFoundTxt.setVisibility(View.GONE);
+                        binding.boothLevelList.setAdapter(new PollManagementAdapter(requireActivity(), response.body().pollManagementList, userInfo));
+                    } else {
+                        binding.noDataFoundTxt.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -78,6 +84,66 @@ public class ConstituencyPoolManagementFragment extends Fragment {
                     AddPollCenterFragment addBoothPoolManagement = new AddPollCenterFragment();
                     ((MLAInfoDrawerScreen) requireActivity()).createFragment(addBoothPoolManagement, bundle.getString(Constants.USER_INFO));
                 }
+            }
+        });
+
+        binding.searchGroupName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+
+
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.searchGroupName.getText().toString() != null && binding.searchGroupName.getText().toString().length() > 0) {
+                    searchPollCenter(binding.searchGroupName.getText().toString());
+                }
+            }
+        });
+    }
+
+    private void searchPollCenter(String pollCenter) {
+        Utils.showProgessBar(requireContext());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("constituencyId", userInfo.getConstituencyId());
+        jsonObject.addProperty("pollCenterName", pollCenter);
+        jsonObject.addProperty("deleteFlag", "N");
+        RetrofitClient.getInstance(requireContext()).getRetrofitAPI().getPollManagement(jsonObject).enqueue(new Callback<PollManagementResponse>() {
+            @Override
+            public void onResponse(Call<PollManagementResponse> call, Response<PollManagementResponse> response) {
+                Utils.hideProgessBar();
+                if (response.isSuccessful()) {
+                    if (response.body().pollManagementList != null && response.body().pollManagementList.size() > 0) {
+                        binding.noDataFoundTxt.setVisibility(View.GONE);
+                        binding.boothLevelList.setAdapter(new PollManagementAdapter(requireActivity(), response.body().pollManagementList, userInfo));
+                    } else {
+                        binding.noDataFoundTxt.setText(getString(R.string.no_poll_centers));
+                        binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PollManagementResponse> call, Throwable t) {
+                Utils.hideProgessBar();
+
             }
         });
     }
