@@ -97,7 +97,7 @@ public class ManageVotersFragment extends Fragment {
                     if (response.body() != null && response.body().successCode.equals("200")) {
                         ArrayList<CandidatesList> usersList = response.body().candidatesList;
                         if (usersList.size() > 0) {
-                            view_mlas_list.setAdapter(new ViewCandidatesAdapter(requireActivity(), usersList));
+                            view_mlas_list.setAdapter(new ViewCandidatesAdapter(requireActivity(), usersList, userInfo));
                             binding.noDataFoundTxt.setVisibility(View.GONE);
                         } else {
                             binding.noDataFoundTxt.setVisibility(View.VISIBLE);
@@ -149,7 +149,7 @@ public class ManageVotersFragment extends Fragment {
                     if (response.body() != null && response.body().votersInfo != null) {
                         ArrayList<CandidatesList> usersList = new ArrayList<>();
                         usersList.add(response.body().votersInfo);
-                        ViewCandidatesAdapter viewCandidatesAdapter = new ViewCandidatesAdapter(requireActivity(), usersList);
+                        ViewCandidatesAdapter viewCandidatesAdapter = new ViewCandidatesAdapter(requireActivity(), usersList,userInfo);
                         view_mlas_list.setAdapter(viewCandidatesAdapter);
                         viewCandidatesAdapter.notifyDataSetChanged();
 

@@ -29,6 +29,7 @@ import retrofit2.Response;
 public class BoothPoolManagementFragment extends Fragment {
 
     BoothPoolManagementLayoutBinding binding;
+    private UserInfo userInfo;
 
     @Nullable
     @Override
@@ -42,7 +43,7 @@ public class BoothPoolManagementFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
-        UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
+        userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
 
         bindMlaInfo(userInfo);
 
@@ -56,7 +57,7 @@ public class BoothPoolManagementFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     if (response.body().boothlevelMgmtList != null && response.body().boothlevelMgmtList.size() > 0) {
-                        binding.boothLevelList.setAdapter(new BoothLevelAdapter(requireActivity(), response.body().boothlevelMgmtList,userInfo));
+                        binding.boothLevelList.setAdapter(new BoothLevelAdapter(requireActivity(), response.body().boothlevelMgmtList, userInfo));
                     }
                 }
             }
@@ -75,6 +76,48 @@ public class BoothPoolManagementFragment extends Fragment {
                     AddBoothPoolManagement addBoothPoolManagement = new AddBoothPoolManagement();
                     ((MLAInfoDrawerScreen) requireActivity()).createFragment(addBoothPoolManagement, bundle.getString(Constants.USER_INFO));
                 }
+            }
+        });
+
+        binding.submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.searchGroupName.getText().toString().isEmpty()) return;
+                searchBoothLevelGroup(binding.searchGroupName.getText().toString());
+            }
+        });
+    }
+
+    private void searchBoothLevelGroup(String searchGrp) {
+        Utils.showProgessBar(requireContext());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("constituencyId", userInfo.getConstituencyId());
+        jsonObject.addProperty("groupName", searchGrp);
+        jsonObject.addProperty("deleteFlag", "N");
+        RetrofitClient.getInstance(requireContext()).getRetrofitAPI().searchBoothManagement(jsonObject).enqueue(new Callback<BoothLevelResponse>() {
+            @Override
+            public void onResponse(Call<BoothLevelResponse> call, Response<BoothLevelResponse> response) {
+                try {
+                    Utils.hideProgessBar();
+                    if (response.isSuccessful()) {
+                        if (response.body().boothlevelMgmtList != null && response.body().boothlevelMgmtList.size() > 0) {
+                            binding.boothLevelList.setAdapter(new BoothLevelAdapter(requireActivity(), response.body().boothlevelMgmtList, userInfo));
+                            binding.noDataFoundTxt.setVisibility(View.GONE);
+                            binding.boothLevelList.setVisibility(View.VISIBLE);
+                        } else {
+                            binding.noDataFoundTxt.setVisibility(View.VISIBLE);
+                            binding.boothLevelList.setVisibility(View.GONE);
+                            binding.noDataFoundTxt.setText(getString(R.string.no_booth_level_grp));
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BoothLevelResponse> call, Throwable t) {
+
             }
         });
     }

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.indiapoliticaledge.R;
+import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.responsemodel.CandidatesList;
 
 import java.util.ArrayList;
@@ -20,10 +21,12 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
 
     private final Activity activity;
     private final ArrayList<CandidatesList> usersList;
+    private UserInfo userInfo;
 
-    public ViewCandidatesAdapter(Activity activity, ArrayList<CandidatesList> usersList) {
+    public ViewCandidatesAdapter(Activity activity, ArrayList<CandidatesList> usersList, UserInfo userInfo) {
         this.activity = activity;
         this.usersList = usersList;
+        this.userInfo = userInfo;
     }
 
 

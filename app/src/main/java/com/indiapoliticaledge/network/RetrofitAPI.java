@@ -217,4 +217,7 @@ public interface RetrofitAPI {
     @POST("view-department-and-year-development")
     Call<VDevelopmentResponse> viewDepartmentAndYearDevelopment(@Body JsonObject jsonObject);
 
+    @POST("search-boothlevel-group")
+    Call<BoothLevelResponse> searchBoothManagement(@Body JsonObject jsonObject);
+
 }

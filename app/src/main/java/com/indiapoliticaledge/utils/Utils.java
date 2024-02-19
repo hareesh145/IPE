@@ -158,15 +158,25 @@ public class Utils {
     }
 
     public static int getLoggedInPartyColor(Context context, String partyName) {
-        if (partyName.equalsIgnoreCase("BJP")) {
+        if (partyName.equalsIgnoreCase("BJP")
+                || partyName.equalsIgnoreCase("బీజేపీ")
+                || partyName.equalsIgnoreCase("बी जे पी")) {
             return R.color.bjp_color;
-        } else if (partyName.equalsIgnoreCase("JANASENA")) {
+        } else if (partyName.equalsIgnoreCase("JANASENA")
+                || partyName.equalsIgnoreCase("జనసేన")
+                || partyName.equalsIgnoreCase("जनसेना")) {
             return R.color.jana_sena_color;
-        } else if (partyName.equalsIgnoreCase("TDP")) {
+        } else if (partyName.equalsIgnoreCase("TDP")
+                || partyName.equalsIgnoreCase("టీడీపీ")
+                || partyName.equalsIgnoreCase("तेदेपा")) {
             return R.color.tdp_color;
-        } else if (partyName.equalsIgnoreCase("CONGRESS")) {
+        } else if (partyName.equalsIgnoreCase("CONGRESS")
+                || partyName.equalsIgnoreCase("కాంగ్రెస్")
+                || partyName.equalsIgnoreCase("कांग्रेस")) {
             return R.color.congress_color_header;
-        } else if (partyName.equalsIgnoreCase("YSRCP")) {
+        } else if (partyName.equalsIgnoreCase("YSRCP")
+                || partyName.equalsIgnoreCase("వై.ఎస్.ఆర్ కాంగ్రెస్ పార్టీ")
+                || partyName.equalsIgnoreCase("वाईएसआरसीपी")) {
             return R.color.ysrcp_color_header;
         } else {
             return R.color.bg_gradient_start;

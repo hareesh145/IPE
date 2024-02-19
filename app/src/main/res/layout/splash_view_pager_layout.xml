@@ -10,35 +10,45 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/constituency_btn" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/constituency_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/bg_semi_curved"
             android:drawableEnd="@drawable/ic_right_arrow"
             android:drawablePadding="@dimen/_8sdp"
-            android:gravity="center_vertical"
-            android:text="Developments"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            android:paddingStart="@dimen/_4sdp"
+            android:text="Departments"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toStartOf="@+id/login_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/bg_semi_curved"
             android:drawableEnd="@drawable/ic_right_arrow"
             android:drawablePadding="@dimen/_8sdp"
-            android:gravity="center_vertical"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            android:paddingStart="@dimen/_4sdp"
             android:text="Login"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constituency_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -408,5 +408,6 @@
     <string name="booth_level_managment">బూత్ స్థాయి నిర్వహణ</string>
     <string name="pool_managment">పోల్ నిర్వహణ</string>
     <string name="age">వయస్సు</string>
-    <string name="no_poll_centers">There is no Poll Centers</string>
+    <string name="no_poll_centers">పోల్ సెంటర్లు లేవు</string>
+    <string name="no_booth_level_grp">బూత్ లెవల్ గ్రూప్ లేదు</string>
 </resources>

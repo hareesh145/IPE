@@ -60,15 +60,25 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         Log.d("TAG", "onCreate: 1111111111111111111 " + userInfo.getPartyName());
         if (userInfo != null && userInfo.getPartyName() != null) {
-            if (userInfo.getPartyName().equalsIgnoreCase("BJP")) {
+            if (userInfo.getPartyName().equalsIgnoreCase("BJP")
+                    || userInfo.getPartyName().equalsIgnoreCase("బీజేపీ")
+                    || userInfo.getPartyName().equalsIgnoreCase("बी जे पी")) {
                 setTheme(R.style.Theme_IndiaPoliticalEdge_BJP);
-            } else if (userInfo.getPartyName().equalsIgnoreCase("TDP")) {
+            } else if (userInfo.getPartyName().equalsIgnoreCase("TDP")
+                    || userInfo.getPartyName().equalsIgnoreCase("టీడీపీ")
+                    || userInfo.getPartyName().equalsIgnoreCase("तेदेपा")) {
                 setTheme(R.style.Theme_IndiaPoliticalEdge_TDP);
-            } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+            } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")
+                    || userInfo.getPartyName().equalsIgnoreCase("జనసేన")
+                    || userInfo.getPartyName().equalsIgnoreCase("जनसेना")) {
                 setTheme(R.style.Theme_IndiaPoliticalEdge_JANA_SENA);
-            } else if (userInfo.getPartyName().equalsIgnoreCase("CONGRESS")) {
+            } else if (userInfo.getPartyName().equalsIgnoreCase("CONGRESS")
+                    || userInfo.getPartyName().equalsIgnoreCase("కాంగ్రెస్")
+                    || userInfo.getPartyName().equalsIgnoreCase("कांग्रेस")) {
                 setTheme(R.style.Theme_IndiaPoliticalEdge_CONGRESS);
-            } else if (userInfo.getPartyName().equalsIgnoreCase("YSRCP")) {
+            } else if (userInfo.getPartyName().equalsIgnoreCase("YSRCP")
+                    || userInfo.getPartyName().equalsIgnoreCase("వై.ఎస్.ఆర్ కాంగ్రెస్ పార్టీ")
+                    || userInfo.getPartyName().equalsIgnoreCase("वाईएसआरसीपी")) {
                 setTheme(R.style.Theme_IndiaPoliticalEdge_YSRCP);
             } else {
                 setTheme(R.style.Theme_IndiaPoliticalEdge);
@@ -113,23 +123,33 @@ public class MLAInfoDrawerScreen extends BaseActivity implements NavigationView.
     }
 
     private void updateBGColors(UserInfo userInfo) {
-        if (userInfo.getPartyName().equals("BJP")) {
+        if (userInfo.getPartyName().equals("BJP")
+                || userInfo.getPartyName().equalsIgnoreCase("బీజేపీ")
+                || userInfo.getPartyName().equalsIgnoreCase("बी जे पी")) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.bjp_color));
-        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")) {
+        } else if (userInfo.getPartyName().equalsIgnoreCase("JANASENA")
+                || userInfo.getPartyName().equalsIgnoreCase("జనసేన")
+                || userInfo.getPartyName().equalsIgnoreCase("जनसेना")) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.jana_sena_color));
-        } else if (userInfo.getPartyName().equals("TDP")) {
+        } else if (userInfo.getPartyName().equals("TDP")
+                || userInfo.getPartyName().equalsIgnoreCase("టీడీపీ")
+                || userInfo.getPartyName().equalsIgnoreCase("तेदेपा")) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.tdp_color));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.tdp_color));
-        } else if (userInfo.getPartyName().equals("CONGRESS")) {
+        } else if (userInfo.getPartyName().equals("CONGRESS")
+                || userInfo.getPartyName().equalsIgnoreCase("కాంగ్రెస్")
+                || userInfo.getPartyName().equalsIgnoreCase("कांग्रेस")) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.congress_color_header));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.congress_color_header));
-        } else if (userInfo.getPartyName().equals("YSRCP")) {
+        } else if (userInfo.getPartyName().equals("YSRCP")
+                || userInfo.getPartyName().equalsIgnoreCase("వై.ఎస్.ఆర్ కాంగ్రెస్ పార్టీ")
+                || userInfo.getPartyName().equalsIgnoreCase("वाईएसआरसीपी")) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.ysrcp_color_header));
             View rootView = binding.navView.getHeaderView(0).findViewById(R.id.header_linear_view);
             rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.ysrcp_color_header));

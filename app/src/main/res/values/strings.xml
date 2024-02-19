@@ -458,5 +458,6 @@
     <string name="search_voter">Search Voter</string>
     <string name="age">Age</string>
     <string name="no_poll_centers">There is no Poll Centers</string>
+    <string name="no_booth_level_grp">There is no Booth Level Group</string>
 
 </resources>
