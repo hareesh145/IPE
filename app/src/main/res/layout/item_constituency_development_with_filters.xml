@@ -7,24 +7,25 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/prev_year_card_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
             android:layout_margin="@dimen/_6sdp"
             android:background="@color/white"
             app:cardCornerRadius="@dimen/_8sdp"
             app:cardElevation="@dimen/_12sdp"
-            app:layout_constraintEnd_toStartOf="@+id/current_year_card_view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/white"
                 android:padding="@dimen/_8sdp">
+
 
                 <TextView
                     android:id="@+id/prev_year_title"
@@ -41,11 +42,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/sample_img"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:src="@drawable/ic_road"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prev_year_title"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/prev_work_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_150sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
@@ -53,7 +63,8 @@
                     android:text="Before the Election 2022"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/sample_img"
                     app:layout_constraintTop_toBottomOf="@+id/prev_year_title" />
 
 
@@ -64,16 +75,15 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/current_year_card_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
             android:layout_margin="@dimen/_6sdp"
             android:background="@color/white"
             app:cardCornerRadius="@dimen/_8sdp"
             app:cardElevation="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/prev_year_card_view"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/prev_year_card_view">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -96,10 +106,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/sample_img_current"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:src="@drawable/ic_road"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/current_year_title"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/current_work_desc"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/_150sdp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
@@ -108,7 +127,8 @@
                     android:text="Before the Election 2022"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/sample_img_current"
                     app:layout_constraintTop_toBottomOf="@+id/current_year_title" />
 
 
