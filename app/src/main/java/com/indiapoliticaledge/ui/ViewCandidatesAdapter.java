@@ -2,6 +2,7 @@ package com.indiapoliticaledge.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.responsemodel.CandidatesList;
+import com.indiapoliticaledge.ui.fragment.VoterProfileFragment;
 
 import java.util.ArrayList;
 
@@ -48,7 +50,7 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
     }
 
     class ViewMLAHolder extends RecyclerView.ViewHolder {
-        TextView mla_name, constituency_name_txt, party_name_txt, village_name_txt, mandal_name_txt, mobile_number_txt,date_of_birth_txt;
+        TextView mla_name, constituency_name_txt, party_name_txt, village_name_txt, mandal_name_txt, mobile_number_txt, date_of_birth_txt;
         ImageView party_icon, profile_image, edit_icon;
 
         public ViewMLAHolder(@NonNull View itemView) {
@@ -64,28 +66,31 @@ public class ViewCandidatesAdapter extends RecyclerView.Adapter<ViewCandidatesAd
             mandal_name_txt = itemView.findViewById(R.id.mandal_name_txt);
             mobile_number_txt = itemView.findViewById(R.id.mobile_number_txt);
             mla_name.setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                activity.startActivity(intent);
+                navigateToUpdateVoter(usersList.get(getBindingAdapterPosition()));
             });
             profile_image.setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                activity.startActivity(intent);
+                navigateToUpdateVoter(usersList.get(getBindingAdapterPosition()));
             });
             party_icon.setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                activity.startActivity(intent);
+                navigateToUpdateVoter(usersList.get(getBindingAdapterPosition()));
             });
             constituency_name_txt.setOnClickListener(v -> {
-                Intent intent = new Intent(activity, ViewMLAInfoScreen.class);
-                activity.startActivity(intent);
+                navigateToUpdateVoter(usersList.get(getBindingAdapterPosition()));
             });
             edit_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(activity, UpdateMLAScreen.class);
-                    activity.startActivity(intent);
+                    navigateToUpdateVoter(usersList.get(getBindingAdapterPosition()));
                 }
             });
+        }
+
+        private void navigateToUpdateVoter(CandidatesList candidatesList) {
+            VoterProfileFragment voterProfileFragment = new VoterProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("candidatesList", candidatesList);
+            voterProfileFragment.setArguments(bundle);
+            ((MLAInfoDrawerScreen) activity).updateFragment(voterProfileFragment);
         }
 
         public void bind(CandidatesList candidatesList) {

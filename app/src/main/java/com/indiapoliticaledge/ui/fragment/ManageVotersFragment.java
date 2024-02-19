@@ -59,11 +59,7 @@ public class ManageVotersFragment extends Fragment {
 
         retrofitAPI = RetrofitClient.getInstance(requireActivity()).getRetrofitAPI();
 
-
         getAllConstituencies();
-
-
-
 
         view.findViewById(R.id.add_mla_button).setOnClickListener(new View.OnClickListener() {
             @Override

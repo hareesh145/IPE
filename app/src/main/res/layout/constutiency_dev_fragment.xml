@@ -75,7 +75,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:background="@drawable/bg_white_curved_spinner"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_10sdp"
                 android:visibility="visible" />
 
             <ImageView

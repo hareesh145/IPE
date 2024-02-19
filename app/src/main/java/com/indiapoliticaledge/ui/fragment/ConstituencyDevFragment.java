@@ -60,7 +60,6 @@ public class ConstituencyDevFragment extends Fragment {
 
         setYearsList();
 
-
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
@@ -85,7 +84,11 @@ public class ConstituencyDevFragment extends Fragment {
                         binding.noDataFoundTxt.setVisibility(View.VISIBLE);
                     }
                     if (departmentsLists.size() == 0) {
+                        DepartmentsList departmentsList = new DepartmentsList();
+                        departmentsList.departmentName = "" + getResources().getString(R.string.select_constituency_department);
+                        departmentsList.departmentId = -1;
                         departmentsLists = response.body().departmentsList;
+                        departmentsLists.add(0, departmentsList);
                     }
                     binding.constituencyDevSpinner.setAdapter(new CustomSpinnerAdapter(requireContext(), departmentsLists));
                 } catch (Exception e) {
@@ -149,9 +152,7 @@ public class ConstituencyDevFragment extends Fragment {
     }
 
     private void viewDepartmentAndYearDevelopment(int departmentId) {
-        if (binding.yearsSpinner.getSelectedItemPosition() == 0)
-            return;
-        if (departmentId == -1)
+        if (binding.yearsSpinner.getSelectedItemPosition() == 0 && departmentId == -1)
             return;
         RetrofitAPI retrofitAPI = RetrofitClient.getInstance(requireContext()).getRetrofitAPI();
         Bundle bundle = getArguments();
@@ -159,9 +160,13 @@ public class ConstituencyDevFragment extends Fragment {
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("constituencyId", userInfo.constituencyId);
-        jsonObject.addProperty("departmentId", departmentId);
+        if (departmentId != -1) {
+            jsonObject.addProperty("departmentId", departmentId);
+        }
         jsonObject.addProperty("deleteFlag", "N");
-        jsonObject.addProperty("year", Integer.parseInt(binding.yearsSpinner.getSelectedItem().toString()));
+        if (binding.yearsSpinner.getSelectedItemPosition() != 0) {
+            jsonObject.addProperty("year", Integer.parseInt(binding.yearsSpinner.getSelectedItem().toString()));
+        }
         Utils.showProgessBar(requireContext());
 
         retrofitAPI.viewDepartmentAndYearDevelopment(jsonObject).enqueue(new Callback<VDevelopmentResponse>() {
