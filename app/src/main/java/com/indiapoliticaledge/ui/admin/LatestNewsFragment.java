@@ -16,6 +16,7 @@ import com.indiapoliticaledge.databinding.LatestNewsFragmentBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.LatestNewsResponse;
+import com.indiapoliticaledge.ui.CandidateHomeScreen;
 import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.adapter.LatestNewsAdapter;
 import com.indiapoliticaledge.utils.Constants;
@@ -47,6 +48,9 @@ public class LatestNewsFragment extends Fragment {
             if (requireActivity() instanceof MLAInfoDrawerScreen) {
                 AddUpdateLatestNewsFragment addUpdateLatestNewsFragment = new AddUpdateLatestNewsFragment();
                 ((MLAInfoDrawerScreen) requireActivity()).createFragment(addUpdateLatestNewsFragment, bundle.getString(Constants.USER_INFO));
+            } else if (requireActivity() instanceof CandidateHomeScreen) {
+                AddUpdateLatestNewsFragment addUpdateLatestNewsFragment = new AddUpdateLatestNewsFragment();
+                ((CandidateHomeScreen) requireActivity()).createFragment(addUpdateLatestNewsFragment, bundle.getString(Constants.USER_INFO));
             }
         });
         Utils.showProgessBar(requireActivity());
@@ -60,7 +64,7 @@ public class LatestNewsFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     if (response.body().newsList != null && response.body().newsList.size() > 0) {
-                        binding.constituencyDevList.setAdapter(new LatestNewsAdapter(requireActivity(), response.body().newsList,bundle.getString(Constants.USER_INFO)));
+                        binding.constituencyDevList.setAdapter(new LatestNewsAdapter(requireActivity(), response.body().newsList, bundle.getString(Constants.USER_INFO)));
                         binding.noDataFoundTxt.setVisibility(View.GONE);
                     } else {
                         binding.noDataFoundTxt.setVisibility(View.VISIBLE);
@@ -72,6 +76,7 @@ public class LatestNewsFragment extends Fragment {
             @Override
             public void onFailure(Call<LatestNewsResponse> call, Throwable t) {
                 Utils.hideProgessBar();
+                t.printStackTrace();
             }
         });
 

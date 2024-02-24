@@ -1,6 +1,7 @@
 package com.indiapoliticaledge.network.responsemodel;
 
 import com.indiapoliticaledge.model.Constituency;
+import com.indiapoliticaledge.model.UserConstituency;
 
 public class Users {
 
@@ -26,7 +27,7 @@ public class Users {
     public String endDate;
     public String roleName;
     public Constituency constituency;
-    public String userConstituencies;
+    public UserConstituency userConstituencies;
 
     @Override
     public String toString() {

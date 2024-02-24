@@ -16,6 +16,7 @@
         <item name="partyTextColor">@color/bg_gradient_start</item>
         <item name="partyBgColor">@color/bg_gradient_start</item>
         <item name="bg_background">@drawable/bg_semi_curved</item>
+        <item name="buttonBgColor">@color/bg_gradient_start</item>
     </style>
 
     <style name="Theme.IndiaPoliticalEdge.Mint" parent="Theme.Design.NoActionBar">
@@ -35,6 +36,7 @@
         <item name="partyTextColor">@color/orangeTeal</item>
         <item name="partyBgColor">@color/orangeTeal</item>
         <item name="bg_background">@drawable/bg_semi_curved</item>
+        <item name="buttonBgColor">@color/bg_gradient_start</item>
     </style>
 
     <style name="Theme.IndiaPoliticalEdge.BJP" parent="Theme.IndiaPoliticalEdge">
@@ -57,7 +59,7 @@
         <item name="partyTextColor">@color/tdp_color</item>
         <item name="partyBgColor">@color/tdp_color</item>
         <item name="buttonBgColor">@color/tdp_color</item>
-        <item name="bg_background">@drawable/bg_semi_curved</item>
+        <item name="bg_background">@drawable/bg_semi_curved_tdp</item>
     </style>
 
     <style name="Theme.IndiaPoliticalEdge.JANA_SENA" parent="Theme.IndiaPoliticalEdge">

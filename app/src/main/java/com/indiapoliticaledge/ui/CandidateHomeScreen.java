@@ -35,6 +35,7 @@ import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateRatingFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
+import com.indiapoliticaledge.ui.fragment.MLAInfoFragment;
 import com.indiapoliticaledge.utils.Constants;
 
 import java.util.Objects;
@@ -229,7 +230,12 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (!toolbar_title.getText().toString().equals(getString(R.string.voter_profile))) {
+                setTitleText(getString(R.string.voter_profile));
+                createFragment(new CandidateProfileFragment(), getIntent().getStringExtra(Constants.USER_INFO));
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 

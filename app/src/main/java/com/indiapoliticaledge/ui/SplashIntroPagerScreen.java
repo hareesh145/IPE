@@ -37,6 +37,7 @@ public class SplashIntroPagerScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SplashIntroPagerScreen.this, LoginScreen.class));
+                finish();
             }
         });
 
