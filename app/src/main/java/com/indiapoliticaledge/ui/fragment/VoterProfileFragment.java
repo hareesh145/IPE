@@ -138,7 +138,7 @@ public class VoterProfileFragment extends Fragment {
 
 
         binding.firstNameEt.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
-        binding.partyEdit.setText(userInfo.birthPlace);
+        binding.partyEdit.setText(String.valueOf(userInfo.age));
         binding.voterIdNumber.setText(userInfo.voterIdNumber);
         binding.shortDescEdit.setText(userInfo.shortDescriptionAbout);
 

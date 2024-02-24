@@ -163,7 +163,7 @@
                         android:layout_height="@dimen/_40sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/bg_semi_curved_grey"
-                        android:hint="@string/birth_place"
+                        android:hint="@string/age"
                         android:paddingStart="@dimen/_5sdp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/greyTeal"

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.indiapoliticaledge.R;
 import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
@@ -61,7 +62,11 @@ public class OpinionPollingFragment extends Fragment {
             public void onResponse(Call<OpinionResponse> call, Response<OpinionResponse> response) {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
-                    binding.viewMlasList.setAdapter(new ViewOpinionPollingAdapter(requireActivity(), response.body().userOpinionsList,bundle.getString(Constants.USER_INFO)));
+                    if (response.body().userOpinionsList != null && response.body().userOpinionsList.size() > 0) {
+                        binding.viewMlasList.setAdapter(new ViewOpinionPollingAdapter(requireActivity(), response.body().userOpinionsList, bundle.getString(Constants.USER_INFO)));
+                    } else {
+                        binding.noDataFoundTxt.setText(getString(R.string.no_opinions_data));
+                    }
                 }
             }
 

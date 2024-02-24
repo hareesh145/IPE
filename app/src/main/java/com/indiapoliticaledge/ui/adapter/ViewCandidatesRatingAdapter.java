@@ -50,23 +50,22 @@ public class ViewCandidatesRatingAdapter extends RecyclerView.Adapter<ViewCandid
         public void bind(UserRatingsList userRatingsList) {
             binding.ratingBar.setRating(userRatingsList.rating);
             binding.mlaName.setText(userRatingsList.candidates.firstName + " " + userRatingsList.candidates.lastName);
-            binding.dateText.setText(activity.getString(R.string.created_date) + userRatingsList.createdDate);
+            binding.dateText.setText(activity.getString(R.string.created_date) + " : " + userRatingsList.createdDate);
             if (userRatingsList.candidates.villageName != null) {
-                binding.villageName.setText(activity.getString(R.string.village_name) + userRatingsList.candidates.villageName);
+                binding.villageName.setText(activity.getString(R.string.village_name) + " : " + userRatingsList.candidates.villageName);
             } else {
                 binding.villageName.setText(activity.getString(R.string.village_name));
             }
             if (userRatingsList.candidates.voterIdNumber != null) {
-                binding.voterIdTxt.setText(activity.getString(R.string.voter_id) + userRatingsList.candidates.voterIdNumber);
+                binding.voterIdTxt.setText(activity.getString(R.string.voter_id) + " : " + userRatingsList.candidates.voterIdNumber);
             } else {
                 binding.voterIdTxt.setText(activity.getString(R.string.voter_id));
             }
             if (userRatingsList.candidates.mandalName != null) {
-                binding.mandalName.setText(activity.getString(R.string.mandal_name) + userRatingsList.candidates.mandalName);
+                binding.mandalName.setText(activity.getString(R.string.mandal_name) + " : " + userRatingsList.candidates.mandalName);
             } else {
                 binding.mandalName.setText(activity.getString(R.string.mandal_name));
             }
-            binding.mobileNumberTxt.setText(activity.getString(R.string.mobile_number) + userRatingsList.candidates.mobileNumber);
         }
     }
 }

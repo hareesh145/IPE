@@ -116,6 +116,7 @@ public class LoginScreen extends AppCompatActivity {
             conf.locale = myLocale;
             res.updateConfiguration(conf, dm);
         }
+        SharedPref.getmSharedPrefInstance(this).saveString(LOGIN_RESPONSE, new Gson().toJson(signInResponseModel));
         SharedPref.getmSharedPrefInstance(this).saveString(NOTICE_MESSAGES, new Gson().toJson(signInResponseModel.noticeMessagesList));
         SharedPref.getmSharedPrefInstance(this).saveString(MY_IMAGES, new Gson().toJson(signInResponseModel.myImages));
         SharedPref.getmSharedPrefInstance(this).saveString(MY_VIDEOS, new Gson().toJson(signInResponseModel.myAVs));
