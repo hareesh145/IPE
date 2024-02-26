@@ -52,7 +52,7 @@ public class LoginScreen extends AppCompatActivity {
         submit_btn.setOnClickListener(v -> {
             Utils.hideKeyboard(LoginScreen.this);
             if (phone_number.getText().toString().isEmpty()) {
-                Snackbar.make(phone_number, "Please Enter Phone Number", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(phone_number, "Please Enter User Name", Snackbar.LENGTH_LONG).show();
                 return;
             }
             if (password_text.getText().toString().isEmpty()) {

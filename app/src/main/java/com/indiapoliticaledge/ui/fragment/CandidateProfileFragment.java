@@ -183,19 +183,8 @@ public class CandidateProfileFragment extends Fragment {
             binding.mlaName.setText(userInfo.firstName + " " + userInfo.lastName);
             binding.constituencyNameTxt.setText(userInfo.constituency.constituencyName);
             if (userInfo.constituency != null) {
-                if (userInfo.startDate != null) {
-                    binding.startDateValueTxt.setText(userInfo.userConstituencies.startDate.split("\\s")[0]);
-                }
-                if (userInfo.endDate != null) {
-                    binding.endDateValueTxt.setText(userInfo.endDate.split("\\s")[0]);
-                }
-            } else {
-                if (userInfo.startDate != null) {
-                    binding.startDateValueTxt.setText(userInfo.startDate.split("\\s")[0]);
-                }
-                if (userInfo.endDate != null) {
-                    binding.endDateValueTxt.setText(userInfo.endDate.split("\\s")[0]);
-                }
+                binding.startDateValueTxt.setText(userInfo.constituency.constituencyName);
+                binding.endDateValueTxt.setText(userInfo.partyName);
             }
             Glide.with(this).load(userInfo.profilePhotoUrl).placeholder(R.drawable.ic_logo).into(binding.profileImage);
             Glide.with(this).load(userInfo.partyLogo).placeholder(R.drawable.ic_logo).into(binding.partyIcon);

@@ -172,6 +172,8 @@ public class MLAInfoFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     binding.noticeMessagesList.setAdapter(new HomeNoticeAdapter(requireActivity(), response.body().noticeMessagesList));
+                }else{
+
                 }
 
             }

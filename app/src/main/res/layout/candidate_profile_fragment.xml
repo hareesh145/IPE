@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:text="@string/start_date"
+                        android:text="@string/constituency_name"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/profile_image"
@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        android:text="@string/end_date"
+                        android:text="@string/party_name"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/profile_image"
@@ -405,18 +405,7 @@
             </androidx.cardview.widget.CardView>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/notice_messages_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_new_mla_card" />
+
 
 
             <androidx.cardview.widget.CardView
@@ -429,7 +418,7 @@
                 android:background="@color/white"
                 app:cardCornerRadius="@dimen/_8sdp"
                 app:cardElevation="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@+id/notice_messages_list">
+                app:layout_constraintTop_toBottomOf="@+id/add_new_mla_card">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -624,6 +613,20 @@
 
 
             </androidx.cardview.widget.CardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notice_messages_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constituency_videos_section_card" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

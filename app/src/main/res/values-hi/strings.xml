@@ -8,7 +8,7 @@
     <string name="old_password">पुराना पासवर्ड</string>
     <string name="password">पासवर्ड</string>
     <string name="forgot_pwd"><u>पासवर्ड भूल गए?</u></string>
-    <string name="enter_phone_number">फोन नंबर दर्ज</string>
+    <string name="enter_phone_number">उपयोगकर्ता नाम दर्ज करें</string>
     <string name="new_user_signup">नए उपयोगकर्ता?? <u>साइन अप करें</u></string>
     <string name="add_new_mla">नया विधायक जोड़ें</string>
     <string name="start_date">आरंभ करने की तिथि</string>

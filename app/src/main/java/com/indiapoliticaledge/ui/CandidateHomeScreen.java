@@ -28,14 +28,11 @@ import com.indiapoliticaledge.ui.admin.OpinionPollingFragment;
 import com.indiapoliticaledge.ui.admin.SocialMediaFragment;
 import com.indiapoliticaledge.ui.admin.UploadImagesFragment;
 import com.indiapoliticaledge.ui.admin.ViewConstituencyIssuesFragment;
-import com.indiapoliticaledge.ui.fragment.AddTestimonialFragment;
-import com.indiapoliticaledge.ui.fragment.CandidateAVFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateDonationFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateProfileFragment;
 import com.indiapoliticaledge.ui.fragment.CandidateRatingFragment;
 import com.indiapoliticaledge.ui.fragment.ConstituencyDevFragment;
-import com.indiapoliticaledge.ui.fragment.ConstituencyMapFragment;
-import com.indiapoliticaledge.ui.fragment.MLAInfoFragment;
+import com.indiapoliticaledge.ui.fragment.VoterConstituencyMapFragment;
 import com.indiapoliticaledge.utils.Constants;
 
 import java.util.Objects;
@@ -120,7 +117,7 @@ public class CandidateHomeScreen extends BaseActivity implements NavigationView.
         int id = item.getItemId();
 
         if (id == R.id.constituency_map) {
-            fragment = new ConstituencyMapFragment();
+            fragment = new VoterConstituencyMapFragment();
             setTitleText(getString(R.string.constituency_map));
         } else if (id == R.id.constituency_devs) {
             fragment = new ConstituencyDevFragment();

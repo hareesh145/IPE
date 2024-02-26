@@ -8,7 +8,7 @@
     <string name="old_password">Old Password</string>
     <string name="password">Password</string>
     <string name="forgot_pwd"><u>Forgot Password?</u></string>
-    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_phone_number">Enter User Name</string>
     <string name="new_user_signup">New User? <u>SignUp</u></string>
     <string name="add_new_mla">Add New MLA</string>
     <string name="start_date">Start Date</string>

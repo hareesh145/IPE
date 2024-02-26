@@ -8,7 +8,7 @@
     <string name="password">పాస్వర్డ్</string>
     <string name="old_password">పాత పాస్‌వర్డ్</string>
     <string name="forgot_pwd"><u>పాస్‌వర్డ్ మర్చిపోయారా?</u></string>
-    <string name="enter_phone_number">ఫోన్ నంబర్‌ని నమోదు చేయండి</string>
+    <string name="enter_phone_number">వినియోగదారు పేరును నమోదు చేయండి</string>
     <string name="new_user_signup">కొత్త యూజర్? <u>చేరడం</u></string>
     <string name="add_new_mla">కొత్త ఎమ్మెల్యేని చేర్చుకోండి</string>
     <string name="start_date">ప్రారంబపు తేది</string>

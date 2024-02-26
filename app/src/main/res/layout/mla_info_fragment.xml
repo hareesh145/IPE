@@ -58,11 +58,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
-                        tools:text="Maheswaram"
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toStartOf="@+id/party_icon"
                         app:layout_constraintStart_toEndOf="@+id/profile_image"
-                        app:layout_constraintTop_toBottomOf="@+id/mla_name" />
+                        app:layout_constraintTop_toBottomOf="@+id/mla_name"
+                        tools:text="Maheswaram" />
 
                     <TextView
                         android:id="@+id/constituency_name_txt"
@@ -162,22 +162,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/notice_messages_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/mla_info_card"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
             <WebView
                 android:id="@+id/map_section_map"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_300sdp"
-                android:layout_below="@+id/notice_messages_list" />
+                android:layout_below="@+id/mla_info_card"
+                android:visibility="gone" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/my_images_section_card"
@@ -384,6 +374,17 @@
 
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notice_messages_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/constituency_videos_section_card"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
         </RelativeLayout>

@@ -24,14 +24,16 @@ import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitAPI;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyMapResponse;
+import com.indiapoliticaledge.network.responsemodel.SignInResponseModel;
 import com.indiapoliticaledge.utils.Constants;
+import com.indiapoliticaledge.utils.SharedPref;
 import com.indiapoliticaledge.utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ConstituencyMapFragment extends Fragment {
+public class VoterConstituencyMapFragment extends Fragment {
 
     WebView map_section_map;
 
@@ -57,16 +59,20 @@ public class ConstituencyMapFragment extends Fragment {
 
         Bundle bundle = getArguments();
         String jsonObjectUser = bundle.getString(Constants.USER_INFO);
+
+        SignInResponseModel signInResponseModel = new Gson().fromJson(SharedPref.getmSharedPrefInstance(requireContext()).getString(Constants.LOGIN_RESPONSE), SignInResponseModel.class);
+
         Log.d("TAG", "onViewCreated: " + jsonObjectUser);
         UserInfo userInfo = new Gson().fromJson(jsonObjectUser, UserInfo.class);
-        mla_name.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
-        if (userInfo.constituency != null) {
-            constituency_name_txt.setText(userInfo.constituency.constituencyName);
-        } else {
-            constituency_name_txt.setText("");
-        }
-        party_name_txt.setText(userInfo.getPartyName());
-        mobile_number_txt.setText(userInfo.getMobileNumber());
+        mla_name.setText(signInResponseModel.mlaInfo.getFirstName() + " " + signInResponseModel.mlaInfo.getLastName());
+
+//        if (userInfo.constituency != null) {
+//            constituency_name_txt.setText(userInfo.constituency.constituencyName);
+//        } else {
+//            constituency_name_txt.setText("");
+//        }
+        party_name_txt.setText(signInResponseModel.mlaInfo.partyName);
+        mobile_number_txt.setText(signInResponseModel.mlaInfo.getMobileNumber());
 
         Glide.with(this).load(userInfo.getProfilePhotoUrl()).placeholder(R.drawable.ic_user_logo).into(profile_image);
 
@@ -82,6 +88,7 @@ public class ConstituencyMapFragment extends Fragment {
                 Utils.hideProgessBar();
                 if (response.isSuccessful()) {
                     ConstituencyMapResponse constituencyMapResponse = response.body();
+                    constituency_name_txt.setText(constituencyMapResponse.constituencyName);
                     Log.d("TAG", " response.body() :::: " + constituencyMapResponse);
                     if (constituencyMapResponse != null) {
                         String html = "<iframe src=\"https://maps.google.com/maps?width=100%25&amp;height=100%&amp;hl=en&amp;q=" + constituencyMapResponse.constituencyName + ","
