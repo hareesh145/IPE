@@ -4,19 +4,13 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-
-            <include
-                android:id="@+id/custom_title_view"
-                layout="@layout/custom_title_bar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:visibility="gone" />
+            android:layout_height="match_parent">
 
 
             <androidx.cardview.widget.CardView
@@ -28,7 +22,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -71,13 +64,14 @@
                             app:tint="@color/darkColor" />
                     </RelativeLayout>
 
+
                     <EditText
                         android:id="@+id/first_name_et"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/bg_semi_curved_grey"
-                        android:hint="@string/name"
+                        android:hint="@string/first_name"
                         android:inputType="textPersonName"
                         android:paddingStart="@dimen/_6sdp"
                         android:textColor="@color/black"
@@ -86,6 +80,36 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/image_layout" />
 
+
+                    <EditText
+                        android:id="@+id/last_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/last_name"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/first_name_et" />
+
+
+                    <EditText
+                        android:id="@+id/phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:hint="@string/enter_phone_number"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_6sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/greyTeal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/last_name_et" />
 
                     <com.skydoves.powerspinner.PowerSpinnerView
                         android:id="@+id/state_drop_down"
@@ -100,7 +124,8 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@+id/first_name_et"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/phone_number"
                         app:spinner_arrow_gravity="end"
                         app:spinner_arrow_padding="8dp"
                         app:spinner_divider_color="@color/greyTeal"
@@ -112,7 +137,7 @@
                         app:spinner_popup_elevation="14dp" />
 
 
-                    <EditText
+                    <com.skydoves.powerspinner.PowerSpinnerView
                         android:id="@+id/district_drop_down"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
@@ -125,35 +150,67 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@+id/state_drop_down" />
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/state_drop_down"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/states"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
 
 
-                    <EditText
+                    <com.skydoves.powerspinner.PowerSpinnerView
                         android:id="@+id/mandal_drop_down"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/bg_semi_curved_grey"
+                        android:foreground="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:hint="@string/select_mandal"
                         android:padding="10dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@+id/district_drop_down" />
+                        app:layout_constraintTop_toBottomOf="@+id/district_drop_down"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/states"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
 
-                    <EditText
+                    <com.skydoves.powerspinner.PowerSpinnerView
                         android:id="@+id/constituency_drop_down"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/bg_semi_curved_grey"
+                        android:foreground="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
+                        android:hint="@string/select_constituency"
                         android:padding="10dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@+id/district_drop_down" />
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/district_drop_down"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/states"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
 
 
                     <EditText
@@ -163,6 +220,7 @@
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/bg_semi_curved_grey"
                         android:hint="@string/age"
+                        android:inputType="number"
                         android:paddingStart="@dimen/_5sdp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/greyTeal"
@@ -183,6 +241,7 @@
                         android:paddingEnd="@dimen/_5sdp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/greyTeal"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/party_edit" />
 
@@ -224,7 +283,7 @@
                         android:layout_height="@dimen/_40sdp"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/bg_semi_curved_grey"
-                        android:hint="@string/short_description"
+                        android:hint="Short Description"
                         android:inputType="text"
                         android:paddingStart="@dimen/_5sdp"
                         android:textColor="@color/black"
@@ -232,6 +291,30 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/voter_id_number" />
+
+                    <com.skydoves.powerspinner.PowerSpinnerView
+                        android:id="@+id/language_drop_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_semi_curved_grey"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:hint="@string/select_language"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@+id/short_desc_edit"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_divider_color="@color/greyTeal"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="0.4dp"
+                        app:spinner_item_array="@array/languages"
+                        app:spinner_popup_animation="normal"
+                        app:spinner_popup_background="@color/greyTeal"
+                        app:spinner_popup_elevation="14dp" />
 
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -244,27 +327,11 @@
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/short_desc_edit" />
-
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/candidate_manifest_btn"
-                        android:layout_width="@dimen/_250sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="?bg_background"
-                        android:text="@string/candidate_manifesto"
-                        android:visibility="gone"
-                        android:textColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/submit_btn" />
+                        app:layout_constraintTop_toBottomOf="@+id/language_drop_down" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

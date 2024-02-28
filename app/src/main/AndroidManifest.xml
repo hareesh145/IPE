@@ -48,7 +48,7 @@
             android:name=".ui.ViewMLAInfoScreen"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.CandidateProfile"
+            android:name=".ui.VoterProfileFragment"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ManageMLASubscription"

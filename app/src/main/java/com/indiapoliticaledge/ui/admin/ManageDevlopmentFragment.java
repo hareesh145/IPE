@@ -1,5 +1,7 @@
 package com.indiapoliticaledge.ui.admin;
 
+import static com.indiapoliticaledge.utils.Constants.DEPRTMENT_LIST;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.indiapoliticaledge.databinding.ManageCandidatesLayoutBinding;
+import com.indiapoliticaledge.model.DepartmentsList;
 import com.indiapoliticaledge.model.UserInfo;
 import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.VDevelopmentResponse;
@@ -21,12 +24,16 @@ import com.indiapoliticaledge.ui.adapter.ConstituencyDevelopmentAdapter;
 import com.indiapoliticaledge.utils.Constants;
 import com.indiapoliticaledge.utils.Utils;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ManageDevlopmentFragment extends Fragment {
     ManageCandidatesLayoutBinding binding;
+
+    ArrayList<DepartmentsList> departmentsLists;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +58,11 @@ public class ManageDevlopmentFragment extends Fragment {
             public void onClick(View v) {
                 if (requireActivity() instanceof MLAInfoDrawerScreen) {
                     AddUpdateConstituencyDevelopmentFragment addLatestNewsFragment = new AddUpdateConstituencyDevelopmentFragment();
-                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addLatestNewsFragment, bundle.getString(Constants.USER_INFO));
+                    Bundle updateBundle = new Bundle();
+                    updateBundle.putString(Constants.USER_INFO, bundle.getString(Constants.USER_INFO));
+                    updateBundle.putSerializable(DEPRTMENT_LIST, departmentsLists);
+                    addLatestNewsFragment.setArguments(updateBundle);
+                    ((MLAInfoDrawerScreen) requireActivity()).updateFragment(addLatestNewsFragment);
                 }
             }
         });
@@ -69,7 +80,7 @@ public class ManageDevlopmentFragment extends Fragment {
                 if (response.isSuccessful()) {
                     Log.d("TAG", "onResponse: " + response.body());
                     if (response.body().constituencyDepartmentsList != null && response.body().constituencyDepartmentsList.size() > 0) {
-                        binding.viewMlasList.setAdapter(new ConstituencyDevelopmentAdapter(requireActivity(), response.body().constituencyDepartmentsList,bundle.getString(Constants.USER_INFO)));
+                        binding.viewMlasList.setAdapter(new ConstituencyDevelopmentAdapter(requireActivity(), response.body().constituencyDepartmentsList, bundle.getString(Constants.USER_INFO)));
                     } else {
 
                     }

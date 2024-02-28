@@ -13,6 +13,11 @@ public class CDevelopmentRequest implements Serializable {
     public String workLocation;
     public String remarks;
 
+    public int currentYear;
+    public String currentWorkDescription;
+    public double currentWorkAmount;
+    public String currentWorkLocation;
+
     public int getUserId() {
         return userId;
     }

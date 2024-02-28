@@ -99,7 +99,7 @@
     <!--    Admin/MLA menu options    -->
     <string name="admin_profile">Admin Profile</string>
     <string name="notice_board_messages">Notice Board Messages</string>
-    <string name="manage_candidates">Manage Candidates</string>
+    <string name="manage_candidates">Manage Voters</string>
     <string name="constituency_map">Constituency Map</string>
     <string name="constituency_development">Constituency Developments</string>
     <string name="manage_development">Manage Developments</string>
@@ -193,11 +193,11 @@
     <string name="update_raise_your_issue">Update Raise your Issues</string>
 
     <!--    Manage Candidates heading names    -->
-    <string name="add_new_candidate">Add a New Candidate</string>
-    <string name="no_candidates_data">There is no Candidates data</string>
+    <string name="add_new_candidate">Add a New Voter</string>
+    <string name="no_candidates_data">There is no Voter data</string>
 
     <!--    Upload Candidates data    -->
-    <string name="upload_candidates">Upload All Candidates Data file (formats .xlsx)</string>
+    <string name="upload_candidates">Upload All Voters Data file (formats .xlsx)</string>
 
     <!--    Add Constituency Development heading names    -->
     <string name="constituency_department">Select Constituency Department</string>
@@ -221,7 +221,7 @@
     <string name="add_your_opinion">Add Your Opinion</string>
     <string name="pls_mandal_name">Please enter Mandal Name</string>
     <string name="pls_village_name">Please enter Village Name</string>
-    <string name="opinion_for_candidates">Please enter opinion for Candidates Polling</string>
+    <string name="opinion_for_candidates">Please enter opinion for Voters Polling</string>
 
     <!--    View Constituency Development heading names    -->
     <string name="select_year">Select Year</string>
@@ -459,5 +459,7 @@
     <string name="age">Age</string>
     <string name="no_poll_centers">There is no Poll Centers</string>
     <string name="no_booth_level_grp">There is no Booth Level Group</string>
+
+    <string name="age_required">Age Required</string>
 
 </resources>

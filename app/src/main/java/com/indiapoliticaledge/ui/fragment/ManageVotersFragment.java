@@ -21,7 +21,7 @@ import com.indiapoliticaledge.network.RetrofitClient;
 import com.indiapoliticaledge.network.responsemodel.CandidatesList;
 import com.indiapoliticaledge.network.responsemodel.CandidatesResponse;
 import com.indiapoliticaledge.network.responsemodel.ConstituencyResponse;
-import com.indiapoliticaledge.ui.CandidateProfile;
+import com.indiapoliticaledge.ui.VoterProfileFragment;
 import com.indiapoliticaledge.ui.MLAInfoDrawerScreen;
 import com.indiapoliticaledge.ui.ViewCandidatesAdapter;
 import com.indiapoliticaledge.utils.Constants;
@@ -65,8 +65,8 @@ public class ManageVotersFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (requireActivity() instanceof MLAInfoDrawerScreen) {
-                    CandidateProfile addLatestNewsFragment = new CandidateProfile();
-                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(addLatestNewsFragment, bundle.getString(Constants.USER_INFO));
+                    VoterProfileFragment voterProfileFragment = new VoterProfileFragment();
+                    ((MLAInfoDrawerScreen) requireActivity()).createFragment(voterProfileFragment, bundle.getString(Constants.USER_INFO));
                 }
             }
         });
@@ -145,7 +145,7 @@ public class ManageVotersFragment extends Fragment {
                     if (response.body() != null && response.body().votersInfo != null) {
                         ArrayList<CandidatesList> usersList = new ArrayList<>();
                         usersList.add(response.body().votersInfo);
-                        ViewCandidatesAdapter viewCandidatesAdapter = new ViewCandidatesAdapter(requireActivity(), usersList,userInfo);
+                        ViewCandidatesAdapter viewCandidatesAdapter = new ViewCandidatesAdapter(requireActivity(), usersList, userInfo);
                         view_mlas_list.setAdapter(viewCandidatesAdapter);
                         viewCandidatesAdapter.notifyDataSetChanged();
 

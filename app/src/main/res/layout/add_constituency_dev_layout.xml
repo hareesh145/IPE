@@ -36,54 +36,84 @@
                     android:padding="@dimen/_8sdp">
 
 
-                    <com.skydoves.powerspinner.PowerSpinnerView
-                        android:id="@+id/constituency_drop_down"
+                    <!--                    <com.skydoves.powerspinner.PowerSpinnerView-->
+                    <!--                        android:id="@+id/constituency_drop_down"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="@dimen/_40sdp"-->
+                    <!--                        android:layout_margin="@dimen/_10sdp"-->
+                    <!--                        android:background="@drawable/bg_semi_curved_grey"-->
+                    <!--                        android:foreground="?attr/selectableItemBackground"-->
+                    <!--                        android:gravity="center_vertical"-->
+                    <!--                        android:hint="@string/select_constituency_developement"-->
+                    <!--                        android:padding="10dp"-->
+                    <!--                        android:textColor="@color/black"-->
+                    <!--                        android:textColorHint="@color/black"-->
+                    <!--                        android:textSize="12sp"-->
+                    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+                    <!--                        app:spinner_arrow_gravity="end"-->
+                    <!--                        app:spinner_arrow_padding="8dp"-->
+                    <!--                        app:spinner_divider_color="@color/greyTeal"-->
+                    <!--                        app:spinner_divider_show="true"-->
+                    <!--                        app:spinner_divider_size="0.4dp"-->
+                    <!--                        app:spinner_item_array="@array/constituency_array"-->
+                    <!--                        app:spinner_popup_animation="normal"-->
+                    <!--                        app:spinner_popup_background="@color/greyTeal"-->
+                    <!--                        app:spinner_popup_elevation="14dp" />-->
+
+                    <FrameLayout
+                        android:id="@+id/constituency_dev_frame"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="@drawable/bg_semi_curved_grey"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center_vertical"
-                        android:hint="@string/select_constituency_developement"
-                        android:padding="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:spinner_arrow_gravity="end"
-                        app:spinner_arrow_padding="8dp"
-                        app:spinner_divider_color="@color/greyTeal"
-                        app:spinner_divider_show="true"
-                        app:spinner_divider_size="0.4dp"
-                        app:spinner_item_array="@array/constituency_array"
-                        app:spinner_popup_animation="normal"
-                        app:spinner_popup_background="@color/greyTeal"
-                        app:spinner_popup_elevation="14dp" />
+                        android:layout_margin="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <com.skydoves.powerspinner.PowerSpinnerView
-                        android:id="@+id/year_drop_down"
+                        <Spinner
+                            android:id="@+id/constituency_dev_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:background="@drawable/bg_white_curved_spinner"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/constituency_dev_down_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_38sdp"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginRight="@dimen/_16sdp"
+                            android:src="@drawable/ic_down_arrow" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:id="@+id/years_frame"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="@drawable/bg_semi_curved_grey"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center_vertical"
-                        android:hint="@string/select_year"
-                        android:padding="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@+id/constituency_drop_down"
-                        app:spinner_arrow_gravity="end"
-                        app:spinner_arrow_padding="8dp"
-                        app:spinner_divider_color="@color/greyTeal"
-                        app:spinner_divider_show="true"
-                        app:spinner_divider_size="0.4dp"
-                        app:spinner_item_array="@array/constituency_years"
-                        app:spinner_popup_animation="normal"
-                        app:spinner_popup_background="@color/greyTeal"
-                        app:spinner_popup_elevation="14dp" />
+                        android:layout_margin="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constituency_dev_frame">
 
+                        <Spinner
+                            android:id="@+id/years_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:background="@drawable/bg_white_curved_spinner"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/years_down_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_38sdp"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginRight="@dimen/_16sdp"
+                            android:src="@drawable/ic_down_arrow" />
+                    </FrameLayout>
 
                     <EditText
                         android:id="@+id/mandal_village_et"
@@ -97,7 +127,7 @@
                         android:textColorHint="@color/greyTeal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/year_drop_down" />
+                        app:layout_constraintTop_toBottomOf="@+id/years_frame" />
 
 
                     <EditText
@@ -134,29 +164,32 @@
                         app:layout_constraintTop_toBottomOf="@+id/donate_amount" />
 
 
-                    <com.skydoves.powerspinner.PowerSpinnerView
-                        android:id="@+id/new_year_drop_down"
+                    <FrameLayout
+                        android:id="@+id/new_years_frame"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:background="@drawable/bg_semi_curved_grey"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center_vertical"
-                        android:hint="@string/select_new_year"
-                        android:padding="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@+id/past_development_edit"
-                        app:spinner_arrow_gravity="end"
-                        app:spinner_arrow_padding="8dp"
-                        app:spinner_divider_color="@color/greyTeal"
-                        app:spinner_divider_show="true"
-                        app:spinner_divider_size="0.4dp"
-                        app:spinner_item_array="@array/constituency_years"
-                        app:spinner_popup_animation="normal"
-                        app:spinner_popup_background="@color/greyTeal"
-                        app:spinner_popup_elevation="14dp" />
+                        android:layout_margin="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/past_development_edit">
+
+                        <Spinner
+                            android:id="@+id/new_years_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:background="@drawable/bg_white_curved_spinner"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/new_years_down_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_38sdp"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginRight="@dimen/_16sdp"
+                            android:src="@drawable/ic_down_arrow" />
+                    </FrameLayout>
 
 
                     <EditText
@@ -171,7 +204,7 @@
                         android:textColorHint="@color/greyTeal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/new_year_drop_down" />
+                        app:layout_constraintTop_toBottomOf="@+id/new_years_frame" />
 
 
                     <EditText
